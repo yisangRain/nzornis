@@ -8,8 +8,15 @@ import cgi
 import time
 import json
 import converter
+import database
+
+############################################################################
+# Global variables 
+
+DATABASE = "pythonsqlite.db"
 
 
+############################################################################
 
 ###############################################################################
 # HTTP request handler
@@ -31,10 +38,10 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
 
         # GET processed AR back 
         if path == '/getProcessed':
-            connection = create_connection(DATABASE)
+            connection = database.create_connection(DATABASE)
             query = f"SELECT filename, status FROM AR WHERE id = '{query_params['id']}"
 
-            result = query_database(connection, query)
+            result = database.query_database(connection, query)
 
             if len(result) == 0:
                 self.send_error(404, "Could not find the file.")
@@ -75,6 +82,9 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
 
         id = None
 
+
+
+
         # POST raw video to be processed
         if path == '/process':
 
@@ -96,8 +106,8 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
                     try:
                         # save the user and filename into the database (intitial update)
                         query = f"INSERT into AR (user, filename, status) VALUES ('{params['user']}', '{output_name}, 'raw');"
-                        connection = create_connection(DATABASE)
-                        id = insert_database(connection, query)
+                        connection = database.create_connection(DATABASE)
+                        id = database.insert_database(connection, query)
                         print(f"Received video saved into the DB: user - {params['user']}, file = {output_name}")
 
                         self.send_response(200, "Video received successfully.")
@@ -111,7 +121,7 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
 
                     if proceed == True:
                         # update the database based on the conversion result
-                        converter.to_AR(output_name, create_connection(DATABASE), id)
+                        converter.to_AR(output_name, database.create_connection(DATABASE), id)
                     
                     connection.close()
             
@@ -138,83 +148,6 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
             self.send_response(404) # nothing to send
 
 
-#####################################################################
-# Database 
-#####################################################################
-
-DATABASE = "pythonsqlite.db"
-
-def create_connection(db_file):
-    # Creates connection to the SQLite database
-    conn = None
-
-    try:
-        conn = sqlite3.connect(db_file)
-        return conn
-    
-    except Error as e:
-        print(e)
-
-
-def query_database(connection, query):
-    """
-    Query the database using the given connection and query string
-    """
-    cursor = connection.cursor()
-
-    cursor.execute(query)
-
-    return cursor.fetchall()
-
-
-def insert_database(connection, query):
-    """
-    Insert into the database using the given connection and query string
-    """
-    cursor = connection.cursor()
-
-    cursor.execute(query)
-    connection.commit()
-
-    return cursor.lastrowid
-
-
-def setup_database(connection):
-    # function to setup database if it's not ready
-
-    cursor = connection.cursor()
-
-    test_query = "SELECT * FROM AR LIMIT 1;"
-
-    try:
-        query_database(connection, test_query)
-        print("Using existing database.")
-    
-    except Error as e:
-
-        setup_query = "CREATE TABLE AR ( \
-            AR_ID integer PRIMARY KEY AUTOINCREMENT, \
-            user integer, \
-            ar_name text, \
-            position text, \
-            filename text, \
-            longitude real, \
-            latitude real, \
-            region integer, \
-            geojson text, \
-            description text, \
-            status text \
-            );"
-        
-        cursor.execute(setup_query)
-        connection.commit()
-
-        print("Database setup successful.")
-
-        
-
-
-
 ######################################################################
 # Main
 ######################################################################
@@ -225,8 +158,8 @@ def run_server():
     global http_server 
 
     # Initialise DB if it's not setup 
-    connection = create_connection(DATABASE)
-    setup_database(connection)
+    connection = database.create_connection(DATABASE)
+    database.setup_database(connection)
     connection.close()
 
     # set port
