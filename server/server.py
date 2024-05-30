@@ -1,4 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
+import threading
 from urllib.parse import urlparse, parse_qs
 import socket
 import sqlite3
@@ -219,8 +220,9 @@ def setup_database(connection):
 ######################################################################
 
 
-def main():
-    # Initiates and maintains server until manual termination
+def run_server():
+    # Initiates and maintains server until termination
+    global http_server 
 
     # Initialise DB if it's not setup 
     connection = create_connection(DATABASE)
@@ -241,5 +243,13 @@ def main():
     http_server.serve_forever()
 
 
+def stop_server():
+    global http_server
+    if http_server:
+        http_server.shutdown()
+        print("Server stopped")
 
-main()
+
+# Run the server in a separate thread
+server_thread = threading.Thread(target=run_server)
+server_thread.start()
