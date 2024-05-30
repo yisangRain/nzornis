@@ -183,9 +183,13 @@ def setup_database(connection):
 
     cursor = connection.cursor()
 
-    test_query = "SELECT TOP 1 * FROM AR;"
+    test_query = "SELECT * FROM AR LIMIT 1;"
 
-    if len(query_database(connection, test_query)) == 0:
+    try:
+        query_database(connection, test_query)
+        print("Using existing database.")
+    
+    except Error as e:
 
         setup_query = "CREATE TABLE AR ( \
             AR_ID integer PRIMARY KEY AUTOINCREMENT, \
@@ -198,11 +202,11 @@ def setup_database(connection):
             region integer, \
             geojson text, \
             description text, \
-            status text, \
+            status text \
             );"
         
         cursor.execute(setup_query)
-        cursor.commit()
+        connection.commit()
 
         print("Database setup successful.")
 
