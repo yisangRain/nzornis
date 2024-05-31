@@ -2,7 +2,6 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 import threading
 from urllib.parse import urlparse, parse_qs
 import socket
-import sqlite3
 from sqlite3 import Error
 import cgi
 import time
@@ -78,55 +77,48 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
         # Break down the request URL
         parsed_url = urlparse(self.path)
         path = parsed_url.path
-        params = parsed_url.params
+        params = parse_qs(parsed_url.query)
+    
+        content_type, pdict = cgi.parse_header(self.headers['Content-Type'])
 
         id = None
 
+        # handle video upload
+        # client: param = (user: userId(integer)) body = (file: videofile(mp4/H.264), json: {location: PointGeoJSON
+        # movement, startTime})
+        if (path == '/upload') and (content_type.startswith('multipart/form-data')):
+            filename = f"user{params['user'][0]}_{int(time.time())}.mp4"
+            pdict['boundary'] = bytes(pdict['boundary'], "utf-8")
+            pdict['CONTENT-LENGTH'] = int(self.headers['Content-Length'])
 
+            fields = cgi.parse_multipart(self.rfile, pdict)
 
-
-        # POST raw video to be processed
-        if path == '/process':
-
-            # Determine output file name
-            output_name = f"{params['user']}_{int(time.time())}.mp4"
-
-            if params['type'] == 'video':
-                form_data = cgi.FieldStorage(fp=self.rfile, headers=self.headers, environ={'REQUEST_METHOD': 'POST'})
-                file_field = form_data['file']
-
-                if file_field.filename:
-                    file_data = file_field.file.read()
-                    proceed = True
-
-                    # Write the received file into the server to be processed later
-                    with open("received/" + output_name, 'wb') as f:
-                        f.write(file_data)
-
-                    try:
-                        # save the user and filename into the database (intitial update)
-                        query = f"INSERT into AR (user, filename, status) VALUES ('{params['user']}', '{output_name}, 'raw');"
-                        connection = database.create_connection(DATABASE)
-                        id = database.insert_database(connection, query)
-                        print(f"Received video saved into the DB: user - {params['user']}, file = {output_name}")
-
-                        self.send_response(200, "Video received successfully.")
-                        self.send_header('Content-type', 'application/json')
-                        self.end_headers()
-                        self.wfile.write(json.dumps({"id": id, "filename": output_name}).encode())
-                    
-                    except Error as e:
-                        print(e)
-                        proceed = False
-
-                    if proceed == True:
-                        # update the database based on the conversion result
-                        converter.to_AR(output_name, database.create_connection(DATABASE), id)
-                    
-                    connection.close()
+            json_data = json.loads(fields.get('json')[0])
+            video_data = fields.get('file')[0]
             
-            else:
-                self.send_error(503)
+            try:
+                # Save the video into the server
+             
+                with open(f'server/received/{filename}', 'wb') as f:
+                    f.write(video_data)
+                    print(f"Saved video file {filename}")
+
+                # Insert other information into the DB
+                conn = database.create_connection(DATABASE)
+                query = f"INSERT into AR (user, filename, status, geojson, time, position) \
+                    VALUES ('{params['user'][0]}', '{filename}', 'raw', '{json_data.get('location')}', '{json_data.get('startTime')}', '{json_data.get('position')}');"
+                # Receive the database row id
+                id = database.insert_database(conn, query)
+
+                self.send_response(200, "Video successfully uploaded")
+                self.send_header('Content-type', 'application/json')
+                self.end_headers()
+                # send the entry id and filename back
+                self.wfile.write(json.dumps({"id": id, "filename": filename}).encode())
+          
+            except Error as e:
+                print(e)
+                self.send_response(500, "Could not receive the file.")
 
         # default 
         else:

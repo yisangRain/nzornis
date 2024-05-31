@@ -37,7 +37,12 @@ def insert_database(connection, query):
     cursor.execute(query)
     connection.commit()
 
-    return cursor.lastrowid
+    id = cursor.lastrowid
+
+    if id != None:
+        return id
+    
+    return ValueError
 
 
 def setup_database(connection):
@@ -59,10 +64,9 @@ def setup_database(connection):
             ar_name text, \
             position text, \
             filename text, \
-            longitude real, \
-            latitude real, \
             region integer, \
             geojson text, \
+            time text, \
             description text, \
             status text \
             );"
