@@ -45,6 +45,10 @@ def insert_database(connection, query):
     return ValueError
 
 
+def delete_database(connection, query):
+    pass
+
+
 def setup_database(connection):
     # function to setup database if it's not ready
 

@@ -85,7 +85,7 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
 
         # handle video upload
         # client: param = (user: userId(integer)) body = (file: videofile(mp4/H.264), json: {location: PointGeoJSON
-        # movement, startTime})
+        # movement, startTime, position})
         if (path == '/upload') and (content_type.startswith('multipart/form-data')):
             filename = f"user{params['user'][0]}_{int(time.time())}.mp4"
             pdict['boundary'] = bytes(pdict['boundary'], "utf-8")
@@ -110,7 +110,7 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
                 # Receive the database row id
                 id = database.insert_database(conn, query)
 
-                self.send_response(200, "Video successfully uploaded")
+                self.send_response(201, "Video successfully uploaded")
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
                 # send the entry id and filename back
