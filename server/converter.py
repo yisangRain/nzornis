@@ -26,6 +26,7 @@ def grabCutter(frame, rect):
 def grabcut(source, output_name):
     start = time.time()
 
+    # note: avc1 is h264
     output_params = {"-fps": 30, '-fourcc': 'H264'}
    
     capture = cv2.VideoCapture(source)
