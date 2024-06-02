@@ -72,8 +72,8 @@ def to_AR(filename, conn, id):
     """
     Wrapper function for conversion
     """
-    input_name = "received/" + filename
-    output_name = "processed/" + filename
+    input_name = "server/received/" + filename
+    output_name = "server/converted/" + filename
 
     c = conn.cursor()
     query = None
@@ -81,10 +81,10 @@ def to_AR(filename, conn, id):
     result = grabcut(input_name, output_name)
 
     if result == 0:
-        query = f"UPDATE AR SET filename = '{output_name}', status='Converted' WHERE id = {id};"
+        query = f"UPDATE AR SET filename = '{output_name}', status='converted' WHERE ar_id = {id};"
 
     elif result == 1:
-        query = f"UPDATE AR SET filename = 'None', status='File Error' WHERE id = {id};"
+        query = f"UPDATE AR SET filename = 'None', status='File Error' WHERE ar_id = {id};"
 
     c.execute(query)
     conn.commit()

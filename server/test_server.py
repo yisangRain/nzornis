@@ -66,25 +66,31 @@ class TestServer(unittest.TestCase):
             response = requests.post(url, files=files, data=data, params=params)
             filename = response.json().get('filename', None)
 
-            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.status_code, 201)
 
             self.assertTrue(os.path.exists(f'server/received/{filename}'))
 
             os.remove(f'server/received/{filename}')
 
 
-    def test_PATCH_initiateConversion(self):
+    def test_PATCH_initiateAndCheckConversion(self):
+        """
+        Testing initiating conversion and conversion.
+        Difficult to separate the two due to server and test running on
+        a single terminal
+        """
         # variables
-        filename = "blob.mp4"
+        filename = "blobConversionTest.mp4"
 
         # insert test data entry into the database
         conn = database.create_connection(testDatabase)
         q = f"INSERT INTO AR (user, filename, status) \
-            VALUES ('testUser0', '{filename}', 'raw');"
+            VALUES ('{testUser}', '{filename}', 'raw');"
         id = database.insert_database(conn, q)
+        # conn.close()
 
         # Define the URL of the server
-        url = f'http://{server_ip_address}:{server_port}/initiateConversion'
+        url = f'http://{server_ip_address}:{server_port}/initCon'
 
         # send patch request
         params = {'user': testUser, 'ar_id': id}
@@ -94,8 +100,20 @@ class TestServer(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         
         # check and delete db entry
-        q2 = f"DELETE FROM AR WHERE user='{testUser}' AND ar_id='{id}';"
-        database.delete_database(conn, q2)
+        conn = database.create_connection(testDatabase)
+        [check_conversion] = database.query_database(conn, f"SELECT status FROM AR WHERE ar_id={id};")
+        self.assertEqual(check_conversion[0], "converted")
+        delete_result = database.delete_database(conn, id)
+        conn.close()
+
+        # assertion to check deletion
+        self.assertTrue(delete_result)
+
+        # check and delete converted file
+        self.assertTrue(os.path.exists(f'server/converted/{filename}'))
+
+        os.remove(f'server/converted/{filename}')
+
 
 
 

@@ -14,6 +14,8 @@ import database
 
 DATABASE = "pythonsqlite.db"
 
+PATCH = {200: "Updated successfully.", 400: "File corrupted." }
+
 
 ############################################################################
 
@@ -129,11 +131,44 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
         # Break down the request URL
         parsed_url = urlparse(self.path)
         path = parsed_url.path
-        query_params = parse_qs(parsed_url.query)
+        params = parse_qs(parsed_url.query)
 
         # PATCH AR position
-        if path == '/addPosition':
-            pass
+        if path == '/initCon':
+            ar_id = params['ar_id'][0]
+            user = params['user'][0]
+
+            conn = database.create_connection(DATABASE)
+            result = database.check_status(conn, user, ar_id)
+
+            if result:
+                status, filename = result
+            
+                if status == 'raw':
+                    database.change_status(conn, user, ar_id, 'processing')
+                    self.send_response(200, "Initiating")
+                    # convert
+                    converter.to_AR(filename, conn, ar_id)
+
+                elif status == 'processing':
+                    # return current status as response
+                    self.send_response(201, "Processing")
+
+                elif status == 'converted':
+                    # return current status as response
+                    self.send_response(201, "Ready")
+           
+            else:
+                # return 503 error or similar
+                self.send_response(500, "Internal server error")
+      
+             # Send a simple response back
+            response_data = {f'status": "{result}", "message": "PATCH request processed'}
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(bytes(json.dumps(response_data), 'utf-8'))
+        
+            conn.close()
 
         # default 
         else:

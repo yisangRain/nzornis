@@ -45,8 +45,51 @@ def insert_database(connection, query):
     return ValueError
 
 
-def delete_database(connection, query):
-    pass
+def check_status(connection, user, ar):
+    """
+    Checks recorded status of the uploaded video
+    user and ar_id must match
+    Returns status as [string] | None
+    """ 
+    q = f"SELECT status, filename FROM AR WHERE user={user} AND ar_id={ar};"
+
+    cursor = connection.cursor()
+    cursor.execute(q)
+
+    return cursor.fetchone()
+
+
+def change_status(connection, user, ar, status):
+    """
+    Change the recorded status of the uploaded video
+    user and ar_id must match
+    Returns status as [string] | None
+    """ 
+    q = f"UPDATE AR SET status='{status}' WHERE user={user} AND ar_id={ar};"
+
+    cursor = connection.cursor()
+    cursor.execute(q)
+
+
+def delete_database(connection, id):
+    """
+    Deletes from AR table based on the given ar_id
+    Returns True if deleted successfully
+    False otherwise
+    """
+    # Delete operation
+    query = f"DELETE FROM AR WHERE ar_id={id};"
+    cursor = connection.cursor()
+    cursor.execute(query)
+    connection.commit()
+
+    # confirm deletion
+    c_query = f"SELECT * FROM AR WHERE ar_id={id};"
+    cursor.execute(c_query)
+    if len(cursor.fetchall()) == 0:
+        return True
+
+    return False
 
 
 def setup_database(connection):
