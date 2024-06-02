@@ -15,8 +15,6 @@ import os
 
 DATABASE = "pythonsqlite.db"
 
-PATCH = {200: "Updated successfully.", 400: "File corrupted." }
-
 
 ############################################################################
 
@@ -53,7 +51,7 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(json_data).encode())
           
         # GET user's video
-        if path == '/getUserVideo':
+        elif path == '/getUserVideo':
             # set db up
             conn = database.create_connection(DATABASE)
             [(filename)] = database.get_filename(conn, params['user'][0], params['ar_id'][0])
