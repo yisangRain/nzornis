@@ -8,6 +8,7 @@ import time
 import json
 import converter
 import database
+import os
 
 ############################################################################
 # Global variables 
@@ -51,9 +52,38 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps(json_data).encode())
           
+        # GET user's video
+        if path == '/getUserVideo':
+            # set db up
+            conn = database.create_connection(DATABASE)
+            [(filename)] = database.get_filename(conn, params['user'][0], params['ar_id'][0])
+            
+            filepath = f"server/converted/{filename}"
+            if os.path.exists(filepath):
+                # set up response
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/octet-stream')
+                self.send_header('Content-Disposition', f'attachment; filename="{os.path.basename(filepath)}"')
+                self.end_headers()
+                
+                # Send the file content
+                with open(filepath, 'rb') as file:
+                    self.wfile.write(file.read())
+            else:
+                self.send_response(404)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                response = {"status": "File not found"}
+                self.wfile.write(bytes(json.dumps(response), 'utf-8'))
+        
         # default 
         else:
-            self.send_response(404) # nothing to send
+            self.send_response(400) # nothing to send
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            response = {"status": "Bad Request", "message": "Invalid request"}
+            self.wfile.write(bytes(json.dumps(response), 'utf-8'))
+
 
 
     def do_POST(self):

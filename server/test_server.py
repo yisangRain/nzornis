@@ -116,41 +116,61 @@ class TestServer(unittest.TestCase):
 
 
 
-    def test_GET_conversionStatus(self):
-        """
-        Request to query the conversion status
-        """
-        # Insert a new test entry into the db
+    # def test_GET_conversionStatus(self):
+    #     """
+    #     Request to query the conversion status
+    #     """
+    #     # Insert a new test entry into the db
+    #     conn = database.create_connection(testDatabase)
+    #     q = f"INSERT INTO AR (user, status) \
+    #     VALUES ('{testUser}', 'processing');"
+    #     id = database.insert_database(conn, q)
+
+    #     # Define url for test
+    #     url = f'http://{server_ip_address}:{server_port}/getStatus'
+        
+    #     # Make a request and get res back. Code 201
+    #     param = {'user': testUser, 'ar_id': id }
+    #     response = requests.get(url, params=param)
+
+    #     # Check results
+    #     self.assertEqual(response.status_code, 201)
+    #     result = json.loads(response.json())
+    #     self.assertEqual(result['status'], 'processing')
+
+    #     # Delete db entry
+    #     database.delete_database(conn, id)
+    #     conn.close()
+
+
+
+    def test_GET_convertedVideo(self):
+        # Create entry into the db
         conn = database.create_connection(testDatabase)
-        q = f"INSERT INTO AR (user, status) \
-        VALUES ('{testUser}', 'processing');"
+        q = f"INSERT INTO AR (user, filename, status) \
+        VALUES ('{testUser}', 'blob.mp4', 'converted');"
         id = database.insert_database(conn, q)
 
-        # Define url for test
-        url = f'http://{server_ip_address}:{server_port}/getStatus'
-        
-        # Make a request and get res back. Code 201
-        param = {'user': testUser, 'ar_id': id }
+        # test file path
+        testPath = "server/converted/blob.mp4"
+
+        # receive video
+        url = f'http://{server_ip_address}:{server_port}/getUserVideo'
+        param = {'user': testUser, 'ar_id': id}
         response = requests.get(url, params=param)
 
-        # Check results
-        self.assertEqual(response.status_code, 201)
-        result = json.loads(response.json())
-        self.assertEqual(result['status'], 'processing')
-
+        # check status code and video received
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.headers['Content-Disposition'], 
+            f'attachment; filename="{os.path.basename(testPath)}"')
+        
         # Delete db entry
         database.delete_database(conn, id)
         conn.close()
+     
 
 
-
-    # def test_GET_convertedVideo(self):
-    #     pass
-
-
-
-    # def test_PATCH_setPosition(self):
-    #     pass
 
 
     # def test_GET_videoByID(self):

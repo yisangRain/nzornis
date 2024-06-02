@@ -17,6 +17,18 @@ def create_connection(db_file):
         print(e)
 
 
+def get_filename(conn, id, ar_id):
+    """
+    Return filename if the ar_id and user matches
+    """
+    cursor = conn.cursor()
+    query = f"SELECT filename FROM AR WHERE user='{id}' AND ar_id='{ar_id}';"
+
+    cursor.execute(query)
+
+    return cursor.fetchone()
+
+
 def query_database(connection, query):
     """
     Query the database using the given connection and query string
