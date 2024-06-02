@@ -35,41 +35,22 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
         # Break down the request URL
         parsed_url = urlparse(self.path)
         path = parsed_url.path
-        query_params = parse_qs(parsed_url.query)
+        params = parse_qs(parsed_url.query)
+        
+        # GET ar conversion status
+        if path == '/getStatus':
+            # set db connection up
+            conn = database.create_connection(DATABASE)
+            status, _ = database.check_status(conn, params['user'][0], params['ar_id'][0])
+            conn.close()
 
-        # GET processed AR back 
-        if path == '/getProcessed':
-            connection = database.create_connection(DATABASE)
-            query = f"SELECT filename, status FROM AR WHERE id = '{query_params['id']}"
-
-            result = database.query_database(connection, query)
-
-            if len(result) == 0:
-                self.send_error(404, "Could not find the file.")
-            
-            elif result[0][1] == 'Raw':
-                self.send_error(503, "still converting.")
-            
-            elif result[0][1] == 'File Error':
-                self.send_error(503, "File Error, please upload the video again")
-            
-            elif result[0][1] == 'Converted':
-                try:
-                    with open('processed/processed_output.mp4', 'rb') as f:
-                        # Set the response headers
-                        self.send_response(200)
-                        self.send_header('Content-type', 'video/mp4')
-                        self.end_headers()
-                        # Read and send the video file data in chunks
-                        chunk_size = 4096
-                        while True:
-                            chunk = f.read(chunk_size)
-                            if not chunk:
-                                break
-                            self.wfile.write(chunk)
-                except IOError:
-                    self.send_error(404, 'File not found')
-
+            # send response back
+            json_data = json.dumps({'ar_id': params['ar_id'][0], 'status': status})
+            self.send_response(201)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps(json_data).encode())
+          
         # default 
         else:
             self.send_response(404) # nothing to send
