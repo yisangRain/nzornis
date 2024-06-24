@@ -6,7 +6,7 @@ import socket
 import json
 import database
 
-test_video = 'server/testAssets/blob.mp4'
+test_video = 'server/testAssets/kea.mp4'
 DATABASE = "pythonsqlite.db"
 
 def put_data():
