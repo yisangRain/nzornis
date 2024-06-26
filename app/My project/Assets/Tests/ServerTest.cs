@@ -3,11 +3,28 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using Moq;
 
 public class ServerTest
 {
 
-    private Client client = new Client();
+    private Client client;
+
+    [SetUp]
+    public void SetUp()
+    {
+        // set up mock requests...or intercepts
+    }
+
+    [UnityTest]
+    public IEnumerator ClientTestPostRequest()
+    {
+        // check post request sent out
+        yield return null;
+    }
+
+
+
     
     // A Test behaves as an ordinary method
     [Test]

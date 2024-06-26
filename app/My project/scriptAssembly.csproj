@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Client.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\ServerClasses.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\scriptAssembly.asmdef" />
@@ -433,6 +434,30 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NuGetForUnity.PluginAPI">
+      <HintPath>Library\PackageCache\com.github-glitchenzo.nugetforunity@a0bb556608\Editor\PluginAPI\NuGetForUnity.PluginAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows">
+      <HintPath>Assets\Packages\System.Security.Principal.Windows.4.7.0\lib\netstandard2.0\System.Security.Principal.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.EventLog">
+      <HintPath>Assets\Packages\System.Diagnostics.EventLog.4.7.0\lib\netstandard2.0\System.Diagnostics.EventLog.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>Assets\Packages\Moq.4.20.70\lib\netstandard2.1\Moq.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>Assets\Packages\Castle.Core.5.1.1\lib\netstandard2.1\Castle.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
