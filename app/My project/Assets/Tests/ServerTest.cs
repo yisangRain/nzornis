@@ -15,14 +15,25 @@ using System.IO;
 public class ServerTest
 {
     Client myClient = new Client();
-    int testArId = 1;
-    string testUser = "100";
+    private int testArId = 1;
+    private string testUser = "100";
+    private string testPassword = "test_password";
+    Player player = Player.GetInstance();
 
     // Test video
     byte[] testVideoBytes = File.ReadAllBytes("Assets/TestAssets/blob.mp4");
 
+    [SetUp]
+    public void SetUp()
+    {
+        Assert.IsTrue(player.LogIn(testUser, testPassword) == "Log in successful");
+    }
 
-
+    [TearDown]
+    public void TearDown()
+    {
+        Assert.IsTrue(player.LogOut() == "Logged out.");
+    }
 
     // Vanilla tests below
 
@@ -39,10 +50,8 @@ public class ServerTest
         var response = new HttpResponseMessage
         {
             StatusCode = HttpStatusCode.OK,
-            Content = new StringContent(@"{""ar_id"": " + testArId.ToString() + @", ""status"": ""processing"" ")
+            Content = new StringContent(@"{""ar_id"": " + testArId.ToString() + @", ""status"": ""processing"" }")
         };
-
-        mockPlayer.Setup(s => s.GetId()).Returns(testUser);
 
         mockHttpHandler
             .Protected()
@@ -53,6 +62,7 @@ public class ServerTest
             .ReturnsAsync(response)
             .Verifiable();
 
+        myClient.SetClient(new HttpClient(mockHttpHandler.Object));
         var testResponse = await myClient.GetStatus(testArId);
 
         Assert.AreEqual("processing", testResponse);
@@ -62,8 +72,9 @@ public class ServerTest
             Times.Once(),
             ItExpr.Is<HttpRequestMessage>(req =>
                 req.Method == HttpMethod.Get
-                && req.RequestUri == new Uri("localhost:8000/getStatus?user=100&ar_id=1")
-        ));
+                && req.RequestUri == new Uri("http://localhost:8000/getStatus?user=100&ar_id=1")),
+            ItExpr.IsAny<CancellationToken>()
+            );
     }
 
 
@@ -71,15 +82,12 @@ public class ServerTest
     public async void TestGetUserVideo_Vanilla()
     {
         var mockHttpHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
-        var mockPlayer = new Mock<IPlayer>();
 
         var response = new HttpResponseMessage
         {
             StatusCode = HttpStatusCode.OK,
             Content = new ByteArrayContent(testVideoBytes)
         };
-
-        mockPlayer.Setup(s => s.GetId()).Returns(testUser);
 
         mockHttpHandler
             .Protected()
@@ -90,21 +98,59 @@ public class ServerTest
             .ReturnsAsync(response)
             .Verifiable();
 
-        var testResponse = await myClient.GetUserVideo(testArId);
+        myClient.SetClient(new HttpClient(mockHttpHandler.Object));
+        string testResponse = await myClient.GetUserVideo(testArId);
+        Debug.Log(testResponse);
 
-        Assert.IsTrue(testResponse == testVideoBytes);
+        Assert.IsTrue($"{player.GetSavePath()}/ar_{testArId}.mp4" == testResponse);
+
+        Assert.IsTrue(File.Exists(testResponse));
+        File.Delete(testResponse);
 
         mockHttpHandler.Protected().Verify(
             "SendAsync",
             Times.Once(),
             ItExpr.Is<HttpRequestMessage>(req =>
                 req.Method == HttpMethod.Get
-                && req.RequestUri == new Uri("localhost:8000/getUserVideo?user=100&ar_id=1")
-        ));
+                && req.RequestUri == new Uri("http://localhost:8000/getUserVideo?user=100&ar_id=1")),
+            ItExpr.IsAny<CancellationToken>()
+            );
     }
 
 
+    [Test]
+    public async void TestPatchInitConversion_Vanilla()
+    {
+        var mockHttpHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
 
+        var response = new HttpResponseMessage
+        {
+            StatusCode = HttpStatusCode.Accepted,
+            ReasonPhrase = "Initiating"
+        };
+
+        mockHttpHandler
+            .Protected()
+            .Setup<Task<HttpResponseMessage>>(
+                "SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>())
+            .ReturnsAsync(response)
+            .Verifiable();
+
+        myClient.SetClient(new HttpClient(mockHttpHandler.Object));
+        var testResponse = await myClient.PatchInitConversion(testArId);
+
+        Assert.AreEqual("Initiating", testResponse);
+
+        mockHttpHandler.Protected().Verify(
+            "SendAsync",
+            Times.Once(),
+            ItExpr.Is<HttpRequestMessage>(req =>
+                req.RequestUri == new Uri("http://localhost:8000/initCon?user=100&ar_id=1")),
+            ItExpr.IsAny<CancellationToken>()
+            );
+    }
 
 
 

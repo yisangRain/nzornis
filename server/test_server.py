@@ -96,8 +96,8 @@ class TestServer(unittest.TestCase):
         params = {'user': testUser, 'ar_id': id}
         response = requests.patch(url, params=params)
 
-        # receive status back (yes (200) | could not find file (404))
-        self.assertEqual(response.status_code, 200)
+        # receive status back (Accepted (202) | could not find file (404))
+        self.assertEqual(response.status_code, 202)
         
         # check and delete db entry
         conn = database.create_connection(testDatabase)

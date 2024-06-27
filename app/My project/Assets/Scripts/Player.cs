@@ -7,6 +7,7 @@ using UnityEngine;
 public interface IPlayer
 {
     string GetId();
+
 }
 
 public class Player : MonoBehaviour, IPlayer
@@ -22,7 +23,7 @@ public class Player : MonoBehaviour, IPlayer
     private string savePath;
 
     //Dev variables
-    private string testId = "test_id";
+    private string testId = "100";
     private string testPassword = "test_password";
 
     public static Player GetInstance()
@@ -74,6 +75,18 @@ public class Player : MonoBehaviour, IPlayer
         {
             return "Log in failed";
         }
+    }
+
+    public string LogOut()
+    {
+        if (loggedIn == true)
+        {
+            loggedIn = false;
+            playerId = null;
+            return "Logged out.";
+        }
+
+        return "Cannot log out. Not logged in.";
     }
 
     public string GetId()
