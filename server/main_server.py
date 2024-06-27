@@ -45,7 +45,7 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
 
             # send response back
             json_data = json.dumps({'ar_id': params['ar_id'][0], 'status': status})
-            self.send_response(201)
+            self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
             self.wfile.write(json.dumps(json_data).encode())

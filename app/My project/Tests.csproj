@@ -9,7 +9,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{214737D8-55FF-029D-BC70-457AFAE0B720}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -56,6 +57,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="D:\Natalie\project\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\cs\xunit.analyzers.fixes.dll" />
+    <Analyzer Include="D:\Natalie\project\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn3.11\cs\xunit.analyzers.fixes.dll" />
+    <Analyzer Include="D:\Natalie\project\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
+    <Analyzer Include="D:\Natalie\project\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn3.11\cs\xunit.analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -972,6 +977,12 @@
       <Project>{6044E579-5092-F213-4A1D-E16C58AD8F38}</Project>
       <Name>scriptAssembly</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\TestAssets\blob.mp4" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Downloads\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

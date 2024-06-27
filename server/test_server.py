@@ -134,7 +134,7 @@ class TestServer(unittest.TestCase):
         response = requests.get(url, params=param)
 
         # Check results
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 200)
         result = json.loads(response.json())
         self.assertEqual(result['status'], 'processing')
 

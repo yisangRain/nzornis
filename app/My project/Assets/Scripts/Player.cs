@@ -4,7 +4,12 @@ using System;
 using System.Threading;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public interface IPlayer
+{
+    string GetId();
+}
+
+public class Player : MonoBehaviour, IPlayer
 {
     private Player() {}
 
@@ -14,6 +19,7 @@ public class Player : MonoBehaviour
 
     private bool loggedIn = false;
     private string playerId;
+    private string savePath;
 
     //Dev variables
     private string testId = "test_id";
@@ -27,7 +33,9 @@ public class Player : MonoBehaviour
             {
                 if (_instance == null)
                 {
-                    _instance = new Player();
+                    GameObject backUpPlayer = new GameObject();
+                    _instance = backUpPlayer.AddComponent<Player>();
+
                 }
             }
         }
@@ -38,6 +46,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         GetInstance();
+        savePath = Application.persistentDataPath;
     }
 
     // Update is called once per frame
@@ -70,5 +79,10 @@ public class Player : MonoBehaviour
     public string GetId()
     {
         return playerId;
+    }
+
+    public string GetSavePath()
+    {
+        return savePath;
     }
 }
