@@ -153,6 +153,49 @@ public class ServerTest
     }
 
 
+    [Test]
+    public async void TestPostUpload_Vanilla()
+    {
+        var mockHttpHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+
+        var response = new HttpResponseMessage
+        {
+            StatusCode = HttpStatusCode.Created,
+            ReasonPhrase = "Video successfully uploaded"
+        };
+
+        mockHttpHandler
+            .Protected()
+            .Setup<Task<HttpResponseMessage>>(
+                "SendAsync",
+                ItExpr.IsAny<HttpRequestMessage>(),
+                ItExpr.IsAny<CancellationToken>())
+            .ReturnsAsync(response)
+            .Verifiable();
+
+        myClient.SetClient(new HttpClient(mockHttpHandler.Object));
+
+        string testFilePath = "Assets/TestAssets/blob.mp4";
+        UploadObject testJsonData = new UploadObject();
+        testJsonData.movement = "{something}";
+        testJsonData.position = "(10,10,10)";
+        GeoJson testGeoJson = new GeoJson();
+        testGeoJson.geometry = new Geometry("Point", new double[] { 125.6, 10.1 });
+        testGeoJson.properties = new Properties("Dinagat Islands");
+        testJsonData.geojson = testGeoJson;
+
+        var testResponse = await myClient.PostUpload(testFilePath, testJsonData);
+
+        Assert.AreEqual("Video successfully uploaded", testResponse);
+
+        mockHttpHandler.Protected().Verify(
+          "SendAsync",
+          Times.Once(),
+          ItExpr.Is<HttpRequestMessage>(req =>
+              req.RequestUri == new Uri("http://localhost:8000/upload?user=100")),
+          ItExpr.IsAny<CancellationToken>()
+          );
+    }
 
 
 }

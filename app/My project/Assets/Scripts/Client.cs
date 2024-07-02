@@ -7,11 +7,12 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Web;
 using System.IO;
+using System.Text;
 
 public interface IHttpClient
 {
     public void SetClient(HttpClient httpClient);
-    Task PostUpload(string filePath, string jsonData);
+    Task<string> PostUpload(string filePath, UploadObject jsonData);
     Task<string> GetStatus(int arId);
     Task<string> GetUserVideo(int arId);
     Task<string> PatchInitConversion(int arId);
@@ -30,10 +31,30 @@ public class Client : IHttpClient
         myClient = httpClient;
     }
 
-    public Task PostUpload(string filePath, string jsonData)
+    public async Task<string> PostUpload(string filePath, UploadObject jsonData)
     {
-        
-        throw new NotImplementedException();
+        var parameters = HttpUtility.ParseQueryString(string.Empty);
+        parameters["user"] = player.GetId();
+
+        string apiUrl = $"{devUrl}/upload?{parameters}";
+
+        var jsonContent = new StringContent(JsonConvert.SerializeObject(jsonData), Encoding.UTF8, "application/json");
+        var fileContent = new StreamContent(File.OpenRead(filePath));
+        var multiContent = new MultipartFormDataContent();
+        multiContent.Add(jsonContent, "json");
+        multiContent.Add(fileContent, "file");
+
+        // Request
+        HttpResponseMessage response = await myClient.PostAsync(apiUrl, multiContent);
+
+        response.EnsureSuccessStatusCode();
+
+        if (response.IsSuccessStatusCode)
+        {
+            return response.ReasonPhrase;
+        }
+
+        return "Error: Error posting video.";
     }
 
     public async Task<string> GetStatus(int arId)
