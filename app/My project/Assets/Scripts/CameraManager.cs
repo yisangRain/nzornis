@@ -1,8 +1,11 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 using TMPro;
+using OpenCvSharp;
+#if UNITY_ANDROID
+using UnityEngine.Android;
+#endif
 
 public class CameraManager : MonoBehaviour
 {
@@ -11,16 +14,22 @@ public class CameraManager : MonoBehaviour
     private bool camAvailable = false;
     private bool recording = false;
     private int i = 0;
+    private VideoWriter videoWriter;
 
     public RawImage background;
     public Button recordButton;
     public AspectRatioFitter fit;
     public TextMeshProUGUI testText;
+    public Player player;
 
+    public int frameRate = 30;
 
-    // Start is called before the first frame update
-    void Start()
+    //AndroidJavaObject paramVal = new AndroidJavaClass("com.arthenica.mobileffmpeg.Signal").GetStatic<AndroidJavaObject>("SIGXCPU");
+
+// Start is called before the first frame update
+void Start()
     {
+        //paramVal.CallStatic("ignoreSignal", new object[] { paramVal });
         OpenCamera();
         recordButton.onClick.AddListener(RecordHandler);
     }
@@ -36,6 +45,20 @@ public class CameraManager : MonoBehaviour
             return;
         }
 
+#if UNITY_EDITOR_WIN
+
+        for (int i = 0; i < devices.Length; i++)
+        {
+            if (devices[i].isFrontFacing)
+            {
+                deviceCamera = new WebCamTexture(devices[i].name, Screen.width, Screen.height);
+                camAvailable = true;
+                return;
+            }
+        }
+#endif
+#if UNITY_ANDROID
+
         for (int i = 0; i < devices.Length; i++)
         {
             if (!devices[i].isFrontFacing)
@@ -44,7 +67,7 @@ public class CameraManager : MonoBehaviour
                 camAvailable = true;
             }
         }
-
+#endif
         if (deviceCamera == null)
         {
             Debug.Log("Unable to find back-facing camera.");
@@ -74,34 +97,58 @@ public class CameraManager : MonoBehaviour
 
         if (recording == true && i < 900)
         {
+
             Record();
+
             i += 1;
+        } else if (i >= 900)
+        {
+            testText.text = "Frame limit reached. Terminating recording.";
+            RecordHandler();
         }
     }
 
 
     public void RecordHandler()
     {
-        if (recording == false)
+
+        if (recording == false && camAvailable)
         {
+            Debug.Log("Initiating recording");
+            string currentDate = DateTime.Today.ToString("O");
+            string filePath = $"{player.GetSavePath()}_10";
+            testText.text = filePath;
+            recordButton.GetComponentInChildren<TextMeshProUGUI>().text = "Stop Recording";
+            videoWriter = new VideoWriter(filePath + ".mp4", VideoWriter.FourCC('H', '2', '6', '4'), frameRate, new Size(deviceCamera.width, deviceCamera.height), true);
+
             recording = true;
         }
-        if (recording == true)
+        else if (recording == true)
         {
+            recordButton.GetComponentInChildren<TextMeshProUGUI>().text = "Start Recording";
+            videoWriter.Dispose();
+            Debug.Log("Writer disposed.");
             recording = false;
             i = 0;
         }
     }
+
     
     public void Record()
     {
-        
+        Texture2D tex = new Texture2D(deviceCamera.width, deviceCamera.height, TextureFormat.RGB24, false);
+        tex.SetPixels32(deviceCamera.GetPixels32());
+        tex.Apply();
+   
+        byte[] imgData = tex.EncodeToJPG();
 
-        // save the image as a video
+        Mat img = Cv2.ImDecode(imgData, ImreadModes.Unchanged);
 
-        // add the video path to the Player
+        videoWriter.Write(img);
+        Resources.UnloadUnusedAssets();
+    }
 
-    } 
+
 
 
 }

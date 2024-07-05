@@ -21,7 +21,7 @@ public interface IHttpClient
 public class Client : IHttpClient
 {
     private string devUrl = "http://localhost:8000";
-    private Player player = Player.GetInstance();
+    private Player player = Player.instance;
     HttpClient myClient;
 
     public void SetClient(HttpClient httpClient)
@@ -141,6 +141,8 @@ public class Client : IHttpClient
         myClient.Dispose();
     }
 }
+
+
 
 
 

@@ -15,7 +15,7 @@ public class ServerTest
     private int testArId = 1;
     private string testUser = "100";
     private string testPassword = "test_password";
-    Player player = Player.GetInstance();
+    Player player = Player.instance;
 
     // Test video
     byte[] testVideoBytes = File.ReadAllBytes("Assets/TestAssets/blob.mp4");
@@ -196,3 +196,4 @@ public class ServerTest
 
 
 }
+

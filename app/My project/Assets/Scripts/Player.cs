@@ -14,7 +14,8 @@ public class Player : MonoBehaviour, IPlayer
 {
     private Player() {}
 
-    private static Player _instance;
+
+    public static Player instance { get; private set; }
 
     private static readonly object _lock = new object();
 
@@ -26,36 +27,22 @@ public class Player : MonoBehaviour, IPlayer
     private string testId = "100";
     private string testPassword = "test_password";
 
-    public static Player GetInstance()
+    public void Awake()
     {
-        if (_instance == null)
+        if (instance != null && instance != this)
         {
-            lock(_lock)
-            {
-                if (_instance == null)
-                {
-                    GameObject backUpPlayer = new GameObject();
-                    _instance = backUpPlayer.AddComponent<Player>();
-
-                }
-            }
+            Destroy(this);
         }
-        return _instance;
+        else
+        {
+            instance = this;
+            savePath = Application.persistentDataPath;
+            Debug.Log(savePath);
+        }
+
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        GetInstance();
-        savePath = Application.persistentDataPath;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+ 
     /// <summary>
     /// DRAFT: a simple (unsecure) log-in method as a placeholder
     /// Treat as blackbox method
