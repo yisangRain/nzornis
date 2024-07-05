@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using OpenCvSharp;
+using System.Collections;
+using System.IO;
 #if UNITY_ANDROID
 using UnityEngine.Android;
 #endif
@@ -15,6 +17,7 @@ public class CameraManager : MonoBehaviour
     private bool recording = false;
     private int i = 0;
     private VideoWriter videoWriter;
+    private int j = 0;
 
     public RawImage background;
     public Button recordButton;
@@ -111,10 +114,10 @@ void Start()
 
     public void RecordHandler()
     {
-
+#if UNITY_EDITOR_WIN
         if (recording == false && camAvailable)
         {
-            Debug.Log("Initiating recording");
+            Debug.Log("Initiating recording using OpenCV");
             string currentDate = DateTime.Today.ToString("O");
             string filePath = $"{player.GetSavePath()}_10";
             testText.text = filePath;
@@ -131,11 +134,29 @@ void Start()
             recording = false;
             i = 0;
         }
+#endif
+#if UNITY_ANDROID
+        if (recording == false && camAvailable)
+        {
+            Debug.Log("Initiating recording using FFMPEG");
+            recordButton.GetComponentInChildren<TextMeshProUGUI>().text = "Stop Recording";
+            recording = true;
+
+
+        } else if (recording == true)
+        {
+            recordButton.GetComponentInChildren<TextMeshProUGUI>().text = "Start Recording";
+            recording = false;
+            i = 0;
+            FfmpegRecord();
+        }
+#endif
     }
 
     
     public void Record()
     {
+#if UNITY_EDITOR_WIN
         Texture2D tex = new Texture2D(deviceCamera.width, deviceCamera.height, TextureFormat.RGB24, false);
         tex.SetPixels32(deviceCamera.GetPixels32());
         tex.Apply();
@@ -146,9 +167,45 @@ void Start()
 
         videoWriter.Write(img);
         Resources.UnloadUnusedAssets();
+#endif
+#if UNITY_ANDROID
+        string filePath = $"{player.GetSavePath()}";
+        testText.text = filePath;
+        Texture2D texAnd = new Texture2D(deviceCamera.width, deviceCamera.height, TextureFormat.RGB24, false);
+        texAnd.SetPixels32(deviceCamera.GetPixels32());
+        texAnd.Apply();
+
+        byte[] imgDataAnd = tex.EncodeToJPG();
+        UnityEngine.Object.Destroy(texAnd);
+
+        if (j < 10)
+        {
+            File.WriteAllBytes(filePath + j + ".jpg", imgDataAnd);
+            j+=1;
+        } else
+        {
+            FfmpegRecord();
+            File.WriteAllBytes(filePath + j + ".jpg", imgDataAnd);
+            j += 1;
+        }
+        
+#endif
     }
 
-
+    public void FfmpegRecord()
+    {
+        for (int k = 0; k <= j; k++)
+        {
+            AndroidJavaClass jc = new AndroidJavaClass("com.arthenica.mobileffmpeg.FFmpeg");
+            jc.CallStatic<int>("execute", new object[] { $"-framerate 30 -i {player.GetSavePath() + k}.jpg { player.GetSavePath() + 10}.mp4" });
+        }
+        for (int k = 0; k <= j; k++)
+        {
+            File.Delete($"{player.GetSavePath() + k}.jpg");
+        }
+       
+        j = 0;
+    }
 
 
 }
