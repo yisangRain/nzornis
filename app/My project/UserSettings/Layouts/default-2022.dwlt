@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 154
+  controlID: 47
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: NugetWindow
+  m_Name: BuildPlayerWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -68,14 +68,14 @@ MonoBehaviour:
     y: 0
     width: 753
     height: 1067
-  m_MinSize: {x: 101, y: 121}
+  m_MinSize: {x: 641, y: 601}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 12}
+  m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 17}
   - {fileID: 14}
   - {fileID: 12}
-  m_Selected: 2
+  m_Selected: 1
   m_LastSelected: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -122,8 +122,8 @@ MonoBehaviour:
     y: 584
     width: 1167
     height: 483
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 16}
@@ -131,7 +131,7 @@ MonoBehaviour:
   - {fileID: 15}
   - {fileID: 13}
   m_Selected: 1
-  m_LastSelected: 0
+  m_LastSelected: 3
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -227,7 +227,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 98
+  controlID: 48
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 89
+  controlID: 40
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -316,7 +316,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   defaultIcon: {fileID: 2800000, guid: 0efa0a38ec1ce484896502259d7ee8f7, type: 3}
   hasRefreshed: 1
-  numberToSkip: 45
+  numberToSkip: 0
   serializableAvailablePackages:
   - packageLocal:
       <Id>k__BackingField: 
@@ -375,1407 +375,14 @@ MonoBehaviour:
         <IsEnabled>k__BackingField: 0
       versions: []
     packageV3:
-      <Id>k__BackingField: OpenCvSharp4.runtime.win
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.10.0.20240616
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/opencvsharp4.runtime.win/4.10.0.20240616/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.10.0.20240616
-      - <FullVersion>k__BackingField: 4.10.0.20240615
-      - <FullVersion>k__BackingField: 4.9.0.20240103
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      - <FullVersion>k__BackingField: 4.7.0.20230115
-      - <FullVersion>k__BackingField: 4.6.0.20220608
-      - <FullVersion>k__BackingField: 4.5.5.20211231
-      - <FullVersion>k__BackingField: 4.5.3.20211228
-      - <FullVersion>k__BackingField: 4.5.3.20211207
-      - <FullVersion>k__BackingField: 4.5.3.20211204
-      - <FullVersion>k__BackingField: 4.5.3.20210817
-      - <FullVersion>k__BackingField: 4.5.3.20210725
-      - <FullVersion>k__BackingField: 4.5.2.20210404
-      - <FullVersion>k__BackingField: 4.5.1.20210210
-      - <FullVersion>k__BackingField: 4.5.1.20210208
-      - <FullVersion>k__BackingField: 4.5.1.20210206
-      - <FullVersion>k__BackingField: 4.5.1.20210123
-      - <FullVersion>k__BackingField: 4.5.1.20201229
-      - <FullVersion>k__BackingField: 4.5.1.20201226
-      - <FullVersion>k__BackingField: 4.5.0.20201013
-      - <FullVersion>k__BackingField: 4.4.0.20200915
-      - <FullVersion>k__BackingField: 4.4.0.20200725
-      - <FullVersion>k__BackingField: 4.3.0.20200701
-      - <FullVersion>k__BackingField: 4.3.0.20200524
-      - <FullVersion>k__BackingField: 4.3.0.20200421
-      - <FullVersion>k__BackingField: 4.3.0.20200405
-      - <FullVersion>k__BackingField: 4.2.0.20200208
-      - <FullVersion>k__BackingField: 4.2.0.20200108
-      - <FullVersion>k__BackingField: 4.2.0.20191223
-      - <FullVersion>k__BackingField: 4.1.1.20191216
-      - <FullVersion>k__BackingField: 4.1.1.20191110
-      - <FullVersion>k__BackingField: 4.1.1.20191026
-      - <FullVersion>k__BackingField: 4.1.1.20191025
-      - <FullVersion>k__BackingField: 4.1.1.20191021
-      - <FullVersion>k__BackingField: 4.1.1.20191017
-      - <FullVersion>k__BackingField: 4.1.0.20190416
-      - <FullVersion>k__BackingField: 4.0.1.20190326
-      - <FullVersion>k__BackingField: 4.0.0.20190108
-      - <FullVersion>k__BackingField: 4.0.0.20181225
-      <Authors>k__BackingField:
-      - shimat
-      <Description>k__BackingField: Internal implementation package for OpenCvSharp
-        to work on Windows except UWP.
-      <TotalDownloads>k__BackingField: 3539789
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4.runtime.win/4.10.0.20240616/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Internal implementation package for OpenCvSharp to
-        work on Windows except UWP.
-      <Title>k__BackingField: OpenCvSharp4 native bindings for Windows x64/x86 (except
-        UWP)
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: OpenCvSharp4
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.10.0.20240616
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/opencvsharp4/4.10.0.20240616/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.10.0.20240616
-      - <FullVersion>k__BackingField: 4.10.0.20240615
-      - <FullVersion>k__BackingField: 4.9.0.20240103
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      - <FullVersion>k__BackingField: 4.7.0.20230115
-      - <FullVersion>k__BackingField: 4.6.0.20220608
-      - <FullVersion>k__BackingField: 4.5.5.20211231
-      - <FullVersion>k__BackingField: 4.5.3.20211228
-      - <FullVersion>k__BackingField: 4.5.3.20211207
-      - <FullVersion>k__BackingField: 4.5.3.20211204
-      - <FullVersion>k__BackingField: 4.5.3.20210817
-      - <FullVersion>k__BackingField: 4.5.3.20210725
-      - <FullVersion>k__BackingField: 4.5.2.20210404
-      - <FullVersion>k__BackingField: 4.5.1.20210210
-      - <FullVersion>k__BackingField: 4.5.1.20210208
-      - <FullVersion>k__BackingField: 4.5.1.20210206
-      - <FullVersion>k__BackingField: 4.5.1.20210123
-      - <FullVersion>k__BackingField: 4.5.1.20201229
-      - <FullVersion>k__BackingField: 4.5.1.20201226
-      - <FullVersion>k__BackingField: 4.5.0.20201013
-      - <FullVersion>k__BackingField: 4.4.0.20200915
-      - <FullVersion>k__BackingField: 4.4.0.20200725
-      - <FullVersion>k__BackingField: 4.3.0.20200701
-      - <FullVersion>k__BackingField: 4.3.0.20200524
-      - <FullVersion>k__BackingField: 4.3.0.20200421
-      - <FullVersion>k__BackingField: 4.3.0.20200405
-      - <FullVersion>k__BackingField: 4.2.0.20200208
-      - <FullVersion>k__BackingField: 4.2.0.20200108
-      - <FullVersion>k__BackingField: 4.2.0.20191223
-      - <FullVersion>k__BackingField: 4.1.1.20191216
-      - <FullVersion>k__BackingField: 4.1.1.20191110
-      - <FullVersion>k__BackingField: 4.1.1.20191026
-      - <FullVersion>k__BackingField: 4.1.1.20191025
-      - <FullVersion>k__BackingField: 4.1.1.20191021
-      - <FullVersion>k__BackingField: 4.1.1.20191017
-      - <FullVersion>k__BackingField: 4.1.0.20190416
-      - <FullVersion>k__BackingField: 4.0.1.20190326
-      - <FullVersion>k__BackingField: 4.0.0.20190108
-      - <FullVersion>k__BackingField: 4.0.0.20181225
-      <Authors>k__BackingField:
-      - shimat
-      <Description>k__BackingField: OpenCV wrapper for .NET. Since this package includes
-        only core managed libraries, another package of native bindings for your
-        OS is required (OpenCvSharp4.runtime.*).
-      <TotalDownloads>k__BackingField: 3183983
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4/4.10.0.20240616/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: OpenCV wrapper for .NET. Since this package includes
-        only core managed libraries, another package of native bindings for your
-        OS is required (OpenCvSharp4.runtime.*).
-      <Title>k__BackingField: OpenCvSharp core library. A package of separate native
-        bindings for your OS is required.
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: OpenCvSharp4.runtime.ubuntu.18.04-x64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.6.0.20220608
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/opencvsharp4.runtime.ubuntu.18.04-x64/4.6.0.20220608/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.6.0.20220608
-      - <FullVersion>k__BackingField: 4.5.5.20211231
-      - <FullVersion>k__BackingField: 4.5.3.20211228
-      - <FullVersion>k__BackingField: 4.5.3.20211225
-      - <FullVersion>k__BackingField: 4.5.3.20211207
-      - <FullVersion>k__BackingField: 4.5.3.20211204
-      - <FullVersion>k__BackingField: 4.5.3.20210817
-      - <FullVersion>k__BackingField: 4.5.3.20210725
-      - <FullVersion>k__BackingField: 4.5.2.20210404
-      - <FullVersion>k__BackingField: 4.5.1.20210210
-      - <FullVersion>k__BackingField: 4.5.1.20210208
-      - <FullVersion>k__BackingField: 4.5.1.20210206
-      - <FullVersion>k__BackingField: 4.5.1.20210123
-      - <FullVersion>k__BackingField: 4.5.1.20201226
-      - <FullVersion>k__BackingField: 4.5.0.20201013
-      - <FullVersion>k__BackingField: 4.4.0.20200915
-      - <FullVersion>k__BackingField: 4.4.0.20200725
-      - <FullVersion>k__BackingField: 4.3.0.20200701
-      - <FullVersion>k__BackingField: 4.3.0.20200524
-      - <FullVersion>k__BackingField: 4.3.0.20200421
-      - <FullVersion>k__BackingField: 4.3.0.20200405
-      - <FullVersion>k__BackingField: 4.2.0.20200208
-      - <FullVersion>k__BackingField: 4.2.0.20200108
-      - <FullVersion>k__BackingField: 4.2.0.20191223
-      - <FullVersion>k__BackingField: 4.1.1.20191216
-      - <FullVersion>k__BackingField: 4.1.1.20191023
-      - <FullVersion>k__BackingField: 4.1.0.20190416
-      - <FullVersion>k__BackingField: 4.0.1.20190326
-      - <FullVersion>k__BackingField: 4.0.0.20181225
-      <Authors>k__BackingField:
-      - shimat
-      <Description>k__BackingField: Internal implementation package for OpenCvSharp
-        to work on Ubuntu 18.04
-      <TotalDownloads>k__BackingField: 504728
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4.runtime.ubuntu.18.04-x64/4.6.0.20220608/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Internal implementation package for OpenCvSharp to
-        work on Ubuntu 18.04
-      <Title>k__BackingField: OpenCvSharp native bindings for ubuntu.18.04-x64
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: OpenCvSharp4_.runtime.ubuntu.20.04-x64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.10.0.20240616
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/opencvsharp4_.runtime.ubuntu.20.04-x64/4.10.0.20240616/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.10.0.20240616
-      - <FullVersion>k__BackingField: 4.10.0.20240615
-      - <FullVersion>k__BackingField: 4.9.0.20240103
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      - <FullVersion>k__BackingField: 4.7.0.20230115
-      <Authors>k__BackingField:
-      - shimat
-      <Description>k__BackingField: Internal implementation package for OpenCvSharp
-        to work on Ubuntu 20.04
-      <TotalDownloads>k__BackingField: 85554
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4_.runtime.ubuntu.20.04-x64/4.10.0.20240616/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Internal implementation package for OpenCvSharp to
-        work on Ubuntu 20.04
-      <Title>k__BackingField: OpenCvSharp native bindings for ubuntu.20.04-x64
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: OpenCvSharp4.runtime.osx.10.15-x64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.6.0.20230105
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/opencvsharp4.runtime.osx.10.15-x64/4.6.0.20230105/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.6.0.20230105
-      - <FullVersion>k__BackingField: 4.6.0.20220608
-      - <FullVersion>k__BackingField: 4.5.5.20211231
-      - <FullVersion>k__BackingField: 4.5.3.20211228
-      - <FullVersion>k__BackingField: 4.5.3.20211225
-      - <FullVersion>k__BackingField: 4.5.3.20211207
-      - <FullVersion>k__BackingField: 4.5.3.20211204
-      - <FullVersion>k__BackingField: 4.5.3.20210817
-      - <FullVersion>k__BackingField: 4.5.3.20210725
-      - <FullVersion>k__BackingField: 4.5.2.20210404
-      - <FullVersion>k__BackingField: 4.5.1.20210210
-      - <FullVersion>k__BackingField: 4.5.1.20210208
-      - <FullVersion>k__BackingField: 4.5.1.20210206
-      - <FullVersion>k__BackingField: 4.5.1.20210123
-      - <FullVersion>k__BackingField: 4.5.1.20201226
-      - <FullVersion>k__BackingField: 4.5.0.20201013
-      - <FullVersion>k__BackingField: 4.4.0.20200915
-      - <FullVersion>k__BackingField: 4.4.0.20200725
-      - <FullVersion>k__BackingField: 4.3.0.20200701
-      - <FullVersion>k__BackingField: 4.3.0.20200421
-      <Authors>k__BackingField:
-      - shimat, vladkol
-      <Description>k__BackingField: Internal implementation package for OpenCvSharp
-        to work on macOS 10
-      <TotalDownloads>k__BackingField: 64344
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4.runtime.osx.10.15-x64/4.6.0.20230105/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Internal implementation package for OpenCvSharp to
-        work on macOS 10.15
-      <Title>k__BackingField: OpenCvSharp native bindings for macOS.10.15-x64
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: OpenCvSharp4.runtime.linux-arm
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.10.0.20240616
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/opencvsharp4.runtime.linux-arm/4.10.0.20240616/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.10.0.20240616
-      - <FullVersion>k__BackingField: 4.10.0.20240615
-      - <FullVersion>k__BackingField: 4.9.0.20240103
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      - <FullVersion>k__BackingField: 4.7.0.20230115
-      - <FullVersion>k__BackingField: 4.6.0.20220608
-      - <FullVersion>k__BackingField: 4.5.5.20211231
-      - <FullVersion>k__BackingField: 4.5.3.20211228
-      - <FullVersion>k__BackingField: 4.5.3.20211225
-      - <FullVersion>k__BackingField: 4.5.3.20211207
-      - <FullVersion>k__BackingField: 4.5.3.20211204
-      - <FullVersion>k__BackingField: 4.5.3.20210817
-      - <FullVersion>k__BackingField: 4.5.3.20210725
-      - <FullVersion>k__BackingField: 4.5.2.20210507
-      <Authors>k__BackingField:
-      - shimat
-      <Description>k__BackingField: Internal implementation package for OpenCvSharp
-        to work on Ubuntu 18.04 for ARM
-      <TotalDownloads>k__BackingField: 35483
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4.runtime.linux-arm/4.10.0.20240616/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Internal implementation package for OpenCvSharp to
-        work on Ubuntu 18.04 for ARM
-      <Title>k__BackingField: OpenCvSharp native bindings for linux-arm
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: OpenCvSharp4.runtime.uwp
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.0.20230708
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/opencvsharp4.runtime.uwp/4.8.0.20230708/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      - <FullVersion>k__BackingField: 4.7.0.20230115
-      - <FullVersion>k__BackingField: 4.6.0.20220608
-      - <FullVersion>k__BackingField: 4.5.5.20211231
-      - <FullVersion>k__BackingField: 4.5.3.20211228
-      - <FullVersion>k__BackingField: 4.5.3.20211207
-      - <FullVersion>k__BackingField: 4.5.3.20211204
-      - <FullVersion>k__BackingField: 4.5.3.20210817
-      - <FullVersion>k__BackingField: 4.5.3.20210725
-      - <FullVersion>k__BackingField: 4.5.2.20210404
-      - <FullVersion>k__BackingField: 4.5.1.20210210
-      - <FullVersion>k__BackingField: 4.5.1.20210208
-      - <FullVersion>k__BackingField: 4.5.1.20210206
-      - <FullVersion>k__BackingField: 4.5.1.20210123
-      - <FullVersion>k__BackingField: 4.5.1.20201229
-      - <FullVersion>k__BackingField: 4.5.1.20201226
-      - <FullVersion>k__BackingField: 4.5.0.20201013
-      - <FullVersion>k__BackingField: 4.4.0.20200915
-      - <FullVersion>k__BackingField: 4.4.0.20200725
-      - <FullVersion>k__BackingField: 4.3.0.20200701
-      - <FullVersion>k__BackingField: 4.3.0.20200524
-      - <FullVersion>k__BackingField: 4.3.0.20200421
-      - <FullVersion>k__BackingField: 4.3.0.20200405
-      - <FullVersion>k__BackingField: 4.2.0.20200208
-      - <FullVersion>k__BackingField: 4.2.0.20200108
-      - <FullVersion>k__BackingField: 4.2.0.20191223
-      - <FullVersion>k__BackingField: 4.1.1.20191216
-      - <FullVersion>k__BackingField: 4.1.1.20191110
-      <Authors>k__BackingField:
-      - shimat
-      <Description>k__BackingField: Internal implementation package for OpenCvSharp
-        to work on UWP (Universal Windows Platform).
-      <TotalDownloads>k__BackingField: 44174
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4.runtime.uwp/4.8.0.20230708/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Internal implementation package for OpenCvSharp to
-        work on UWP (Universal Windows Platform).
-      <Title>k__BackingField: OpenCvSharp4 native bindings for UWP x64/x86/ARM
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: OpenCvSharp4.runtime.centos7-x64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.0.0.20190129
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/opencvsharp4.runtime.centos7-x64/4.0.0.20190129/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.0.0.20190129
-      - <FullVersion>k__BackingField: 4.0.0.20181225
-      <Authors>k__BackingField:
-      - shimat
-      <Description>k__BackingField: Internal implementation package for OpenCvSharp
-        to work on CentOS7
-      <TotalDownloads>k__BackingField: 38192
-      <LicenseUrl>k__BackingField: http://opensource.org/licenses/BSD-3-Clause
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: "Internal implementation package for OpenCvSharp
-        to work on CentOS7, if you get errors that the system cannot find libOpenCvSharpExtern.so,
-        \n\t\tmake sure that so path is in the $LD_LIBRARY_PATH environmental variable."
-      <Title>k__BackingField: OpenCvSharp native bindings for centos7-x64
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: Husty.OpenCvSharp.OnnxRuntime
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 2.2.1
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies:
-      - <TargetFramework>k__BackingField: net8.0
-      dependenciesFetched: 1
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/husty.opencvsharp.onnxruntime/2.2.1/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 2.2.1
-      - <FullVersion>k__BackingField: 2.2.0
-      <Authors>k__BackingField:
-      - Takumi Yamashita
-      <Description>k__BackingField: ONNX Runtime depending on Husty.OpenCvSharp
-      <TotalDownloads>k__BackingField: 11050
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Husty.OpenCvSharp.OnnxRuntime/2.2.1/license
-      <ProjectUrl>k__BackingField: https://github.com/zwire/husty/tree/master/src/Husty.OpenCvSharp.OnnxRuntime
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: Husty.OpenCvSharp.OnnxRuntime
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: OpenCvSharp4.runtime.wasm
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.10.0.20240616
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/opencvsharp4.runtime.wasm/4.10.0.20240616/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.10.0.20240616
-      - <FullVersion>k__BackingField: 4.10.0.20240615
-      - <FullVersion>k__BackingField: 4.9.0.20240103
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      - <FullVersion>k__BackingField: 4.7.0.20230115
-      - <FullVersion>k__BackingField: 4.6.0.20220608
-      - <FullVersion>k__BackingField: 4.5.5.20211231
-      - <FullVersion>k__BackingField: 4.5.3.20211228
-      - <FullVersion>k__BackingField: 4.5.3.20211225
-      - <FullVersion>k__BackingField: 4.5.3.20211207
-      - <FullVersion>k__BackingField: 4.5.3.20211204
-      <Authors>k__BackingField:
-      - shimat,vladkol
-      <Description>k__BackingField: Internal implementation package for OpenCvSharp
-        to work on Wasm
-      <TotalDownloads>k__BackingField: 8653
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4.runtime.wasm/4.10.0.20240616/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Internal implementation package for OpenCvSharp to
-        work on Wasm
-      <Title>k__BackingField: OpenCvSharp native bindings for Wasm
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: OpenCvSharp4.runtime.win.cuda
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.5.0.20201013
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/opencvsharp4.runtime.win.cuda/4.5.0.20201013/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.5.0.20201013
-      <Authors>k__BackingField:
-      - imy
-      <Description>k__BackingField: Internal implementation package for OpenCvSharp
-        to work on Windows except UWP.
-      <TotalDownloads>k__BackingField: 8632
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4.runtime.win.cuda/4.5.0.20201013/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Internal implementation package for OpenCvSharp to
-        work on Windows except UWP.
-      <Title>k__BackingField: 'OpenCvSharp4 native bindings for Windows x64 with
-        cuda '
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: OpenCvSharp4.runtime.linux-arm64.cuda
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.5.2.20210803
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/opencvsharp4.runtime.linux-arm64.cuda/4.5.2.20210803/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.5.2.20210803
-      - <FullVersion>k__BackingField: 4.5.2.20210507
-      <Authors>k__BackingField:
-      - shimat
-      <Description>k__BackingField: Internal implementation package for OpenCvSharp
-        to work on Ubuntu 18.04 for ARM64 with CUDA
-      <TotalDownloads>k__BackingField: 5905
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4.runtime.linux-arm64.cuda/4.5.2.20210803/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Internal implementation package for OpenCvSharp to
-        work on Ubuntu 18.04 for ARM64 with CUDA
-      <Title>k__BackingField: OpenCvSharp native bindings for linux-arm64 with CUDA
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.debian.11-x64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.0.20231125
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: 
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.0.20231125
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      <Authors>k__BackingField:
-      - Sdcb
-      <Description>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on debian.11-x64.
-      <TotalDownloads>k__BackingField: 5850
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Sdcb.OpenCvSharp4.mini.runtime.debian.11-x64/4.8.0.20231125/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on debian.11-x64.
-      <Title>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.debian.11-x64 native
-        bindings
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.ubuntu.22.04-x64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.0.20231125
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: 
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.0.20231125
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      <Authors>k__BackingField:
-      - Sdcb
-      <Description>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on ubuntu.22.04-x64.
-      <TotalDownloads>k__BackingField: 4859
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Sdcb.OpenCvSharp4.mini.runtime.ubuntu.22.04-x64/4.8.0.20231125/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on ubuntu.22.04-x64.
-      <Title>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.ubuntu.22.04-x64 native
-        bindings
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: OpenCvSharp.runtime.ubuntu.20.04-x64
+      <Id>k__BackingField: Kawaian.OpenCVSharp
       <PackageVersion>k__BackingField:
         <FullVersion>k__BackingField: 1.0.0
-      <IsManuallyInstalled>k__BackingField: 0
+      <IsManuallyInstalled>k__BackingField: 1
       dependencies: []
       dependenciesFetched: 0
       icon: {fileID: 0}
-      iconUrl: 
+      iconUrl: https://api.nuget.org/v3-flatcontainer/kawaian.opencvsharp/1.0.0/icon
       packageSource:
         <Name>k__BackingField: nuget.org
         <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
@@ -1787,14 +394,13 @@ MonoBehaviour:
       <Versions>k__BackingField:
       - <FullVersion>k__BackingField: 1.0.0
       <Authors>k__BackingField:
-      - Ali El Chawiche
-      <Description>k__BackingField: This package contains the libOpenCvSharpExtern.so
-        for ubuntu 20.04. The library is compiled and targets net5.0
-      <TotalDownloads>k__BackingField: 2415
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp.runtime.ubuntu.20.04-x64/1.0.0/license
-      <ProjectUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: OpenCvSharp.runtime.ubuntu.20.04-x64
+      - Heejun Lee
+      <Description>k__BackingField: OpenCVSharp port for Xamarin
+      <TotalDownloads>k__BackingField: 2166
+      <LicenseUrl>k__BackingField: https://github.com/Kawaian/OpenCvSharp/blob/nuget-opencvsharp/LICENSE
+      <ProjectUrl>k__BackingField: https://github.com/Kawaian/OpenCvSharp
+      <Summary>k__BackingField: OpenCVSharp port for Xamarin
+      <Title>k__BackingField: Kawaian.OpenCVSharp
       <DownloadUrl>k__BackingField: 
   - packageLocal:
       <Id>k__BackingField: 
@@ -1853,14 +459,14 @@ MonoBehaviour:
         <IsEnabled>k__BackingField: 0
       versions: []
     packageV3:
-      <Id>k__BackingField: OpenCvSharp.runtime.ubuntu.20.04-x64
+      <Id>k__BackingField: Kawaian.Nova
       <PackageVersion>k__BackingField:
         <FullVersion>k__BackingField: 1.0.0
       <IsManuallyInstalled>k__BackingField: 0
       dependencies: []
       dependenciesFetched: 0
       icon: {fileID: 0}
-      iconUrl: 
+      iconUrl: https://api.nuget.org/v3-flatcontainer/kawaian.nova/1.0.0/icon
       packageSource:
         <Name>k__BackingField: nuget.org
         <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
@@ -1872,14 +478,13 @@ MonoBehaviour:
       <Versions>k__BackingField:
       - <FullVersion>k__BackingField: 1.0.0
       <Authors>k__BackingField:
-      - Ali El Chawiche
-      <Description>k__BackingField: This package contains the libOpenCvSharpExtern.so
-        for ubuntu 20.04. The library is compiled and targets net5.0
-      <TotalDownloads>k__BackingField: 2415
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp.runtime.ubuntu.20.04-x64/1.0.0/license
-      <ProjectUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: OpenCvSharp.runtime.ubuntu.20.04-x64
+      - Matyas Yves Constans
+      <Description>k__BackingField: A rendering library for C# with native backends
+      <TotalDownloads>k__BackingField: 1150
+      <LicenseUrl>k__BackingField: https://github.com/Kawaian/NOVA/blob/master/LICENSE
+      <ProjectUrl>k__BackingField: https://github.com/Kawaian/NOVA
+      <Summary>k__BackingField: A rendering library for C#
+      <Title>k__BackingField: Kawaian.Nova
       <DownloadUrl>k__BackingField: 
   - packageLocal:
       <Id>k__BackingField: 
@@ -1938,14 +543,14 @@ MonoBehaviour:
         <IsEnabled>k__BackingField: 0
       versions: []
     packageV3:
-      <Id>k__BackingField: OpenSense.Components.OpenCvSharp.Windows
+      <Id>k__BackingField: Kawaian.SharpFace.Windows
       <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 1.0.2
+        <FullVersion>k__BackingField: 1.0.1
       <IsManuallyInstalled>k__BackingField: 0
       dependencies: []
       dependenciesFetched: 0
       icon: {fileID: 0}
-      iconUrl: 
+      iconUrl: https://api.nuget.org/v3-flatcontainer/kawaian.sharpface.windows/1.0.1/icon
       packageSource:
         <Name>k__BackingField: nuget.org
         <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
@@ -1955,18 +560,16 @@ MonoBehaviour:
         <SavedPassword>k__BackingField: 
         <IsEnabled>k__BackingField: 1
       <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 1.0.2
       - <FullVersion>k__BackingField: 1.0.1
       - <FullVersion>k__BackingField: 1.0.0
       <Authors>k__BackingField:
-      - Intelligent Human Perception Lab
-      <Description>k__BackingField: Bundle of OpenSense OpenCvSharp wrapper and OpenCvSharp
-        Windows runtime.
-      <TotalDownloads>k__BackingField: 438
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenSense.Components.OpenCvSharp.Windows/1.0.2/license
-      <ProjectUrl>k__BackingField: 
+      - Heejun Lee, Matyas Constans
+      <Description>k__BackingField: C# port of OpenFace with Xamarin support
+      <TotalDownloads>k__BackingField: 2259
+      <LicenseUrl>k__BackingField: https://www.tawesoft.co.uk/kb/article/mit-license-faq
+      <ProjectUrl>k__BackingField: https://github.com/Kawaian/SharpFace
       <Summary>k__BackingField: 
-      <Title>k__BackingField: OpenSense.Components.OpenCvSharp.Windows
+      <Title>k__BackingField: SharpFace.Windows
       <DownloadUrl>k__BackingField: 
   - packageLocal:
       <Id>k__BackingField: 
@@ -2025,14 +628,14 @@ MonoBehaviour:
         <IsEnabled>k__BackingField: 0
       versions: []
     packageV3:
-      <Id>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.debian.12-x64
+      <Id>k__BackingField: Kawaian.SharpFace
       <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.0.20231125
+        <FullVersion>k__BackingField: 1.0.0
       <IsManuallyInstalled>k__BackingField: 0
       dependencies: []
       dependenciesFetched: 0
       icon: {fileID: 0}
-      iconUrl: 
+      iconUrl: https://api.nuget.org/v3-flatcontainer/kawaian.sharpface/1.0.0/icon
       packageSource:
         <Name>k__BackingField: nuget.org
         <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
@@ -2042,1152 +645,15 @@ MonoBehaviour:
         <SavedPassword>k__BackingField: 
         <IsEnabled>k__BackingField: 1
       <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.0.20231125
-      - <FullVersion>k__BackingField: 4.8.0.20230708
+      - <FullVersion>k__BackingField: 1.0.0
       <Authors>k__BackingField:
-      - Sdcb
-      <Description>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on debian.12-x64.
-      <TotalDownloads>k__BackingField: 1492
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Sdcb.OpenCvSharp4.mini.runtime.debian.12-x64/4.8.0.20231125/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on debian.12-x64.
-      <Title>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.debian.12-x64 native
-        bindings
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.centos.7-x64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.0.20231125
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: 
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.0.20231125
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      <Authors>k__BackingField:
-      - Sdcb
-      <Description>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on centos.7-x64.
-      <TotalDownloads>k__BackingField: 1016
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Sdcb.OpenCvSharp4.mini.runtime.centos.7-x64/4.8.0.20231125/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on centos.7-x64.
-      <Title>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.centos.7-x64 native
-        bindings
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.ubuntu.22.04-arm64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.0.20231125
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: 
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.0.20231125
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      <Authors>k__BackingField:
-      - Sdcb
-      <Description>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on ubuntu.22.04-arm64.
-      <TotalDownloads>k__BackingField: 919
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Sdcb.OpenCvSharp4.mini.runtime.ubuntu.22.04-arm64/4.8.0.20231125/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on ubuntu.22.04-arm64.
-      <Title>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.ubuntu.22.04-arm64 native
-        bindings
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: OpenCvSharp4.slim.runtime.windows-x64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.1.20231129
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/opencvsharp4.slim.runtime.windows-x64/4.8.1.20231129/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.1.20231129
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      <Authors>k__BackingField:
-      - Aven
-      <Description>k__BackingField: Slim edition of OpenCvSharp native bindings for
-        Windows x64
-      <TotalDownloads>k__BackingField: 559
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4.slim.runtime.windows-x64/4.8.1.20231129/license
-      <ProjectUrl>k__BackingField: https://github.com/AvenSun/OpenCvSharpSlim
-      <Summary>k__BackingField: Slim edition of OpenCvSharp native bindings for Windows
-        x64
-      <Title>k__BackingField: OpenCvSharp4.slim.runtime.windows-x64
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: OpenCvSharp4.slim.runtime.windows-x86
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.1.20231129
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/opencvsharp4.slim.runtime.windows-x86/4.8.1.20231129/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.1.20231129
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      <Authors>k__BackingField:
-      - Aven
-      <Description>k__BackingField: Slim edition of OpenCvSharp native bindings for
-        Windows x86
-      <TotalDownloads>k__BackingField: 403
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4.slim.runtime.windows-x86/4.8.1.20231129/license
-      <ProjectUrl>k__BackingField: https://github.com/AvenSun/OpenCvSharpSlim
-      <Summary>k__BackingField: Slim edition of OpenCvSharp native bindings for Windows
-        x86
-      <Title>k__BackingField: OpenCvSharp4.slim.runtime.windows-x86
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.centos.7-arm64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.0.20231125
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: 
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.0.20231125
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      <Authors>k__BackingField:
-      - Sdcb
-      <Description>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on centos.7-arm64.
-      <TotalDownloads>k__BackingField: 843
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Sdcb.OpenCvSharp4.mini.runtime.centos.7-arm64/4.8.0.20231125/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on centos.7-arm64.
-      <Title>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.centos.7-arm64 native
-        bindings
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.android-arm64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.0.20230708
-      <IsManuallyInstalled>k__BackingField: 1
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: 
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      <Authors>k__BackingField:
-      - Sdcb
-      <Description>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on android-arm64.
-      <TotalDownloads>k__BackingField: 449
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Sdcb.OpenCvSharp4.mini.runtime.android-arm64/4.8.0.20230708/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on android-arm64.
-      <Title>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.android-arm64 native
-        bindings
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: OpenCvSharp3.slim.runtime.windows-x64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 3.4.20
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/opencvsharp3.slim.runtime.windows-x64/3.4.20/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 3.4.20
-      <Authors>k__BackingField:
-      - Aven
-      <Description>k__BackingField: Slim edition of OpenCvSharp native bindings for
-        Windows x64
-      <TotalDownloads>k__BackingField: 314
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp3.slim.runtime.windows-x64/3.4.20/license
-      <ProjectUrl>k__BackingField: https://github.com/AvenSun/OpenCvSharpSlim
-      <Summary>k__BackingField: Slim edition of OpenCvSharp native bindings for Windows
-        x64
-      <Title>k__BackingField: OpenCvSharp3.slim.runtime.windows-x64
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: OpenCvSharp3.slim.runtime.windows-x86
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 3.4.20
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: https://api.nuget.org/v3-flatcontainer/opencvsharp3.slim.runtime.windows-x86/3.4.20/icon
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 3.4.20
-      <Authors>k__BackingField:
-      - Aven
-      <Description>k__BackingField: Slim edition of OpenCvSharp native bindings for
-        Windows x86
-      <TotalDownloads>k__BackingField: 232
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp3.slim.runtime.windows-x86/3.4.20/license
-      <ProjectUrl>k__BackingField: https://github.com/AvenSun/OpenCvSharpSlim
-      <Summary>k__BackingField: Slim edition of OpenCvSharp native bindings for Windows
-        x86
-      <Title>k__BackingField: OpenCvSharp3.slim.runtime.windows-x86
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.android-x64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.0.20230708
-      <IsManuallyInstalled>k__BackingField: 1
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: 
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      <Authors>k__BackingField:
-      - Sdcb
-      <Description>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on android-x64.
-      <TotalDownloads>k__BackingField: 366
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Sdcb.OpenCvSharp4.mini.runtime.android-x64/4.8.0.20230708/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on android-x64.
-      <Title>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.android-x64 native bindings
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.debian.11-arm64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.0.20231125
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: 
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.0.20231125
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      <Authors>k__BackingField:
-      - Sdcb
-      <Description>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on debian.11-arm64.
-      <TotalDownloads>k__BackingField: 393
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Sdcb.OpenCvSharp4.mini.runtime.debian.11-arm64/4.8.0.20231125/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on debian.11-arm64.
-      <Title>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.debian.11-arm64 native
-        bindings
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.debian.12-arm64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.0.20231125
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: 
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.0.20231125
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      <Authors>k__BackingField:
-      - Sdcb
-      <Description>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on debian.12-arm64.
-      <TotalDownloads>k__BackingField: 393
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Sdcb.OpenCvSharp4.mini.runtime.debian.12-arm64/4.8.0.20231125/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on debian.12-arm64.
-      <Title>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.debian.12-arm64 native
-        bindings
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.debian.10-x64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.0.20231125
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: 
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.0.20231125
-      <Authors>k__BackingField:
-      - Sdcb
-      <Description>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on debian.10-x64.
-      <TotalDownloads>k__BackingField: 316
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Sdcb.OpenCvSharp4.mini.runtime.debian.10-x64/4.8.0.20231125/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on debian.10-x64.
-      <Title>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.debian.10-x64 native
-        bindings
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.linux-loongarch64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.0.20230708
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: 
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      <Authors>k__BackingField:
-      - Sdcb
-      <Description>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on linux-loongarch64.
-      <TotalDownloads>k__BackingField: 175
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Sdcb.OpenCvSharp4.mini.runtime.linux-loongarch64/4.8.0.20230708/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on linux-loongarch64.
-      <Title>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.linux-loongarch64 native
-        bindings
+      - Heejun Lee, Matyas Constans
+      <Description>k__BackingField: C# port of OpenFace with Xamarin support
+      <TotalDownloads>k__BackingField: 1382
+      <LicenseUrl>k__BackingField: https://www.tawesoft.co.uk/kb/article/mit-license-faq
+      <ProjectUrl>k__BackingField: https://github.com/Kawaian/SharpFace
+      <Summary>k__BackingField: C# port of OpenFace with Xamarin support
+      <Title>k__BackingField: SharpFace
       <DownloadUrl>k__BackingField: 
   serializableToInstallPackages: []
   serializableUpdatePackages:
@@ -3296,7 +762,7 @@ MonoBehaviour:
       - Castle Project Contributors
       <Description>k__BackingField: Castle Core, including DynamicProxy, Logging
         Abstractions and DictionaryAdapter
-      <TotalDownloads>k__BackingField: 874535129
+      <TotalDownloads>k__BackingField: 876417874
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Castle.Core/5.1.1/license
       <ProjectUrl>k__BackingField: http://www.castleproject.org/
       <Summary>k__BackingField: 
@@ -3472,7 +938,7 @@ MonoBehaviour:
       - Daniel Cazzulino, kzu
       <Description>k__BackingField: Moq is the most popular and friendly mocking
         framework for .NET.
-      <TotalDownloads>k__BackingField: 633582101
+      <TotalDownloads>k__BackingField: 634893732
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Moq/4.20.70/license
       <ProjectUrl>k__BackingField: https://github.com/moq/moq
       <Summary>k__BackingField: 
@@ -3596,7 +1062,7 @@ MonoBehaviour:
       <Description>k__BackingField: OpenCV wrapper for .NET. Since this package includes
         only core managed libraries, another package of native bindings for your
         OS is required (OpenCvSharp4.runtime.*).
-      <TotalDownloads>k__BackingField: 3183983
+      <TotalDownloads>k__BackingField: 3192839
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4/4.10.0.20240616/license
       <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
       <Summary>k__BackingField: OpenCV wrapper for .NET. Since this package includes
@@ -3691,7 +1157,7 @@ MonoBehaviour:
       <Authors>k__BackingField:
       - shimat
       <Description>k__BackingField: OpenCvSharp GDI+ extension library.
-      <TotalDownloads>k__BackingField: 522805
+      <TotalDownloads>k__BackingField: 525462
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4.Extensions/4.10.0.20240616/license
       <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
       <Summary>k__BackingField: OpenCvSharp GDI+ extension library.
@@ -3814,7 +1280,7 @@ MonoBehaviour:
       - shimat
       <Description>k__BackingField: Internal implementation package for OpenCvSharp
         to work on Windows except UWP.
-      <TotalDownloads>k__BackingField: 3539789
+      <TotalDownloads>k__BackingField: 3552039
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4.runtime.win/4.10.0.20240616/license
       <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
       <Summary>k__BackingField: Internal implementation package for OpenCvSharp to
@@ -3939,186 +1405,13 @@ MonoBehaviour:
       - shimat
       <Description>k__BackingField: OpenCV 4.x wrapper. All-in-one package for Windows
         users.
-      <TotalDownloads>k__BackingField: 1108979
+      <TotalDownloads>k__BackingField: 1112513
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/OpenCvSharp4.Windows/4.10.0.20240616/license
       <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
       <Summary>k__BackingField: OpenCV 4.x wrapper. All-in-one package for Windows
         users.
       <Title>k__BackingField: OpenCvSharp NuGet package for x64/x86 Windows (same
         as OpenCvSharp3-AnyCPU)
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: Sdcb.LibCpp.runtime.android-arm64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 25.2.9519653
-      <IsManuallyInstalled>k__BackingField: 0
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: 
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 25.2.9519653
-      <Authors>k__BackingField:
-      - Sdcb
-      <Description>k__BackingField: Native binding for Sdcb.LibCpp.runtime to work
-        on android-arm64.
-      <TotalDownloads>k__BackingField: 443
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Sdcb.LibCpp.runtime.android-arm64/25.2.9519653/license
-      <ProjectUrl>k__BackingField: https://android.googlesource.com/platform/ndk
-      <Summary>k__BackingField: Native binding for Sdcb.LibCpp.runtime to work on
-        android-arm64.
-      <Title>k__BackingField: Sdcb.LibCpp.runtime.android-arm64 native bindings
-      <DownloadUrl>k__BackingField: 
-  - packageLocal:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSource:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageType: 2
-    packageV2:
-      <Id>k__BackingField: 
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 
-      <IsManuallyInstalled>k__BackingField: 0
-      icon: {fileID: 0}
-      <DownloadUrl>k__BackingField: 
-      <IconUrl>k__BackingField: 
-      <RepositoryBranch>k__BackingField: 
-      <Dependencies>k__BackingField: []
-      <Authors>k__BackingField: []
-      <Description>k__BackingField: 
-      <TotalDownloads>k__BackingField: 0
-      <LicenseUrl>k__BackingField: 
-      <ProjectUrl>k__BackingField: 
-      <ReleaseNotes>k__BackingField: 
-      <RepositoryCommit>k__BackingField: 
-      <RepositoryType>k__BackingField: 0
-      <RepositoryUrl>k__BackingField: 
-      <Summary>k__BackingField: 
-      <Title>k__BackingField: 
-      packageSourceV2:
-        <Name>k__BackingField: 
-        <SavedPath>k__BackingField: 
-        <SavedProtocolVersion>k__BackingField: 
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 0
-      versions: []
-    packageV3:
-      <Id>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.android-arm64
-      <PackageVersion>k__BackingField:
-        <FullVersion>k__BackingField: 4.8.0.20230708
-      <IsManuallyInstalled>k__BackingField: 1
-      dependencies: []
-      dependenciesFetched: 0
-      icon: {fileID: 0}
-      iconUrl: 
-      packageSource:
-        <Name>k__BackingField: nuget.org
-        <SavedPath>k__BackingField: https://api.nuget.org/v3/index.json
-        <SavedProtocolVersion>k__BackingField: 
-        <UpdateSearchBatchSize>k__BackingField: 20
-        <UserName>k__BackingField: 
-        <SavedPassword>k__BackingField: 
-        <IsEnabled>k__BackingField: 1
-      <Versions>k__BackingField:
-      - <FullVersion>k__BackingField: 4.8.0.20230708
-      <Authors>k__BackingField:
-      - Sdcb
-      <Description>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on android-arm64.
-      <TotalDownloads>k__BackingField: 449
-      <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Sdcb.OpenCvSharp4.mini.runtime.android-arm64/4.8.0.20230708/license
-      <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
-      <Summary>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
-        to work on android-arm64.
-      <Title>k__BackingField: Sdcb.OpenCvSharp4.mini.runtime.android-arm64 native
-        bindings
       <DownloadUrl>k__BackingField: 
   - packageLocal:
       <Id>k__BackingField: 
@@ -4199,7 +1492,7 @@ MonoBehaviour:
       - Sdcb
       <Description>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
         to work on android-x64.
-      <TotalDownloads>k__BackingField: 366
+      <TotalDownloads>k__BackingField: 367
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/Sdcb.OpenCvSharp4.mini.runtime.android-x64/4.8.0.20230708/license
       <ProjectUrl>k__BackingField: https://github.com/shimat/opencvsharp
       <Summary>k__BackingField: Native binding for Sdcb.OpenCvSharp4.mini.runtime
@@ -4298,7 +1591,7 @@ MonoBehaviour:
         Used Types:
 
         System.Diagnostics.EventLog'
-      <TotalDownloads>k__BackingField: 665958186
+      <TotalDownloads>k__BackingField: 668784505
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/System.Diagnostics.EventLog/8.0.0/license
       <ProjectUrl>k__BackingField: https://dot.net/
       <Summary>k__BackingField: 
@@ -4425,7 +1718,7 @@ MonoBehaviour:
         Since
         .NET 7, non-Windows platforms are not supported, even with the runtime configuration
         switch. See https://aka.ms/systemdrawingnonwindows for more information.'
-      <TotalDownloads>k__BackingField: 1440111918
+      <TotalDownloads>k__BackingField: 1444061914
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/System.Drawing.Common/8.0.6/license
       <ProjectUrl>k__BackingField: https://github.com/dotnet/winforms
       <Summary>k__BackingField: 
@@ -4527,7 +1820,7 @@ MonoBehaviour:
         Used Types:
 
         System.Runtime.CompilerServices.Unsafe'
-      <TotalDownloads>k__BackingField: 4791814205
+      <TotalDownloads>k__BackingField: 4802439486
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/System.Runtime.CompilerServices.Unsafe/6.0.0/license
       <ProjectUrl>k__BackingField: https://dot.net/
       <Summary>k__BackingField: 
@@ -4622,7 +1915,7 @@ MonoBehaviour:
         Windows user and for interacting with Windows users and groups.\n\nCommonly
         Used Types:\nSystem.Security.Principal.WindowsIdentity\nSystem.Security.Principal.SecurityIdentifier\nSystem.Security.Principal.NTAccount\nSystem.Security.Principal.WindowsPrincipal\nSystem.Security.Principal.IdentityReference\nSystem.Security.Principal.IdentityNotMappedException\nSystem.Security.Principal.WindowsBuiltInRole\nSystem.Security.Principal.WellKnownSidType\n
         \nWhen using NuGet 3.x this package requires at least version 3.4."
-      <TotalDownloads>k__BackingField: 2820739027
+      <TotalDownloads>k__BackingField: 2826722816
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/System.Security.Principal.Windows/5.0.0/license
       <ProjectUrl>k__BackingField: https://github.com/dotnet/runtime
       <Summary>k__BackingField: 
@@ -4740,7 +2033,7 @@ MonoBehaviour:
 
         Installing this package
         installs xunit.core, xunit.assert, and xunit.analyzers.'
-      <TotalDownloads>k__BackingField: 482526185
+      <TotalDownloads>k__BackingField: 483700446
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/xunit/2.8.1/license
       <ProjectUrl>k__BackingField: 
       <Summary>k__BackingField: 
@@ -4828,7 +2121,7 @@ MonoBehaviour:
       - James Newkirk, Brad Wilson
       <Description>k__BackingField: Common abstractions used to exchange information
         between xUnit.net and version-independent runners (xunit.abstractions.dll).
-      <TotalDownloads>k__BackingField: 538860570
+      <TotalDownloads>k__BackingField: 540059740
       <LicenseUrl>k__BackingField: https://raw.githubusercontent.com/xunit/xunit/master/license.txt
       <ProjectUrl>k__BackingField: https://github.com/xunit/xunit
       <Summary>k__BackingField: Common abstractions used to exchange information
@@ -4945,7 +2238,7 @@ MonoBehaviour:
         Installing this package
         provides code analyzers to help developers find and fix frequent issues when
         writing tests and xUnit.net extensibility code.'
-      <TotalDownloads>k__BackingField: 438471402
+      <TotalDownloads>k__BackingField: 439602266
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/xunit.analyzers/1.14.0/license
       <ProjectUrl>k__BackingField: 
       <Summary>k__BackingField: 
@@ -5052,7 +2345,7 @@ MonoBehaviour:
       - jnewkirk,bradwilson
       <Description>k__BackingField: Includes the assertion library from xUnit.net
         (xunit.assert.dll). Supports .NET Standard 1.1+ and .NET 6.0+.
-      <TotalDownloads>k__BackingField: 492757887
+      <TotalDownloads>k__BackingField: 493960894
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/xunit.assert/2.8.1/license
       <ProjectUrl>k__BackingField: 
       <Summary>k__BackingField: 
@@ -5159,7 +2452,7 @@ MonoBehaviour:
       - jnewkirk,bradwilson
       <Description>k__BackingField: Includes the libraries for writing unit tests
         with xUnit.net.
-      <TotalDownloads>k__BackingField: 505995887
+      <TotalDownloads>k__BackingField: 507235798
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/xunit.core/2.8.1/license
       <ProjectUrl>k__BackingField: 
       <Summary>k__BackingField: 
@@ -5266,7 +2559,7 @@ MonoBehaviour:
       - jnewkirk,bradwilson
       <Description>k__BackingField: Includes xunit.core.dll for extensibility purposes.
         Supports .NET 4.5.2 or later, and .NET Standard 1.1.
-      <TotalDownloads>k__BackingField: 573520245
+      <TotalDownloads>k__BackingField: 575002624
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/xunit.extensibility.core/2.8.1/license
       <ProjectUrl>k__BackingField: 
       <Summary>k__BackingField: 
@@ -5373,7 +2666,7 @@ MonoBehaviour:
       - jnewkirk,bradwilson
       <Description>k__BackingField: Includes xunit.execution.*.dll for extensibility
         purposes. Supports .NET 4.5.2 or later, and .NET Standard 1.1.
-      <TotalDownloads>k__BackingField: 531800323
+      <TotalDownloads>k__BackingField: 533161812
       <LicenseUrl>k__BackingField: https://www.nuget.org/packages/xunit.extensibility.execution/2.8.1/license
       <ProjectUrl>k__BackingField: 
       <Summary>k__BackingField: 
@@ -5400,9 +2693,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 704
+    y: 657
     width: 1166
-    height: 415
+    height: 462
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -5564,9 +2857,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 585d0000
-    m_LastClickedID: 23896
-    m_ExpandedIDs: 00000000065d00000c5d0000125d0000145d0000d25d0000f65e00006c7f0000907f0000947f00004c8000008c96000090960000de970000e2970000e6970000ea9700001c98000020980000129f0000169f000000ca9a3b
+    m_SelectedIDs: 8e5c0000
+    m_LastClickedID: 23694
+    m_ExpandedIDs: 00000000625c0000645c0000665c0000685c00006a5c00006c5c00006e5c0000705c0000725c0000745c0000765c0000785c00007a5c00007c5c00007e5c0000805c0000825c0000845c0000865c0000885c00008a5c00008c5c00008e5c0000905c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -5594,7 +2887,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000065d0000085d00000a5d00000c5d00000e5d0000105d0000125d0000145d0000165d0000
+    m_ExpandedIDs: 00000000625c0000645c0000665c0000685c00006a5c00006c5c00006e5c0000705c0000725c0000745c0000765c0000785c00007a5c00007c5c00007e5c0000805c0000825c0000845c0000865c0000885c00008a5c00008c5c00008e5c0000905c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -5619,8 +2912,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: fe4d0000
+    m_LastClickedInstanceID: 19966
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000000000000
     m_RenameOverlay:
@@ -5736,7 +3029,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: aa41fffff241ffff8243ffff984cffffe04cffff704effff2cfbffffa8930000b89a0000
+      m_ExpandedIDs: 2cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -6235,7 +3528,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 885, y: 542}
+  m_TargetSize: {x: 480, y: 800}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -6250,10 +3543,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -442.5
-    m_HBaseRangeMax: 442.5
-    m_VBaseRangeMin: -271
-    m_VBaseRangeMax: 271
+    m_HBaseRangeMin: -240
+    m_HBaseRangeMax: 240
+    m_VBaseRangeMin: -400
+    m_VBaseRangeMax: 400
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -6273,7 +3566,7 @@ MonoBehaviour:
       y: 21
       width: 885
       height: 542
-    m_Scale: {x: 1, y: 1}
+    m_Scale: {x: 0.6775, y: 0.6775}
     m_Translation: {x: 442.5, y: 271}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -6281,12 +3574,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -442.5
-      y: -271
-      width: 885
-      height: 542
+      x: -653.13654
+      y: -400
+      width: 1306.2731
+      height: 800
     m_MinimalGUI: 1
-  m_defaultScale: 1
+  m_defaultScale: 0.6775
   m_LastWindowPixelSize: {x: 885, y: 563}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1

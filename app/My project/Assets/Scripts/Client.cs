@@ -87,7 +87,7 @@ public class Client : IHttpClient
 
         string apiUrl = $"{devUrl}/getUserVideo?{parameters}";
 
-        string savePath = $"{player.GetSavePath()}/ar_{arId}.mp4";
+        string savePath = $"{Application.persistentDataPath}/ar_{arId}.mp4";
 
         // Request
         var request = new HttpRequestMessage(HttpMethod.Get, apiUrl);

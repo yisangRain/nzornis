@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System;
-using System.Threading;
 using UnityEngine;
 
 public interface IPlayer
@@ -12,7 +8,7 @@ public interface IPlayer
 
 public class Player : MonoBehaviour, IPlayer
 {
-    private Player() {}
+    private Player() { }
 
 
     public static Player instance { get; private set; }
@@ -21,7 +17,7 @@ public class Player : MonoBehaviour, IPlayer
 
     private bool loggedIn = false;
     private string playerId;
-    private string savePath;
+    public int outputNum = 0;
 
     //Dev variables
     private string testId = "100";
@@ -36,8 +32,6 @@ public class Player : MonoBehaviour, IPlayer
         else
         {
             instance = this;
-            savePath = Application.persistentDataPath;
-            Debug.Log(savePath);
         }
 
     }
@@ -81,8 +75,4 @@ public class Player : MonoBehaviour, IPlayer
         return playerId;
     }
 
-    public string GetSavePath()
-    {
-        return savePath;
-    }
 }

@@ -1,10 +1,8 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using OpenCvSharp;
-using System.Collections;
 using System.IO;
+using System.Threading.Tasks;
 #if UNITY_ANDROID
 using UnityEngine.Android;
 #endif
@@ -16,7 +14,6 @@ public class CameraManager : MonoBehaviour
     private bool camAvailable = false;
     private bool recording = false;
     private int i = 0;
-    private VideoWriter videoWriter;
     private int j = 0;
 
     public RawImage background;
@@ -27,14 +24,23 @@ public class CameraManager : MonoBehaviour
 
     public int frameRate = 30;
 
-    //AndroidJavaObject paramVal = new AndroidJavaClass("com.arthenica.mobileffmpeg.Signal").GetStatic<AndroidJavaObject>("SIGXCPU");
 
-// Start is called before the first frame update
-void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        //paramVal.CallStatic("ignoreSignal", new object[] { paramVal });
+        string[] perms = { Permission.Camera, Permission.ExternalStorageRead, Permission.ExternalStorageWrite };
+        Permission.RequestUserPermissions(perms);
         OpenCamera();
         recordButton.onClick.AddListener(RecordHandler);
+
+        if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
+        {
+            Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+        }
+        if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead))
+        {
+            Permission.RequestUserPermission(Permission.ExternalStorageRead);
+        }
     }
 
     public void OpenCamera()
@@ -48,20 +54,6 @@ void Start()
             return;
         }
 
-#if UNITY_EDITOR_WIN
-
-        for (int i = 0; i < devices.Length; i++)
-        {
-            if (devices[i].isFrontFacing)
-            {
-                deviceCamera = new WebCamTexture(devices[i].name, Screen.width, Screen.height);
-                camAvailable = true;
-                return;
-            }
-        }
-#endif
-#if UNITY_ANDROID
-
         for (int i = 0; i < devices.Length; i++)
         {
             if (!devices[i].isFrontFacing)
@@ -70,7 +62,6 @@ void Start()
                 camAvailable = true;
             }
         }
-#endif
         if (deviceCamera == null)
         {
             Debug.Log("Unable to find back-facing camera.");
@@ -104,108 +95,92 @@ void Start()
             Record();
 
             i += 1;
-        } else if (i >= 900)
-        {
-            testText.text = "Frame limit reached. Terminating recording.";
-            RecordHandler();
-        }
+        } 
     }
 
 
-    public void RecordHandler()
+    public async void RecordHandler()
     {
-#if UNITY_EDITOR_WIN
-        if (recording == false && camAvailable)
-        {
-            Debug.Log("Initiating recording using OpenCV");
-            string currentDate = DateTime.Today.ToString("O");
-            string filePath = $"{player.GetSavePath()}_10";
-            testText.text = filePath;
-            recordButton.GetComponentInChildren<TextMeshProUGUI>().text = "Stop Recording";
-            videoWriter = new VideoWriter(filePath + ".mp4", VideoWriter.FourCC('H', '2', '6', '4'), frameRate, new Size(deviceCamera.width, deviceCamera.height), true);
 
-            recording = true;
-        }
-        else if (recording == true)
-        {
-            recordButton.GetComponentInChildren<TextMeshProUGUI>().text = "Start Recording";
-            videoWriter.Dispose();
-            Debug.Log("Writer disposed.");
-            recording = false;
-            i = 0;
-        }
-#endif
-#if UNITY_ANDROID
         if (recording == false && camAvailable)
         {
             Debug.Log("Initiating recording using FFMPEG");
             recordButton.GetComponentInChildren<TextMeshProUGUI>().text = "Stop Recording";
             recording = true;
-
+            if(testText.text.Length < 10)
+            {
+                testText.text = Application.persistentDataPath;
+            }
 
         } else if (recording == true)
         {
-            recordButton.GetComponentInChildren<TextMeshProUGUI>().text = "Start Recording";
+            recordButton.GetComponentInChildren<TextMeshProUGUI>().text = "Processing";
             recording = false;
             i = 0;
-            FfmpegRecord();
+            await FfmpegRecord();
+            recordButton.GetComponentInChildren<TextMeshProUGUI>().text = "Start recording";
         }
-#endif
+
     }
 
-    
     public void Record()
     {
-#if UNITY_EDITOR_WIN
+
         Texture2D tex = new Texture2D(deviceCamera.width, deviceCamera.height, TextureFormat.RGB24, false);
         tex.SetPixels32(deviceCamera.GetPixels32());
         tex.Apply();
-   
+
         byte[] imgData = tex.EncodeToJPG();
-
-        Mat img = Cv2.ImDecode(imgData, ImreadModes.Unchanged);
-
-        videoWriter.Write(img);
-        Resources.UnloadUnusedAssets();
-#endif
-#if UNITY_ANDROID
-        string filePath = $"{player.GetSavePath()}";
-        testText.text = filePath;
-        Texture2D texAnd = new Texture2D(deviceCamera.width, deviceCamera.height, TextureFormat.RGB24, false);
-        texAnd.SetPixels32(deviceCamera.GetPixels32());
-        texAnd.Apply();
-
-        byte[] imgDataAnd = tex.EncodeToJPG();
-        UnityEngine.Object.Destroy(texAnd);
+        Destroy(tex);
 
         if (j < 10)
         {
-            File.WriteAllBytes(filePath + j + ".jpg", imgDataAnd);
-            j+=1;
+            File.WriteAllBytes(Path.Combine(Application.persistentDataPath, "00" + j.ToString() + ".jpg"), imgData);
+        } else if (j < 100)
+        {
+            File.WriteAllBytes(Path.Combine(Application.persistentDataPath, "0" + j.ToString() + ".jpg"), imgData);
         } else
         {
-            FfmpegRecord();
-            File.WriteAllBytes(filePath + j + ".jpg", imgDataAnd);
-            j += 1;
+            File.WriteAllBytes(Path.Combine(Application.persistentDataPath, j.ToString() + ".jpg"), imgData);
         }
         
-#endif
+        j += 1;
+
     }
 
-    public void FfmpegRecord()
+    public async Task FfmpegRecord()
     {
+        var path = Application.persistentDataPath;
+        AndroidJavaClass jc = new AndroidJavaClass("com.arthenica.mobileffmpeg.FFmpeg");
+        jc.CallStatic<int>("execute", new object[] { $"-framerate 30 -i {path}/%03d.jpg {path}/output_{player.outputNum}.mp4 -y" });
+        Debug.Log("Video conversion complete");
+
         for (int k = 0; k <= j; k++)
         {
-            AndroidJavaClass jc = new AndroidJavaClass("com.arthenica.mobileffmpeg.FFmpeg");
-            jc.CallStatic<int>("execute", new object[] { $"-framerate 30 -i {player.GetSavePath() + k}.jpg { player.GetSavePath() + 10}.mp4" });
+            if (k < 10)
+            {
+                File.Delete($"{ path }/00{k}.jpg");
+            }
+            else if (k < 100)
+            {
+                File.Delete($"{ path }/0{k}.jpg");
+            }
+            else
+            {
+                File.Delete($"{ path }/{k}.jpg");
+            }
         }
-        for (int k = 0; k <= j; k++)
-        {
-            File.Delete($"{player.GetSavePath() + k}.jpg");
-        }
-       
+
+        Debug.Log("Deleted all captures");
+
+        jc.Dispose();
+        player.outputNum += 1;
         j = 0;
+
+        await Task.Delay(2000);
+
     }
+
 
 
 }

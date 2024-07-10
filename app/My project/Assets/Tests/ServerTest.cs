@@ -99,7 +99,7 @@ public class ServerTest
         string testResponse = await myClient.GetUserVideo(testArId);
         Debug.Log(testResponse);
 
-        Assert.IsTrue($"{player.GetSavePath()}/ar_{testArId}.mp4" == testResponse);
+        Assert.IsTrue($"{Application.persistentDataPath}/ar_{testArId}.mp4" == testResponse);
 
         Assert.IsTrue(File.Exists(testResponse));
         File.Delete(testResponse);

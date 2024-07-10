@@ -10,26 +10,38 @@
     "m_KnownProcessesForSerialization": [
         {
             "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.Myproject",
-            "processId": 11893,
-            "exited": true
+            "name": "com.sec.android.app.sbrowser",
+            "processId": 14966,
+            "exited": false
         },
         {
             "deviceId": "RF8R30634KR",
-            "name": "com.HoYoverse.hkrpgoversea",
-            "processId": 17910,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8R30634KR",
-            "name": "com.YoStarEN.Arknights",
-            "processId": 21788,
-            "exited": true
+            "name": "com.sec.android.app.launcher",
+            "processId": 4369,
+            "exited": false
         },
         {
             "deviceId": "RF8R30634KR",
             "name": "com.DefaultCompany.Myproject",
-            "processId": 25539,
+            "processId": 23474,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8R30634KR",
+            "name": "com.DefaultCompany.Myproject",
+            "processId": 25909,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8R30634KR",
+            "name": "com.DefaultCompany.Myproject",
+            "processId": 26580,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8R30634KR",
+            "name": "com.DefaultCompany.Myproject",
+            "processId": 27738,
             "exited": true
         }
     ],
