@@ -1,12 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 #if UNITY_ANDROID
 using UnityEngine.Android;
 #endif
 
+/// <summary>
+/// Camera manager script to control and manage device camera input to display and then encoding the collected textures into a video.
+/// </summary>
 public class CameraManager : MonoBehaviour
 {
     private WebCamTexture deviceCamera;
@@ -25,14 +29,19 @@ public class CameraManager : MonoBehaviour
     public int frameRate = 30;
 
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Called at start of the scene before the first frame.
+    /// Asks for the user permission for storage read/write and camera if it is not given.
+    /// </summary>
     void Start()
     {
-        string[] perms = { Permission.Camera, Permission.ExternalStorageRead, Permission.ExternalStorageWrite };
-        Permission.RequestUserPermissions(perms);
         OpenCamera();
         recordButton.onClick.AddListener(RecordHandler);
 
+        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+        {
+            Permission.RequestUserPermission(Permission.Camera);
+        }
         if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
         {
             Permission.RequestUserPermission(Permission.ExternalStorageWrite);
@@ -91,11 +100,10 @@ public class CameraManager : MonoBehaviour
 
         if (recording == true && i < 900)
         {
-
             Record();
-
             i += 1;
         } 
+
     }
 
 
@@ -104,47 +112,56 @@ public class CameraManager : MonoBehaviour
 
         if (recording == false && camAvailable)
         {
-            Debug.Log("Initiating recording using FFMPEG");
             recordButton.GetComponentInChildren<TextMeshProUGUI>().text = "Stop Recording";
             recording = true;
             if(testText.text.Length < 10)
             {
                 testText.text = Application.persistentDataPath;
             }
+            Debug.Log("Initiating recording using FFMPEG");
 
         } else if (recording == true)
         {
             recordButton.GetComponentInChildren<TextMeshProUGUI>().text = "Processing";
             recording = false;
             i = 0;
+            recordButton.enabled = false;
+
             await FfmpegRecord();
             recordButton.GetComponentInChildren<TextMeshProUGUI>().text = "Start recording";
+            recordButton.enabled = true;
         }
 
     }
 
     public void Record()
     {
-
-        Texture2D tex = new Texture2D(deviceCamera.width, deviceCamera.height, TextureFormat.RGB24, false);
-        tex.SetPixels32(deviceCamera.GetPixels32());
-        tex.Apply();
-
-        byte[] imgData = tex.EncodeToJPG();
-        Destroy(tex);
-
-        if (j < 10)
+        try
         {
-            File.WriteAllBytes(Path.Combine(Application.persistentDataPath, "00" + j.ToString() + ".jpg"), imgData);
-        } else if (j < 100)
-        {
-            File.WriteAllBytes(Path.Combine(Application.persistentDataPath, "0" + j.ToString() + ".jpg"), imgData);
-        } else
-        {
-            File.WriteAllBytes(Path.Combine(Application.persistentDataPath, j.ToString() + ".jpg"), imgData);
-        }
+            Texture2D tex = new Texture2D(deviceCamera.width, deviceCamera.height, TextureFormat.RGB24, false);
+            tex.SetPixels32(deviceCamera.GetPixels32());
+            tex.Apply();
+            byte[] imgData = tex.EncodeToJPG();
+            Destroy(tex);
+
+            if (j < 10)
+            {
+                File.WriteAllBytes(Path.Combine(Application.persistentDataPath, "00" + j.ToString() + ".jpg"), imgData);
+            } else if (j < 100)
+            {
+                File.WriteAllBytes(Path.Combine(Application.persistentDataPath, "0" + j.ToString() + ".jpg"), imgData);
+            } else
+            {
+                File.WriteAllBytes(Path.Combine(Application.persistentDataPath, j.ToString() + ".jpg"), imgData);
+            }
         
-        j += 1;
+            j += 1;
+            Debug.Log($"Recorded scene: {j}");
+
+        } catch(Exception e)
+        {
+            Debug.Log(e);
+        }
 
     }
 
