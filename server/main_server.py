@@ -45,7 +45,7 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
 
             # send response back
             json_data = json.dumps({'ar_id': params['ar_id'][0], 'status': status})
-            self.send_response(201)
+            self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
             self.wfile.write(json.dumps(json_data).encode())
@@ -155,17 +155,17 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
             
                 if status == 'raw':
                     database.change_status(conn, user, ar_id, 'processing')
-                    self.send_response(200, "Initiating")
+                    self.send_response(202, "Initiating")
                     # convert
                     converter.to_AR(filename, conn, ar_id)
 
                 elif status == 'processing':
                     # return current status as response
-                    self.send_response(201, "Processing")
+                    self.send_response(200, "Processing")
 
                 elif status == 'converted':
                     # return current status as response
-                    self.send_response(201, "Ready")
+                    self.send_response(200, "Ready")
            
             else:
                 # return 503 error or similar
