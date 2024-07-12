@@ -1159,6 +1159,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="NativeGallery.Runtime.csproj">
+      <Project>{B134C892-054E-00FF-5A5A-94734622F6E5}</Project>
+      <Name>NativeGallery.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="NativeCamera.Runtime.csproj">
+      <Project>{011CC316-78BC-90D3-427B-4F2795DD5AB8}</Project>
+      <Name>NativeCamera.Runtime</Name>
+    </ProjectReference>
     <ProjectReference Include="scriptAssembly.csproj">
       <Project>{6044E579-5092-F213-4A1D-E16C58AD8F38}</Project>
       <Name>scriptAssembly</Name>
@@ -1166,6 +1174,14 @@
     <ProjectReference Include="Tests.csproj">
       <Project>{214737D8-55FF-029D-BC70-457AFAE0B720}</Project>
       <Name>Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="NativeCamera.Editor.csproj">
+      <Project>{D32F98B7-BDD2-0479-C4F5-6F3A614878B6}</Project>
+      <Name>NativeCamera.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NativeGallery.Editor.csproj">
+      <Project>{2863E3EB-D31C-0662-894D-7EB739FA32F4}</Project>
+      <Name>NativeGallery.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

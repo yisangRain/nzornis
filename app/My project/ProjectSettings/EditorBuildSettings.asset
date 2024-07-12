@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Filming.unity
     guid: 8777cac1b20bf75459f433ab032fe01f
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 1251ce1d96257da4fa72be91cbc3abcf
   m_configObjects: {}

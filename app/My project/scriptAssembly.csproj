@@ -66,11 +66,13 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Subclasses\UploadObject.cs" />
     <Compile Include="Assets\Scripts\Client.cs" />
+    <Compile Include="Assets\Scripts\Unused\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Subclasses\StatusJson.cs" />
     <Compile Include="Assets\Scripts\Subclasses\GeoJson.cs" />
-    <Compile Include="Assets\Scripts\opencvCamManager.cs" />
+    <Compile Include="Assets\Scripts\FilmingManager.cs" />
+    <Compile Include="Assets\Scripts\Unused\opencvCamManager.cs" />
+    <Compile Include="Assets\Scripts\SceneNavigator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\scriptAssembly.asmdef" />
@@ -1014,6 +1016,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="NativeCamera.Editor.csproj">
+      <Project>{D32F98B7-BDD2-0479-C4F5-6F3A614878B6}</Project>
+      <Name>NativeCamera.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NativeCamera.Runtime.csproj">
+      <Project>{011CC316-78BC-90D3-427B-4F2795DD5AB8}</Project>
+      <Name>NativeCamera.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="NativeGallery.Editor.csproj">
+      <Project>{2863E3EB-D31C-0662-894D-7EB739FA32F4}</Project>
+      <Name>NativeGallery.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NativeGallery.Runtime.csproj">
+      <Project>{B134C892-054E-00FF-5A5A-94734622F6E5}</Project>
+      <Name>NativeGallery.Runtime</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
