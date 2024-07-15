@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Net.Http;
 using System;
 using Newtonsoft.Json;
+using UnityEngine.Android;
+using System.Collections;
+
 public interface IFilming
 {
 
@@ -16,6 +19,20 @@ public class FilmingManager : MonoBehaviour
     public Player player;
 
     private Client client = new Client();
+
+    private static bool IsLocationServiceInitializing
+            => Input.location.status == LocationServiceStatus.Initializing;
+
+    /// <summary>
+    /// Request for Location permission on awake
+    /// </summary>
+    public void Awake()
+    {
+        if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
+        {
+            Permission.RequestUserPermission(Permission.FineLocation);
+        }
+    }
 
     /// <summary>
     /// Opens device camera app
@@ -105,9 +122,15 @@ public class FilmingManager : MonoBehaviour
     public void ConversionHandler(string targetPath)
     {
         // Assign location
-        var location = GetCurrentLocation();
+        var locationString = GetCurrentLocation();
+        if (locationString == null)
+        {
+            Debug.Log("Issue with location string");
+            return;
+        }
 
         // Assign xyz position within the AR space
+
 
         // Ask for final confirmation
 
@@ -117,8 +140,41 @@ public class FilmingManager : MonoBehaviour
         // Inform user that the conversion is in progress
     }
 
-    public string GetCurrentLocation()
+    /// <summary>
+    /// Queries the device's GPS for the current latitude and longitude
+    /// </summary>
+    /// <returns>string[] {latitude, longitude}</returns>
+    public string[] GetCurrentLocation()
     {
-        return "";
+        // check for location service enabled or not
+        if (!Input.location.isEnabledByUser)
+        {
+            Debug.Log("Location permission not enabled");
+            return null;
+        }
+
+        Input.location.Start();
+
+        int maxWait = 20;
+        while (IsLocationServiceInitializing && maxWait > 0)
+        {
+            new WaitForSeconds(1);
+            maxWait--;
+        }
+
+        if (maxWait < 1 || Input.location.status == LocationServiceStatus.Failed)
+        {
+            Debug.Log("Location service initialization issue: Timeout");
+            return null;
+        }
+
+        var loc = Input.location.lastData;
+        string[] latlng = { loc.latitude.ToString(), loc.latitude.ToString() };
+
+        Input.location.Stop();
+
+        return latlng;
+
     }
+
 }
