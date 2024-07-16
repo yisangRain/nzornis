@@ -9,6 +9,19 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 1251ce1d96257da4fa72be91cbc3abcf
+  - enabled: 1
     path: Assets/Scenes/Filming.unity
     guid: 8777cac1b20bf75459f433ab032fe01f
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/Scenes/Exploration.unity
+    guid: 1a6203a6e59e01144b30c58c974645d1
+  - enabled: 0
+    path: Assets/Samples/Lightship Maps SDK/0.4.0/Third-Person Camera Sample/OrbitCamera.unity
+    guid: 6a755ebfca758491a981eafc58a9422b
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 23134a15653f16941b58ca7db6fe8c92, type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 761cb3fc88b2d97489bd55e7ede34021, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: c356793755b16f14692cf0424191c499, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: d3c232c13fbab0a44afdffb3243f19b5, type: 2}

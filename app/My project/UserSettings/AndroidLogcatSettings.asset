@@ -3,17 +3,11 @@
     "m_SelectedProcess": {
         "deviceId": "RF8R30634KR",
         "name": "com.DefaultCompany.Myproject",
-        "processId": 8520,
+        "processId": 10395,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownProcessesForSerialization": [
-        {
-            "deviceId": "RF8R30634KR",
-            "name": "com.sec.android.app.sbrowser",
-            "processId": 14966,
-            "exited": false
-        },
         {
             "deviceId": "RF8R30634KR",
             "name": "com.sec.android.app.launcher",
@@ -23,31 +17,37 @@
         {
             "deviceId": "RF8R30634KR",
             "name": "com.DefaultCompany.Myproject",
-            "processId": 5772,
+            "processId": 27111,
             "exited": true
         },
         {
             "deviceId": "RF8R30634KR",
             "name": "com.DefaultCompany.Myproject",
-            "processId": 7002,
+            "processId": 29781,
             "exited": true
         },
         {
             "deviceId": "RF8R30634KR",
             "name": "com.DefaultCompany.Myproject",
-            "processId": 7350,
+            "processId": 31906,
             "exited": true
         },
         {
             "deviceId": "RF8R30634KR",
             "name": "com.DefaultCompany.Myproject",
-            "processId": 7879,
+            "processId": 1516,
             "exited": true
         },
         {
             "deviceId": "RF8R30634KR",
             "name": "com.DefaultCompany.Myproject",
-            "processId": 8520,
+            "processId": 8435,
+            "exited": false
+        },
+        {
+            "deviceId": "RF8R30634KR",
+            "name": "com.DefaultCompany.Myproject",
+            "processId": 10395,
             "exited": false
         }
     ],
