@@ -9,11 +9,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
-    <ProjectGuid>{32C3BDE6-E125-3128-82C1-25D0441455A3}</ProjectGuid>
+    <RootNamespace>Niantic.Lightship.Maps.Samples.CustomMapLayers</RootNamespace>
+    <ProjectGuid>{304F91E0-6346-088D-54F0-BA5A17B48E76}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Niantic.Lightship.Maps.Samples.CustomMapLayers</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -27,7 +27,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,7 +36,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -64,105 +64,42 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
-    <Compile Include="Assets\ExplorerController.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
-    <Compile Include="Assets\LoginController.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+    <Compile Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\CustomMapLayersManager.cs" />
+    <Compile Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\StateBoundaries\Boundary.cs" />
+    <Compile Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\Utilities\QuaternionEx.cs" />
+    <Compile Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\StateBoundaries\State.cs" />
+    <Compile Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\RuntimeLogInitializer.cs" />
+    <Compile Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\StateBoundaries\StateBoundaryCollection.cs" />
+    <Compile Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\Editor\EditorLogInitializer.cs" />
+    <Compile Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\StateBoundaries\StateBoundarySelector.cs" />
+    <Compile Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\StateBoundaries\StateBoundariesInternal.cs" />
+    <Compile Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\Editor\RenderPipelineChecker.cs" />
+    <Compile Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\UnityLogging\UnityLogForwarder.cs" />
+    <Compile Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\UnityLogging\UnityLogStream.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
-    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\LICENSE.TXT" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\Packages\xunit.extensibility.execution.2.8.1\lib\netstandard1.1\xunit.execution.dotnet.xml" />
-    <None Include="Assets\Packages\Castle.Core.5.1.1\readme.txt" />
-    <None Include="Assets\Packages\xunit.abstractions.2.0.3\lib\netstandard2.0\xunit.abstractions.dll" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.4\cs\xunit.analyzers.fixes.dll" />
-    <None Include="Assets\Packages\Moq.4.20.70\lib\netstandard2.1\Moq.xml" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
-    <None Include="Assets\Packages\xunit.assert.2.8.1\lib\netstandard1.1\xunit.assert.dll" />
-    <None Include="Assets\Packages\xunit.extensibility.execution.2.8.1\lib\netstandard1.1\xunit.execution.dotnet.dll" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn3.11\cs\xunit.analyzers.fixes.dll" />
-    <None Include="Assets\Packages\Moq.4.20.70\lib\netstandard2.1\Moq.dll" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn3.11\cs\xunit.analyzers.dll" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.6\cs\xunit.analyzers.dll" />
-    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\version.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\lib\netstandard2.0\System.Diagnostics.EventLog.xml" />
-    <None Include="Assets\Packages\xunit.extensibility.core.2.8.1\lib\netstandard1.1\xunit.core.dll" />
-    <None Include="Assets\Packages\Castle.Core.5.1.1\ASL - Apache Software Foundation License.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
-    <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\lib\netstandard2.0\System.Security.Principal.Windows.xml" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
-    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
-    <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\THIRD-PARTY-NOTICES.TXT" />
-    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\lib\netstandard2.0\System.Diagnostics.EventLog.dll" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
-    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
-    <None Include="Assets\Packages\xunit.extensibility.core.2.8.1\lib\netstandard1.1\xunit.core.xml" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\Packages\Castle.Core.5.1.1\lib\netstandard2.1\Castle.Core.dll" />
-    <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\lib\netstandard2.0\System.Security.Principal.Windows.dll" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\cs\xunit.analyzers.fixes.dll" />
-    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\THIRD-PARTY-NOTICES.TXT" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.8\cs\xunit.analyzers.dll" />
-    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\Shaders\ChromaKey.shader" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.8\cs\xunit.analyzers.fixes.dll" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-    <None Include="Assets\Packages\Castle.Core.5.1.1\lib\netstandard2.1\Castle.Core.xml" />
-    <None Include="Assets\Packages\xunit.assert.2.8.1\lib\netstandard1.1\xunit.assert.xml" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.6\cs\xunit.analyzers.fixes.dll" />
-    <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\LICENSE.TXT" />
-    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\useSharedDesignerContext.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
-    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-    <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\useSharedDesignerContext.txt" />
-    <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\version.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
-    <None Include="Assets\Packages\xunit.abstractions.2.0.3\lib\netstandard2.0\xunit.abstractions.xml" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.4\cs\xunit.analyzers.dll" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\CustomMapLayers.asmdef" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\Samples\Lightship Maps SDK\0.4.0\Custom Map Layers Sample\Common\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -485,76 +422,32 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Google.Protobuf">
-      <HintPath>Library\PackageCache\com.niantic.lightship.maps@fb4247cae5\Runtime\Google.Protobuf\Google.Protobuf.dll</HintPath>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Niantic.Platform.Debugging">
-      <HintPath>Library\PackageCache\com.niantic.lightship.maps@fb4247cae5\Runtime\Niantic.Platform.Debugging\Niantic.Platform.Debugging.dll</HintPath>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\PlaybackEngines\AndroidPlayer\UnityEditor.Android.Extensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>Library\PackageCache\com.unity.collections@1.4.0\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="xunit.abstractions">
-      <HintPath>Assets\Packages\xunit.abstractions.2.0.3\lib\netstandard2.0\xunit.abstractions.dll</HintPath>
+    <Reference Include="Niantic.Lightship.Maps.Core">
+      <HintPath>Library\PackageCache\com.niantic.lightship.maps@fb4247cae5\Runtime\Niantic.Lightship.Maps.Core\Niantic.Lightship.Maps.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Niantic.Lightship.Maps.Linq">
       <HintPath>Library\PackageCache\com.niantic.lightship.maps@fb4247cae5\Runtime\Niantic.Lightship.Maps.Core\Niantic.Lightship.Maps.Linq.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ReportGeneratorMerged">
-      <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.5\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Niantic.Lightship.Maps.Async">
       <HintPath>Library\PackageCache\com.niantic.lightship.maps@fb4247cae5\Runtime\Niantic.Lightship.Maps.Core\Niantic.Lightship.Maps.Async.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="xunit.assert">
-      <HintPath>Assets\Packages\xunit.assert.2.8.1\lib\netstandard1.1\xunit.assert.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="xunit.execution.dotnet">
-      <HintPath>Assets\Packages\xunit.extensibility.execution.2.8.1\lib\netstandard1.1\xunit.execution.dotnet.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Moq">
-      <HintPath>Assets\Packages\Moq.4.20.70\lib\netstandard2.1\Moq.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="xunit.core">
-      <HintPath>Assets\Packages\xunit.extensibility.core.2.8.1\lib\netstandard1.1\xunit.core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Diagnostics.EventLog">
-      <HintPath>Assets\Packages\System.Diagnostics.EventLog.4.7.0\lib\netstandard2.0\System.Diagnostics.EventLog.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Castle.Core">
-      <HintPath>Assets\Packages\Castle.Core.5.1.1\lib\netstandard2.1\Castle.Core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Security.Principal.Windows">
-      <HintPath>Assets\Packages\System.Security.Principal.Windows.4.7.0\lib\netstandard2.0\System.Security.Principal.Windows.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Niantic.Lightship.Maps.Core">
-      <HintPath>Library\PackageCache\com.niantic.lightship.maps@fb4247cae5\Runtime\Niantic.Lightship.Maps.Core\Niantic.Lightship.Maps.Core.dll</HintPath>
+    <Reference Include="Niantic.Platform.Debugging">
+      <HintPath>Library\PackageCache\com.niantic.lightship.maps@fb4247cae5\Runtime\Niantic.Platform.Debugging\Niantic.Platform.Debugging.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
@@ -1057,332 +950,28 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.MetaQuestSupport.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.MetaQuestSupport.Editor.dll</HintPath>
+    <Reference Include="Niantic.Lightship.Maps">
+      <HintPath>Library\ScriptAssemblies\Niantic.Lightship.Maps.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.XR.Management">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Burst.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARFoundation.VisualScripting.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARFoundation.VisualScripting.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.ConformanceAutomation">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.ConformanceAutomation.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARSubsystems.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARSubsystems.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.OculusQuestSupport.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.OculusQuestSupport.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARCore">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARCore.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARAnalytics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARAnalytics.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.CoreUtils">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.CoreUtils.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARFoundation.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARFoundation.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.Simulation">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.Simulation.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARSubsystems">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARSubsystems.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.MetaQuestSupport">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.MetaQuestSupport.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Collections">
-      <HintPath>Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARFoundation.VisualScripting">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARFoundation.VisualScripting.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.Management.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.Management.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARCore.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARCore.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Collections.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="PPv2URPConverters">
-      <HintPath>Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.CoreUtils.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.CoreUtils.Editor.dll</HintPath>
+    <Reference Include="Niantic.Lightship.Maps.SampleAssets">
+      <HintPath>Library\ScriptAssemblies\Niantic.Lightship.Maps.SampleAssets.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.XR.Simulation.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.Simulation.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Niantic.Lightship.Maps">
-      <HintPath>Library\ScriptAssemblies\Niantic.Lightship.Maps.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.OculusQuestSupport">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.OculusQuestSupport.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="NuGetForUnity">
-      <HintPath>Library\ScriptAssemblies\NuGetForUnity.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.EditorCoroutines.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARFoundation">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARFoundation.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Burst">
-      <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Shared.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEditor.SpatialTracking">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Core">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Core.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEditor.XR.LegacyInputHelpers">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Niantic.Lightship.Maps.Editor">
-      <HintPath>Library\ScriptAssemblies\Niantic.Lightship.Maps.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.InputSystem">
-      <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.InputSystem.ForUI">
-      <HintPath>Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Mobile.AndroidLogcat.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Mobile.AndroidLogcat.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.State.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.ARFoundation.InternalUtils">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.ARFoundation.InternalUtils.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.XR.OpenXR.Features.RuntimeDebugger.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.XR.OpenXR.Features.RuntimeDebugger.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.State">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="NativeGallery.Runtime.csproj">
-      <Project>{B134C892-054E-00FF-5A5A-94734622F6E5}</Project>
-      <Name>NativeGallery.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="scriptAssembly.csproj">
-      <Project>{6044E579-5092-F213-4A1D-E16C58AD8F38}</Project>
-      <Name>scriptAssembly</Name>
-    </ProjectReference>
-    <ProjectReference Include="Tests.csproj">
-      <Project>{214737D8-55FF-029D-BC70-457AFAE0B720}</Project>
-      <Name>Tests</Name>
-    </ProjectReference>
-    <ProjectReference Include="NativeGallery.Editor.csproj">
-      <Project>{2863E3EB-D31C-0662-894D-7EB739FA32F4}</Project>
-      <Name>NativeGallery.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="NativeCamera.Runtime.csproj">
-      <Project>{011CC316-78BC-90D3-427B-4F2795DD5AB8}</Project>
-      <Name>NativeCamera.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="NativeCamera.Editor.csproj">
-      <Project>{D32F98B7-BDD2-0479-C4F5-6F3A614878B6}</Project>
-      <Name>NativeCamera.Editor</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

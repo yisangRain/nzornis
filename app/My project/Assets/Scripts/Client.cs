@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.Web;
 using System.IO;
 using System.Text;
+using Assets.Scripts.Subclasses;
 
 public interface IHttpClient
 {
@@ -23,6 +24,11 @@ public class Client : IHttpClient
     private string devUrl = "http://localhost:8000";
     private Player player = Player.instance;
     HttpClient myClient;
+
+    public Client()
+    {
+        myClient = new HttpClient();
+    }
 
     public void SetClient(HttpClient httpClient)
     {
@@ -134,6 +140,30 @@ public class Client : IHttpClient
         }
 
         return "Error: Error initiating conversion.";
+    }
+
+    public async Task<LoginInfo> PostLogin(string username, string password)
+    {
+        string apiUrl = $"{ devUrl }/login";
+
+        var jsonData = new Cred(username, password);
+        var jsonContent = new StringContent(JsonConvert.SerializeObject(jsonData), Encoding.UTF8, "application/json");
+        
+        HttpResponseMessage response = await myClient.PostAsync(apiUrl, jsonContent);
+
+        if (response.IsSuccessStatusCode)
+        {
+            string responseContent = await response.Content.ReadAsStringAsync();
+
+            //Process response data
+            return JsonConvert.DeserializeObject<LoginInfo>(responseContent);
+        }
+
+        else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized){
+            return new LoginInfo(LoginInfo.Status.Incorrect);
+        }
+
+        return new LoginInfo(LoginInfo.Status.Failed);
     }
 
     public void CloseClient()

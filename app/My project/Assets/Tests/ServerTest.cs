@@ -13,8 +13,6 @@ public class ServerTest
 {
     Client myClient = new Client();
     private int testArId = 1;
-    private string testUser = "100";
-    private string testPassword = "test_password";
     Player player = Player.instance;
 
     // Test video
@@ -23,7 +21,7 @@ public class ServerTest
     [SetUp]
     public void SetUp()
     {
-        Assert.IsTrue(player.LogIn(testUser, testPassword) == "Log in successful");
+        Assert.IsTrue(player.TestLogIn() == "Log in successful");
     }
 
     [TearDown]
