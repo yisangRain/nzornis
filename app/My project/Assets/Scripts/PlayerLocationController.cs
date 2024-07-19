@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
 using Niantic.Lightship.Maps.Core.Coordinates;
+using Niantic.Lightship.Maps.MapLayers.Components;
 using Niantic.Lightship.Maps;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Android;
+using TMPro;
 
 /// <summary>
 /// Adapted from 'PlayerLocationController.cs' script from Niantic 
@@ -21,15 +24,22 @@ public class PlayerLocationController : MonoBehaviour
     [SerializeField]
     public PlayerController playerModel;
 
+    [SerializeField]
+    private LayerGameObjectPlacement _CubeGOP;
+
     private double lastGpsUpdateTime;
     private Vector3 targetPosition;
     private Vector3 currentPosition;
     private double lastMapUpdateTime;
 
+    public LatLng currentCoordinate = new LatLng();
+
     /// <summary>
     /// Event to alert any issues with the GPS system within the app
     /// </summary>
     public Action<string> OnGpsError;
+    public Button testButton;
+    public TMP_Text testText;
 
     private const float WalkThreshold = 0.5f;
     private const float TeleportThreshold = 200f;
@@ -41,6 +51,8 @@ public class PlayerLocationController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        testButton.onClick.AddListener(OnClickPlaceObject);
+
         mapView.MapOriginChanged += OnMapViewOriginChanged;
         currentPosition = targetPosition = transform.position;
 
@@ -107,8 +119,8 @@ public class PlayerLocationController : MonoBehaviour
             if (gpsInfo.timestamp > lastGpsUpdateTime)
             {
                 lastGpsUpdateTime = gpsInfo.timestamp;
-                var location = new LatLng(gpsInfo.latitude, gpsInfo.longitude);
-                UpdatePlayerLocation(location);
+                currentCoordinate = new LatLng(gpsInfo.latitude, gpsInfo.longitude);
+                UpdatePlayerLocation(currentCoordinate);
             }
 
             yield return null;
@@ -173,5 +185,25 @@ public class PlayerLocationController : MonoBehaviour
 
         // update map view based on the player location
         mapView.SetMapCenter(transform.position);
+    }
+
+    private void PlaceObject(LatLng pos, string objName)
+    {
+        _CubeGOP.PlaceInstance(pos, objName);
+    }
+
+    public void OnClickPlaceObject()
+    {
+        if (currentCoordinate.Equals(new LatLng()))
+        {
+            testText.text = "Location service not ready. Please try again later";
+            Debug.Log("Location not ready");
+        } else
+        {
+            PlaceObject(currentCoordinate, "test location");
+            Debug.Log("Should have spawned");
+        }
+        
+
     }
 }

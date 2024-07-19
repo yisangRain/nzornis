@@ -4,6 +4,8 @@ using System;
 using Newtonsoft.Json;
 using UnityEngine.Android;
 using System.Collections;
+using UnityEngine.UI;
+using TMPro;
 
 public interface IFilming
 {
@@ -18,6 +20,7 @@ public class FilmingManager : MonoBehaviour
 {
     public Player player;
 
+    public TMP_Text testText;
     private Client client = new Client();
 
     private static bool IsLocationServiceInitializing
@@ -100,6 +103,7 @@ public class FilmingManager : MonoBehaviour
         {
             Debug.Log($"Video path: {path}");
             targetPath = path;
+            testText.text = targetPath;
 
         }, "Please select a video to convert to AR");
 

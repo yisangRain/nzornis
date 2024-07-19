@@ -839,7 +839,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a485d922e79ee904ab6f7cfcc9bcc266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1802529038}
+  testText: {fileID: 1906244211}
 --- !u!1 &1441459325
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,7 +923,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1441459328}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1428939199}
+        m_TargetAssemblyTypeName: FilmingManager, scriptAssembly
+        m_MethodName: SelectVideo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1441459328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,7 +1189,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1656515357}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1428939199}
+        m_TargetAssemblyTypeName: FilmingManager, scriptAssembly
+        m_MethodName: OpenCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1656515357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1365,7 +1390,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1802529038
 MonoBehaviour:
   m_ObjectHideFlags: 0
