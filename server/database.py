@@ -1,20 +1,253 @@
 #####################################################################
-# Database 
+# Database
 #####################################################################
 
 import sqlite3
 from sqlite3 import Error
+from enum import Enum
 
-def create_connection(db_file):
-    # Creates connection to the SQLite database
-    conn = None
+"""
+DAOs
+"""
+class Entity(Enum):
+    COMMENT = "comment"
+    SIGHTING = "sighting"
+    USER = "user"
 
-    try:
-        conn = sqlite3.connect(db_file)
-        return conn
+
+class User:
+    def __init__(self, id, fname, lname, email, password):
+        self.id = id
+        self.fname = fname
+        self.lname = lname
+        self.email = email
+        self.password = password
+
+
+    def new_string(self):
+        """
+        Returns string to be placed inside the VALUES SQL for inserting new row into the 
+        user table
+        """
+        return f"{self.fname}, {self.lname}, {self.email}, {self.password}"
     
-    except Error as e:
-        print(e)
+
+    def check_email_exists(self, conn, email):
+        """
+        Checks if email is registered
+        Returns True if registered
+        """
+        
+        q = f"SELECT id FROM user WHERE email={email};"
+
+        cursor = conn.cursor()
+        cursor.execute(q)
+
+        return len(cursor.fetchall()) > 0
+    
+
+    def create_user (self, conn):
+        """
+        Inserts new user into the User table and returns user id
+        param: user --> class User()
+        """
+        q = f"INSERT INTO user (first_name, last_name, email, password) \
+            VALUES ({self.new_string()});"
+        
+        check = f"SELECT id FROM user WHERE email = {self.email};"
+        
+        cursor = conn.cursor()
+        cursor.execute(q)
+        conn.commit()
+
+        cursor.execute(check)
+
+        return cursor.fetchone()[0]
+    
+
+    def delete_user (self, conn, target_id=None):
+        """
+        Deletes a row from the user table by given optional param target_id 
+        or by self.id if target_id is None
+        Returns True if successful
+        """
+        if target_id == None:
+            target_id = self.id
+
+        q = f"DELETE FROM user WHERE id={target_id};"
+
+        cursor = conn.cursor()
+        cursor.execute(q)
+        conn.commit()
+
+        check = f"SELECT * FROM user WHERE id={target_id};"
+        cursor.execute(check)
+
+        return len(cursor.fetchall()) > 0
+    
+
+    def edit_user(self):
+        """Not implemented"""
+        pass
+        
+
+class Comment:
+    def __init__ (self, id, user, time, comment, sighting):
+        self.id = id
+        self.user = user
+        self.time = time
+        self.comment = comment
+        self.sighting = sighting
+
+    
+    def get_comments(self, conn, entity, target_id = None):
+        """
+        Returns comments based on the given entity type
+        Entity (enum) -> comment | sighting | user
+        Returns empty list if none retrieved
+        """
+        if entity != Entity.COMMENT & target_id == None:
+            raise NotImplementedError("Error: id required for non-comment targets.")
+        
+        q = "SELECT * FROM comment WHERE "
+
+        if entity == Entity.COMMENT:
+            if target_id == None:
+                target_id = self.id
+            q += f"id={target_id};"
+        
+        elif entity == Entity.SIGHTING:
+            q += f"sighting_id={target_id};"
+        
+        elif entity == Entity.USER:
+            q += f"user={target_id};"
+        
+        else:
+            raise NotImplementedError(f"Error: {entity.value} not implemented.")
+            
+        cursor = conn.cursor()
+        cursor.execute(q)
+
+        return cursor.fetchall()
+    
+
+    def add_comment(self):
+        """
+        Inserts new comment into the comment table
+        returns comment id
+        """
+        pass
+
+
+    def delete_comment(self, target_id = None):
+        """
+        Deletes a row in the comment table based on the target id
+        Uses self.id if target_id is None
+        """
+        pass
+
+
+    def edit_comment(self, target_id = None, content = None):
+        """
+        Edits a row in the comment table based on the target id with the content
+        Uses self.id and/or self.comment if targets_id and/or content are None
+        """
+        pass
+    
+
+class LatLon:
+    def __init__ (self, lat, lon):
+        self.lat = lat
+        self.lon = lon
+
+
+class Sighting:
+    def __init__ (self):
+        self.id = None
+        self.title = None
+        self.desc = None
+        self.user = None
+        self.time = None
+        self.latlon = None
+        self.path = None
+
+    
+    def get_by_id(self, entity, target_id = None):
+        """
+        Queries for sighting based on the target sighting id or user id.
+        Uses self values if target_id is None
+        """
+        pass
+
+
+    def delete(self, target_id = None):
+        """
+        Deletes target row within the sightings table
+        Uses self values if target_id is None
+        Returns True if success
+        """
+        pass
+
+
+    def edit(self, title = None, desc = None, target_id = None):
+        """
+        Edits title and/or description of the target sighting
+        Uses self.id if target_id is None.
+        Edits nothing if no title or desc is given
+        Returns True upon success
+        """
+        pass
+
+
+    def new(self):
+        """
+        Inserts new row into the sighting and cell table
+        """
+        pass
+
+
+class Grid:
+    def __init__ (self, id, min_latlon, max_latlon):
+        self.id = id
+        self.min_latlon = min_latlon
+        self.max_latlon = max_latlon
+
+
+class Cell:
+    def __init__ (self, id, code, sighting):
+        self.id = id
+        self.code = code
+        self.sighting = sighting
+
+
+class Connection:
+    """
+    Database handler class
+    """
+    def __init__ (self, dbname):
+        self.dbname = dbname
+    
+
+    def create_connection (self):
+        try: 
+            return sqlite3.connect(self.dbname)
+        except Error as e:
+            return e
+        
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
 
 
 def get_filename(conn, id, ar_id):
