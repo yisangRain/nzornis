@@ -194,5 +194,5 @@ def initialise():
     insert_test_accounts(DB_NAME)
     insert_test_grid(DB_NAME, BOUNDARY)
     insert_test_sightings(DB_NAME)
-
+    print("Database initialisation successful.")
 

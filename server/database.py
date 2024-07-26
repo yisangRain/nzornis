@@ -16,7 +16,7 @@ class Entity(Enum):
 
 
 class User:
-    def __init__(self, id, fname, lname, email, password):
+    def __init__(self, id: int, fname: str, lname: str, email: str, password: str):
         self.id = id
         self.fname = fname
         self.lname = lname
@@ -32,12 +32,12 @@ class User:
         return f"{self.fname}, {self.lname}, {self.email}, {self.password}"
     
 
-    def check_email_exists(self, conn, email):
+    def check_email_exists(self, conn, email: str):
         """
         Checks if email is registered
         Returns True if registered
         """
-        
+    
         q = f"SELECT id FROM user WHERE email={email};"
 
         cursor = conn.cursor()
@@ -92,28 +92,22 @@ class User:
         
 
 class Comment:
-    def __init__ (self, id, user, time, comment, sighting):
-        self.id = id
+    def __init__ (self, user: int, time: int, comment: str, sighting: int):
         self.user = user
         self.time = time
         self.comment = comment
         self.sighting = sighting
 
     
-    def get_comments(self, conn, entity, target_id = None):
+    def get_comments(self, conn, entity: Entity, target_id):
         """
         Returns comments based on the given entity type
         Entity (enum) -> comment | sighting | user
         Returns empty list if none retrieved
         """
-        if entity != Entity.COMMENT & target_id == None:
-            raise NotImplementedError("Error: id required for non-comment targets.")
-        
         q = "SELECT * FROM comment WHERE "
 
         if entity == Entity.COMMENT:
-            if target_id == None:
-                target_id = self.id
             q += f"id={target_id};"
         
         elif entity == Entity.SIGHTING:
@@ -121,89 +115,191 @@ class Comment:
         
         elif entity == Entity.USER:
             q += f"user={target_id};"
-        
-        else:
-            raise NotImplementedError(f"Error: {entity.value} not implemented.")
-            
+          
         cursor = conn.cursor()
         cursor.execute(q)
 
         return cursor.fetchall()
     
 
-    def add_comment(self):
+    def add_comment(self, conn):
         """
         Inserts new comment into the comment table
         returns comment id
+        Requires fully initialised self, minus the comment id
         """
-        pass
+        q = f"INSERT INTO comment (user, time, comment, sighting_id) \
+            VALUES ({self.user}, {self.time}, {self.comment}, {self.sighting});"
+        
+        cursor = conn.cursor()
+
+        cursor.execute(q)
+        conn.commit()
+
+        check = f"SELECT id FROM comment WHERE user={self.user} AND time={self.time} \
+            AND sighting_id={self.sighting};"
+        
+        cursor.execute(check)
+
+        return cursor.fetchone()[0]
 
 
-    def delete_comment(self, target_id = None):
+    def delete_comment(self, conn, target_id: int):
         """
         Deletes a row in the comment table based on the target id
         Uses self.id if target_id is None
         """
-        pass
+        q = f"DELETE FROM comment WHERE id={target_id};"
+        
+        cursor = conn.cursor()
+
+        cursor.execute(q)
+        conn.commit()
+
+        check = f"SELECT * FROM comment WHERE id = {target_id};"
+        cursor.execute(check)
+
+        return cursor.fetchone() is None
 
 
-    def edit_comment(self, target_id = None, content = None):
+
+    def edit_comment(self, target_id: int, content: str | None):
         """
         Edits a row in the comment table based on the target id with the content
         Uses self.id and/or self.comment if targets_id and/or content are None
         """
-        pass
+        raise NotImplementedError
     
 
 class LatLon:
-    def __init__ (self, lat, lon):
+    def __init__ (self, lat: float, lon: float):
         self.lat = lat
         self.lon = lon
 
 
 class Sighting:
     def __init__ (self):
-        self.id = None
-        self.title = None
-        self.desc = None
-        self.user = None
-        self.time = None
-        self.latlon = None
-        self.path = None
+        self.title: str = None
+        self.desc: str = None
+        self.user: int = None
+        self.time: int = None
+        self.latlon: LatLon = None
+        self.path: str = None
 
     
-    def get_by_id(self, entity, target_id = None):
+    def check_init(self):
+        """
+        Checks if all columns (except id) are not None
+        """
+        check = [self.title != None, self.desc != None, self.user != None, 
+                 self.time != None, self.latlon != None, self.path != None]
+
+        return all(check)
+
+    
+    def get_by_id(self, conn, entity: Entity, target_id: int):
         """
         Queries for sighting based on the target sighting id or user id.
-        Uses self values if target_id is None
         """
-        pass
+        q = "SELECT * FROM sighting WHERE "
+        if entity == Entity.SIGHTING:
+            q += f"id={target_id};"
+        elif entity == Entity.USER:
+            q += f"user={target_id};"
+        else:
+            raise NotImplementedError("Given entity type is not implemented for this function")
 
+        cursor = conn.cursor()
+        cursor.execute(q)
 
-    def delete(self, target_id = None):
+        return cursor.fetchall()
+    
+
+    def delete(self, conn, target_id: int):
         """
         Deletes target row within the sightings table
         Uses self values if target_id is None
         Returns True if success
         """
-        pass
+        q = f"DELETE FROM sighting WHERE id={target_id};"
+
+        cursor = conn.cursor()
+        cursor.execute(q)
+        conn.commit()
+
+        check = f"SELECT * FROM sighting WHERE id={target_id};"
+        cursor.execute(check)
+
+        return cursor.fetchone() is None
 
 
-    def edit(self, title = None, desc = None, target_id = None):
+    def edit(self, conn, target_id: int, title = None | str, desc = None | str):
         """
         Edits title and/or description of the target sighting
         Uses self.id if target_id is None.
         Edits nothing if no title or desc is given
         Returns True upon success
         """
-        pass
+        if title==None & desc==None:
+            raise ValueError("title and description cannot both be empty.")
+        q = "UPDATE sighting SET "
+        if title != None:
+            q += f"title={title}, "
+        if desc != None:
+            q += f"description={desc} "
+        q.rstrip(", ")
+
+        q += f"WHERE id={target_id};"
+
+        cursor = conn.cursor()
+        cursor.execute(q)
+        conn.commit()
+
+        check = f"SELECT * FROM sighting WHERE id={target_id};"
+        cursor.execute(check)
+        result = cursor.fetchall()
+
+        resultArray = []
+        resultArray.append(len(result) == 1)
+
+        if title != None:
+            resultArray.append(resultArray[0][1] == title)
+        
+        if desc != None:
+            resultArray.append(resultArray[0][2] == desc)
+        
+        return all(resultArray)
+        
 
 
-    def new(self):
+    def new_string(self):
+        """
+        Returns string to be placed inside the VALUES SQL for inserting new row into the sighting table
+        """
+        return f"{self.title}, {self.desc}, {self.user}, {self.time}, {self.time}, {self.latlon.lon}, {self.latlon.lat}, {self.path}"
+
+
+    def new(self, conn):
         """
         Inserts new row into the sighting and cell table
+        Returns the id of the created row
         """
-        pass
+        if self.check_init() is False:
+            raise AssertionError("sighting: No all column fields are initialised. Please check.")
+
+        q = f"INSERT INTO sighting (title, description, user, time, longitude, latitude, path) \
+            VALUES ({self.new_string()});"
+        
+        cursor = conn.cursor()
+        cursor.execute(q)
+        conn.commit()
+
+        check = f"SELECT id FROM sighting WHERE user={self.user} AND time={self.time};"
+
+        cursor.execute(check)
+
+        return cursor.fetchone()[0]
+
 
 
 class Grid:
@@ -213,11 +309,13 @@ class Grid:
         self.max_latlon = max_latlon
 
 
+
 class Cell:
     def __init__ (self, id, code, sighting):
         self.id = id
         self.code = code
         self.sighting = sighting
+
 
 
 class Connection:
@@ -233,139 +331,4 @@ class Connection:
             return sqlite3.connect(self.dbname)
         except Error as e:
             return e
-        
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-def get_filename(conn, id, ar_id):
-    """
-    Return filename if the ar_id and user matches
-    """
-    cursor = conn.cursor()
-    query = f"SELECT filename FROM AR WHERE user='{id}' AND ar_id='{ar_id}';"
-
-    cursor.execute(query)
-
-    return cursor.fetchone()
-
-
-def query_database(connection, query):
-    """
-    Query the database using the given connection and query string
-    """
-    cursor = connection.cursor()
-
-    cursor.execute(query)
-
-    return cursor.fetchall()
-
-
-def insert_database(connection, query):
-    """
-    Insert into the database using the given connection and query string
-    """
-    cursor = connection.cursor()
-
-    cursor.execute(query)
-    connection.commit()
-
-    id = cursor.lastrowid
-
-    if id != None:
-        return id
-    
-    return ValueError
-
-
-def check_status(connection, user, ar):
-    """
-    Checks recorded status of the uploaded video
-    user and ar_id must match
-    Returns status as [string] | None
-    """ 
-    q = f"SELECT status, filename FROM AR WHERE user={user} AND ar_id={ar};"
-
-    cursor = connection.cursor()
-    cursor.execute(q)
-
-    return cursor.fetchone()
-
-
-def change_status(connection, user, ar, status):
-    """
-    Change the recorded status of the uploaded video
-    user and ar_id must match
-    Returns status as [string] | None
-    """ 
-    q = f"UPDATE AR SET status='{status}' WHERE user={user} AND ar_id={ar};"
-
-    cursor = connection.cursor()
-    cursor.execute(q)
-
-
-def delete_database(connection, id):
-    """
-    Deletes from AR table based on the given ar_id
-    Returns True if deleted successfully
-    False otherwise
-    """
-    # Delete operation
-    query = f"DELETE FROM AR WHERE ar_id={id};"
-    cursor = connection.cursor()
-    cursor.execute(query)
-    connection.commit()
-
-    # confirm deletion
-    c_query = f"SELECT * FROM AR WHERE ar_id={id};"
-    cursor.execute(c_query)
-    if len(cursor.fetchall()) == 0:
-        return True
-
-    return False
-
-
-def setup_database(connection):
-    # function to setup database if it's not ready
-
-    cursor = connection.cursor()
-
-    test_query = "SELECT * FROM AR LIMIT 1;"
-
-    try:
-        query_database(connection, test_query)
-        print("Using existing database.")
-    
-    except Error as e:
-
-        setup_query = "CREATE TABLE AR ( \
-            AR_ID integer PRIMARY KEY AUTOINCREMENT, \
-            user integer, \
-            ar_name text, \
-            position text, \
-            filename text, \
-            region integer, \
-            geojson text, \
-            time text, \
-            description text, \
-            status text \
-            );"
-        
-        cursor.execute(setup_query)
-        connection.commit()
-
-        print("Database setup successful.")
-
         
