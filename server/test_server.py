@@ -29,6 +29,9 @@ testMovement = '{ something }'
 testPosition = '(10, 10, 10)'
 testDatabase = "pythonsqlite.db"
 testUser = 0
+testSighting = 0
+testCell = 0
+testGrid = 100
 
 server_ip_address = socket.gethostbyname(socket.gethostname())
 server_port = 8000
@@ -121,25 +124,23 @@ class TestServer(unittest.TestCase):
         Request to query the conversion status
         """
         # Insert a new test entry into the db
-        conn = database.create_connection(testDatabase)
-        q = f"INSERT INTO AR (user, status) \
-        VALUES ('{testUser}', 'processing');"
-        id = database.insert_database(conn, q)
+        conn = database.Connection(testDatabase).create_connection()
+        database.Cell.new(conn, testGrid, testSighting, database.ConversionStatus.READY)
 
         # Define url for test
-        url = f'http://{server_ip_address}:{server_port}/getStatus'
+        url = f'http://{server_ip_address}:{server_port}/getConversionStatus'
         
         # Make a request and get res back. Code 201
-        param = {'user': testUser, 'ar_id': id }
+        param = {'sighting_id': testSighting }
         response = requests.get(url, params=param)
 
         # Check results
         self.assertEqual(response.status_code, 200)
         result = json.loads(response.json())
-        self.assertEqual(result['status'], 'processing')
+        self.assertEqual(result['status'], database.ConversionStatus.READY.name)
 
         # Delete db entry
-        database.delete_database(conn, id)
+        database.Cell.delete(conn, testSighting)
         conn.close()
 
 

@@ -15,6 +15,13 @@ class Entity(Enum):
     USER = "user"
 
 
+class ConversionStatus(Enum):
+    RAW_IMAGE = 0
+    RAW_VIDEO = 1
+    CONVERTING = 2
+    READY = 3
+
+
 class User:
     def __init__(self, id: int, fname: str, lname: str, email: str, password: str):
         self.id = id
@@ -311,11 +318,68 @@ class Grid:
 
 
 class Cell:
-    def __init__ (self, id, code, sighting):
-        self.id = id
+    def __init__ (self, code = None | int, sighting = None | int):
         self.code = code
         self.sighting = sighting
 
+    
+    def check_status(self, conn, sighting_id: int):
+        """
+        return status of the given sighting
+        """
+        q = f"SELECT status FROM cell WHERE sighting_id={sighting_id};"
+
+        cursor = conn.cursor()
+        cursor.execute(q)
+
+        return cursor.fetchone()[0]
+    
+
+    def get_all_by_grid(self, conn, code: int):
+        """
+        Query the cell table by the grid code
+        """
+        q = f"SELECT * FROM sighting at s LEFT JOIN (SELECT * FROM cell WHERE code={code}) as c \
+            on s.id = c.sighting_id;"
+        
+        cursor = conn.cursor()
+        cursor.execute(q)
+
+        return cursor.fetchall()
+    
+
+    def delete(self, conn, sighting: int):
+        """
+        delete cell entry based on the sighting id
+        """
+        q = f"DELETE FROM cell WHERE sighting_id={sighting};"
+
+        cursor = conn.cursor()
+        cursor.execute(q)
+        conn.commit()
+
+        check = f"SELECT id FROM cell WHERE sighting_id={sighting};"
+        cursor.execute(check)
+
+        return cursor.fetchone() is None
+    
+    
+    def new(self, conn, code:int, sighting:int, status: ConversionStatus):
+        """
+        Insert new entry into the cell table.
+        return the cell id of the created
+        """
+        q = f"INSERT INTO cell (code, sighting_id, status) \
+            VALUES ({code}, {sighting}, {status.value});"
+        
+        cursor = conn.cursor()
+        cursor.execute(q)
+        conn.commit()
+
+        check = f"SELECT id FROM cell WHERE code={code} AND sighting_id={sighting};"
+        cursor.execute(check)
+
+        return cursor.fetchone()[0]
 
 
 class Connection:

@@ -7,6 +7,7 @@ Notes:
 import sqlite3
 import datetime
 from time import mktime
+from database import ConversionStatus
 
 DB_NAME = "NZORNIS"
 GRID_SPLIT = 5 #how many cells in both xy 
@@ -52,6 +53,7 @@ def initialise_database(database_name):
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             code INTEGER NOT NULL,
             sighting_id INTEGER NOT NULL,
+            status INTEGER,
             FOREIGN KEY(sighting_id) REFERENCES sighting(id)
             FOREIGN KEY(code) REFERENCES grid(id)
         );
@@ -158,7 +160,7 @@ def insert_test_sightings(database_name):
     grid_ids = []
 
     # update the cell table
-    query_2 = "INSERT INTO cell (code, sighting_id) \
+    query_2 = "INSERT INTO cell (code, sighting_id, status) \
         VALUES "
     
     # Uncomment below for generating query to query for the grid id per test sighting entry
@@ -174,11 +176,11 @@ def insert_test_sightings(database_name):
     #     cursor.execute(c_query)
     #     grid_ids.append((i, cursor.fetchone()[0]))
     # for s, g in grid_ids:
-    #     query_2 += f"({g}, {s}), "
+    #     query_2 += f"({g}, {s}, 3), "
 
     # comment out below if using dynamic generation
     for i in range(1,6):
-        query_2 += f"(13, {i}),"
+        query_2 += f"(13, {i}, 3),"
     
     query_2 = query_2.rstrip(", ")
     query_2 += ";"

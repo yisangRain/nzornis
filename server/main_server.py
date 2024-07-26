@@ -36,22 +36,27 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
         path = parsed_url.path
         params = parse_qs(parsed_url.query)
         
-        # GET ar conversion status
-        if path == '/getStatus':
-            # set db connection up
-            conn = database.create_connection(DATABASE)
-            status, _ = database.check_status(conn, params['user'][0], params['ar_id'][0])
+        # Initiate connection to the DB
+        connection = database.Connection(DATABASE)
+        conn = connection.create_connection()
+
+        # GET media conversion status
+        if path == '/getConversionStatus':
+            # query the database
+            cell = database.Cell()
+            status = database.ConversionStatus(cell.check_status(conn, params['sighting_id'][0])).name
+
             conn.close()
 
             # send response back
-            json_data = json.dumps({'ar_id': params['ar_id'][0], 'status': status})
+            json_data = json.dumps({'sighting_id': params['sighting_id'][0], 'status': status})
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
             self.wfile.write(json.dumps(json_data).encode())
           
         # GET user's video
-        elif path == '/getUserVideo':
+        elif path == '/getVideo':
             # set db up
             conn = database.create_connection(DATABASE)
             [(filename)] = database.get_filename(conn, params['user'][0], params['ar_id'][0])
