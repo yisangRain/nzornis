@@ -55,13 +55,13 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps(json_data).encode())
           
-        # GET user's video
-        elif path == '/getVideo':
-            # set db up
-            conn = database.create_connection(DATABASE)
-            [(filename)] = database.get_filename(conn, params['user'][0], params['ar_id'][0])
-            
+        # GET media by media id
+        elif path == '/getMediaByMediaId':
+            #query file path
+            result = database.Sighting.get_by_id(conn, database.Entity.SIGHTING, params['sighting_id'][0])
+            filename = result[0][-1]
             filepath = f"server/converted/{filename}"
+
             if os.path.exists(filepath):
                 # set up response
                 self.send_response(200)
@@ -78,6 +78,17 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
                 self.end_headers()
                 response = {"status": "File not found"}
                 self.wfile.write(bytes(json.dumps(response), 'utf-8'))
+
+        # Get user's media
+        elif path == "/gallery":
+            result = database.Sighting.get_by_id(conn, database.Entity.USER, params['user_id'][0])
+            json_data = database.Sighting.toJson(result)
+
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json_data)
+
         
         # default 
         else:

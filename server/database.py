@@ -5,6 +5,7 @@
 import sqlite3
 from sqlite3 import Error
 from enum import Enum
+import json
 
 """
 DAOs
@@ -306,7 +307,23 @@ class Sighting:
         cursor.execute(check)
 
         return cursor.fetchone()[0]
+    
 
+    def toJson(self, results):
+        """Converts given list of db results into json"""
+        json_data = {}
+        for i in range(results):
+            item = results[i]
+            data = {'id': item[0],
+                    'title': item[1],
+                    'description': item[2],
+                    'user': item[3],
+                    'time': item[4],
+                    'longitude': item[5],
+                    'latitude': item[6],
+                    'path': item[7]}
+            json_data[i] = data
+        return json.dumps(json_data).encode()
 
 
 class Grid:
@@ -363,7 +380,7 @@ class Cell:
 
         return cursor.fetchone() is None
     
-    
+
     def new(self, conn, code:int, sighting:int, status: ConversionStatus):
         """
         Insert new entry into the cell table.
