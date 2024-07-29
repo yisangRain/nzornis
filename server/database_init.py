@@ -7,9 +7,9 @@ Notes:
 import sqlite3
 import datetime
 from time import mktime
-from database import ConversionStatus
+import database
 
-DB_NAME = "NZORNIS"
+DB_NAME = "NZORNIS.db"
 GRID_SPLIT = 5 #how many cells in both xy 
 #[(top left), (bottom right)] lat = y, lon = x
 BOUNDARY = [(-43.230, 172.138), (-43.905, 173.161) ]
@@ -17,18 +17,20 @@ BOUNDARY = [(-43.230, 172.138), (-43.905, 173.161) ]
 
 def initialise_database(database_name):
     # Connect to the database (or create it if it doesn't exist)
+    print(database_name)
     conn = sqlite3.connect(database_name)
     cursor = conn.cursor()
 
     # Query to initialise tables
-    query_tables = """
+    query_tables = ["""
         CREATE TABLE IF NOT EXISTS user (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             first_name TEXT NOT NULL,
             last_name TEXT NOT NULL,
             email TEXT NOT NULL,
             password TEXT NOT NULL
-        );
+        );""",
+        """
         CREATE TABLE IF NOT EXISTS sighting (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             title TEXT NOT NULL,
@@ -39,7 +41,8 @@ def initialise_database(database_name):
             latitude REAL NOT NULL,
             path TEXT NOT NULL,
             FOREIGN KEY(user) REFERENCES user(id)
-        );
+        );""",
+        """
         CREATE TABLE IF NOT EXISTS comment (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user INTEGER NOT NULL,
@@ -48,15 +51,17 @@ def initialise_database(database_name):
             sighting_id INTEGER NOT NULL,
             FOREIGN KEY(user) REFERENCES user(id),
             FOREIGN KEY(sighting_id) REFERENCES sighting(id)
-        );
+        );""",
+        """
         CREATE TABLE IF NOT EXISTS cell (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             code INTEGER NOT NULL,
             sighting_id INTEGER NOT NULL,
             status INTEGER,
-            FOREIGN KEY(sighting_id) REFERENCES sighting(id)
+            FOREIGN KEY(sighting_id) REFERENCES sighting(id),
             FOREIGN KEY(code) REFERENCES grid(id)
-        );
+        );""",
+        """
         CREATE TABLE IF NOT EXISTS grid (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             min_latitude REAL NOT NULL,
@@ -64,11 +69,14 @@ def initialise_database(database_name):
             max_latitude REAL NOT NULL,
             max_longitude REAL NOT NULL
         );
-    """
+    """]
     # NB: time to be saved as UNIX integer as SQLite does not support datetime
     # REAL is float in SQLite
 
-    cursor.execute(query_tables)
+    for item in query_tables:
+        cursor.execute(item)
+    
+    print("Database initialisation complete")
 
     # Commit the changes
     conn.commit()
@@ -191,10 +199,10 @@ def insert_test_sightings(database_name):
     conn.close()
 
 
-def initialise():
-    initialise_database(DB_NAME)
-    insert_test_accounts(DB_NAME)
-    insert_test_grid(DB_NAME, BOUNDARY)
-    insert_test_sightings(DB_NAME)
+def initialise_for_test(testDB):
+    initialise_database(testDB)
+    insert_test_accounts(testDB)
+    insert_test_grid(testDB, BOUNDARY)
+    insert_test_sightings(testDB)
     print("Database initialisation successful.")
 

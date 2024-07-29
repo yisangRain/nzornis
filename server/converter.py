@@ -3,6 +3,7 @@ import numpy as np
 from vidgear.gears import WriteGear
 from vidgear.gears.stabilizer import Stabilizer
 import time
+import database
 
 def grabCutter(frame, rect):
     """
@@ -21,6 +22,7 @@ def grabCutter(frame, rect):
     img_seg[(mask2 == 0)] = [0, 255, 0]
 
     return img_seg
+
 
 
 def grabcut(source, output_name):
@@ -55,7 +57,7 @@ def grabcut(source, output_name):
             break
         if (i > 120): #temp limiter
             break
-        processed = grabCutter(frame, box)
+        processed = grabCutter(frame.resize((500, 500)), box)
 
         writer.write(processed)
         
@@ -68,30 +70,45 @@ def grabcut(source, output_name):
     return 0
 
 
-
-def to_AR(filename, conn, id):
+def img_to_AR(conn, id):
     """
-    Wrapper function for conversion
+    Wrapper function for cutting an image file for AR 
     """
+    s = database.Sighting()
+    filename = s.get_by_id(conn, database.Entity.SIGHTING, id)[0][-1]
     input_name = "server/received/" + filename
     output_name = "server/converted/" + filename
 
-    c = conn.cursor()
-    query = None
+    box = (10, 10, 480, 480) 
+    img = cv2.imread(input_name).resize((500,500))
+
+    processed = grabCutter(img, box)
+    cv2.imwrite(output_name, processed)
+
+    c = database.Cell()
+    c.update_status(conn, id, database.ConversionStatus.READY)
+
+
+
+def vid_to_AR(conn, id):
+    """
+    Wrapper function for conversion
+    """
+    s = database.Sighting()
+    filename = s.get_by_id(conn, database.Entity.SIGHTING, id)[0][-1]
+    input_name = "server/received/" + filename
+    output_name = "server/converted/" + filename
+
+    c = database.Cell()
 
     result = grabcut(input_name, output_name)
 
     if result == 0:
-        query = f"UPDATE AR SET filename = '{output_name}', status='converted' WHERE ar_id = {id};"
+        c.update_status(conn, id, database.ConversionStatus.READY)
 
     elif result == 1:
-        query = f"UPDATE AR SET filename = 'None', status='File Error' WHERE ar_id = {id};"
+        raise ValueError('Error converting file')
 
-    c.execute(query)
-    conn.commit()
-
-
-grabcut("server/testAssets/blob.mp4", "testBlob.mp4")
 
 
 

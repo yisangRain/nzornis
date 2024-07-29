@@ -6,10 +6,13 @@ import sqlite3
 from sqlite3 import Error
 from enum import Enum
 import json
+from collections import namedtuple
 
 """
 DAOs
 """
+New_Sighting = namedtuple('NewSighting', ['title', 'desc', 'user', 'time', 'lon','lat', 'path'])
+
 class Entity(Enum):
     COMMENT = "comment"
     SIGHTING = "sighting"
@@ -194,6 +197,15 @@ class Sighting:
         self.latlon: LatLon = None
         self.path: str = None
 
+
+    def __init__(self, info: New_Sighting):
+        self.title = info.title
+        self.desc = info.desc
+        self.user = info.user
+        self.time = info.time
+        self.latlon = LatLon(info.lat, info.lon)
+        self.path = info.path
+
     
     def check_init(self):
         """
@@ -284,7 +296,8 @@ class Sighting:
         """
         Returns string to be placed inside the VALUES SQL for inserting new row into the sighting table
         """
-        return f"{self.title}, {self.desc}, {self.user}, {self.time}, {self.time}, {self.latlon.lon}, {self.latlon.lat}, {self.path}"
+        return f'"{self.title}", "{self.desc}", {self.user}, {self.time}, \
+            {self.latlon.lon}, {self.latlon.lat}, "{self.path}"'
 
 
     def new(self, conn):
@@ -293,11 +306,11 @@ class Sighting:
         Returns the id of the created row
         """
         if self.check_init() is False:
-            raise AssertionError("sighting: No all column fields are initialised. Please check.")
+            raise AssertionError("sighting: Not all column fields are initialised. Please check.")
 
         q = f"INSERT INTO sighting (title, description, user, time, longitude, latitude, path) \
             VALUES ({self.new_string()});"
-        
+
         cursor = conn.cursor()
         cursor.execute(q)
         conn.commit()
@@ -321,7 +334,7 @@ class Sighting:
                     'time': item[4],
                     'longitude': item[5],
                     'latitude': item[6],
-                    'path': item[7]}
+                    'type': item[-1]}
             json_data[i] = data
         return json.dumps(json_data).encode()
 
@@ -349,7 +362,18 @@ class Cell:
         cursor = conn.cursor()
         cursor.execute(q)
 
-        return cursor.fetchone()[0]
+        return ConversionStatus(cursor.fetchone()[0])
+    
+
+    def update_status(self, conn, sighting_id: int, status: ConversionStatus):
+        """
+        update status of the given sighting
+        """
+        q = f"UPDATE cell SET status={status.value} WHERE sighting_id={sighting_id};"
+
+        cursor = conn.cursor()
+        cursor.execute(q)
+
     
 
     def get_all_by_grid(self, conn, code: int):
@@ -403,13 +427,13 @@ class Connection:
     """
     Database handler class
     """
-    def __init__ (self, dbname):
-        self.dbname = dbname
-    
 
-    def create_connection (self):
+    def __init__(self):
+        pass
+
+    def create_connection (self, dbname):
         try: 
-            return sqlite3.connect(self.dbname)
+            return sqlite3.connect(dbname)
         except Error as e:
             return e
         

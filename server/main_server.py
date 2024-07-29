@@ -9,11 +9,16 @@ import json
 import converter
 import database
 import os
+import magic
+import database_init
+
+#note: use flask?
 
 ############################################################################
 # Global variables 
 
-DATABASE = "pythonsqlite.db"
+# DATABASE = "pythonsqlite.db"
+DATABASE = "test.db"
 
 
 ############################################################################
@@ -56,16 +61,27 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(json_data).encode())
           
         # GET media by media id
-        elif path == '/getMediaByMediaId':
+        elif path == '/getMedia':
             #query file path
             result = database.Sighting.get_by_id(conn, database.Entity.SIGHTING, params['sighting_id'][0])
             filename = result[0][-1]
             filepath = f"server/converted/{filename}"
 
-            if os.path.exists(filepath):
+            mime = None
+
+            if os.path.exists(filepath): # determine mime type
+                if filename.lower().endswith('.png'):
+                    mime = 'image/png'
+                elif filename.lower().endswith('.jpg') or filename.lower().endswith('.jpeg'):
+                    mime = 'image/jpeg'
+                elif filename.lower().endswith('.mp3'):
+                    mime = 'audio/mpeg'
+                else:
+                    mime = 'application/octet-stream'
+                    
                 # set up response
                 self.send_response(200)
-                self.send_header('Content-Type', 'application/octet-stream')
+                self.send_header('Content-Type', mime)
                 self.send_header('Content-Disposition', f'attachment; filename="{os.path.basename(filepath)}"')
                 self.end_headers()
                 
@@ -98,6 +114,7 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
             response = {"status": "Bad Request", "message": "Invalid request"}
             self.wfile.write(bytes(json.dumps(response), 'utf-8'))
 
+        conn.close()
 
 
     def do_POST(self):
@@ -108,40 +125,45 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
     
         content_type, pdict = cgi.parse_header(self.headers['Content-Type'])
 
-        id = None
-
-        # handle video upload
-        # client: param = (user: userId(integer)) body = (file: videofile(mp4/H.264), json: {location: PointGeoJSON
-        # movement, startTime, position})
+        # handle media upload
+        # client: param = (user: userId(integer)) body = (file: videofile(mp4/H.264), 
+        # json: {title, desc, time, lon, lat})
         if (path == '/upload') and (content_type.startswith('multipart/form-data')):
-            filename = f"user{params['user'][0]}_{int(time.time())}.mp4"
+
             pdict['boundary'] = bytes(pdict['boundary'], "utf-8")
             pdict['CONTENT-LENGTH'] = int(self.headers['Content-Length'])
 
             fields = cgi.parse_multipart(self.rfile, pdict)
 
             json_data = json.loads(fields.get('json')[0])
-            video_data = fields.get('file')[0]
+            media_data = fields['file'][0]
+            mime = magic.Magic(mime=True).from_buffer(media_data)
+
+            filename = filename_generator(params['user'][0], mime)
             
             try:
                 # Save the video into the server
              
                 with open(f'server/received/{filename}', 'wb') as f:
-                    f.write(video_data)
-                    print(f"Saved video file {filename}")
+                    f.write(media_data)
+                    print(f"Saved media file {filename}")
 
                 # Insert other information into the DB
-                conn = database.create_connection(DATABASE)
-                query = f"INSERT into AR (user, filename, status, geojson, time, position) \
-                    VALUES ('{params['user'][0]}', '{filename}', 'raw', '{json_data.get('location')}', '{json_data.get('startTime')}', '{json_data.get('position')}');"
-                # Receive the database row id
-                id = database.insert_database(conn, query)
+                entry_info = database.New_Sighting(json_data.get('title'), json_data.get('desc'), params['user'][0],
+                                                   json_data.get('time'), json_data.get('lon'), json_data.get('lat'), filename)
+                
+                conn = database.Connection().create_connection(dbname=DATABASE)
+                entry = database.Sighting(entry_info)
+                entry_id = entry.new(conn) # row id number of the uploaded data
+                conn.close()
 
                 self.send_response(201, "Video successfully uploaded")
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
                 # send the entry id and filename back
-                self.wfile.write(json.dumps({"id": id, "filename": filename}).encode())
+                self.wfile.write(json.dumps({"id": entry_id, "filename": filename}).encode())
+
+                conn.close()
           
             except Error as e:
                 print(e)
@@ -150,6 +172,7 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
         # default 
         else:
             self.send_response(404) # nothing to send
+        
     
 
     def do_PATCH(self):
@@ -159,30 +182,27 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
         params = parse_qs(parsed_url.query)
 
         # PATCH AR position
-        if path == '/initCon':
+        if path == '/initiateConversion':
             ar_id = params['ar_id'][0]
             user = params['user'][0]
 
-            conn = database.create_connection(DATABASE)
-            result = database.check_status(conn, user, ar_id)
+            conn = database.Connection.create_connection(DATABASE)
+            result = database.Cell.check_status(conn, ar_id)
 
-            if result:
-                status, filename = result
+            if result == database.ConversionStatus.READY:
+                self.send_response(200, 'Ready')
             
-                if status == 'raw':
-                    database.change_status(conn, user, ar_id, 'processing')
-                    self.send_response(202, "Initiating")
-                    # convert
-                    converter.to_AR(filename, conn, ar_id)
+            elif result == database.ConversionStatus.CONVERTING:
+                self.send_response(200, 'Converting now')
+            
+            elif result == database.ConversionStatus.RAW_IMAGE:
+                converter.img_to_AR(conn, ar_id)
+                self.send_response(200, "Processing")
 
-                elif status == 'processing':
-                    # return current status as response
-                    self.send_response(200, "Processing")
-
-                elif status == 'converted':
-                    # return current status as response
-                    self.send_response(200, "Ready")
-           
+            elif result == database.ConversionStatus.RAW_VIDEO:
+                converter.vid_to_AR(conn, ar_id)
+                self.send_response(200, "Processing")
+            
             else:
                 # return 503 error or similar
                 self.send_response(500, "Internal server error")
@@ -200,6 +220,26 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
             self.send_response(404) # nothing to send
 
 
+########################################################################
+# Helper functions
+#######################################################################
+
+def filename_generator(user_id, mime):
+    now = int(time.time())
+
+    if mime == 'image/png':
+        return f'{user_id}_{now}.png'
+    elif mime == 'image/jpeg':
+        return f'{user_id}_{now}.jpeg'
+    elif mime == 'audio/mpeg':
+        return f'{user_id}_{now}.mp3'
+    elif mime == 'application/octet-stream' or mime == 'video/mp4':
+        return f'{user_id}_{now}.mp4'
+    else:
+        raise NotImplementedError('Received file type not configured.')
+
+
+
 ######################################################################
 # Main
 ######################################################################
@@ -210,9 +250,7 @@ def run_server():
     global http_server 
 
     # Initialise DB if it's not setup 
-    connection = database.create_connection(DATABASE)
-    database.setup_database(connection)
-    connection.close()
+    database_init.initialise_database(DATABASE)
 
     # set port
     server_port = 8000
