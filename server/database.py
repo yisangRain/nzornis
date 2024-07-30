@@ -189,22 +189,23 @@ class LatLon:
 
 
 class Sighting:
-    def __init__ (self):
-        self.title: str = None
-        self.desc: str = None
-        self.user: int = None
-        self.time: int = None
-        self.latlon: LatLon = None
-        self.path: str = None
+    
+    def __init__(self, info: New_Sighting = None):
+        self.title = None
+        self.desc = None
+        self.user = None
+        self.time = None
+        self.latlon = None
+        self.path = None
 
-
-    def __init__(self, info: New_Sighting):
-        self.title = info.title
-        self.desc = info.desc
-        self.user = info.user
-        self.time = info.time
-        self.latlon = LatLon(info.lat, info.lon)
-        self.path = info.path
+        if info != None:
+            self.title = info.title
+            self.desc = info.desc
+            self.user = info.user
+            self.time = info.time
+            self.latlon = LatLon(info.lat, info.lon)
+            self.path = info.path
+        
 
     
     def check_init(self):
@@ -313,13 +314,24 @@ class Sighting:
 
         cursor = conn.cursor()
         cursor.execute(q)
-        conn.commit()
 
         check = f"SELECT id FROM sighting WHERE user={self.user} AND time={self.time};"
 
         cursor.execute(check)
+        s = cursor.fetchone()[0]
 
-        return cursor.fetchone()[0]
+        status = None
+        if self.path.endswith(".mp4"):
+            status = ConversionStatus.RAW_VIDEO
+        else:
+            status = ConversionStatus.RAW_IMAGE
+
+        g = Grid().getGridCode(conn, self.latlon)
+        Cell().new(conn, g, s, status)
+
+        conn.commit()
+
+        return s
     
 
     def toJson(self, results):
@@ -340,10 +352,20 @@ class Sighting:
 
 
 class Grid:
-    def __init__ (self, id, min_latlon, max_latlon):
-        self.id = id
-        self.min_latlon = min_latlon
-        self.max_latlon = max_latlon
+
+    def __init__(self):
+        pass
+
+    def getGridCode(self, conn, latlon: LatLon):
+        q = f"SELECT id FROM grid WHERE min_latitude >= {latlon.lat} AND min_longitude <= {latlon.lon}\
+             AND max_latitude < {latlon.lat} AND max_longitude > {latlon.lon};"
+        
+        cursor = conn.cursor()
+        cursor.execute(q)
+
+        return cursor.fetchone()[0]
+
+
 
 
 
@@ -351,8 +373,7 @@ class Cell:
     def __init__ (self, code = None | int, sighting = None | int):
         self.code = code
         self.sighting = sighting
-
-    
+   
     def check_status(self, conn, sighting_id: int):
         """
         return status of the given sighting
@@ -436,4 +457,12 @@ class Connection:
             return sqlite3.connect(dbname)
         except Error as e:
             return e
+        
+    def magic(self, conn, q):
+        """
+        Magic query for dev purposes.
+        """
+        cursor = conn.cursor()
+        cursor.execute(q)
+        conn.commit()
         

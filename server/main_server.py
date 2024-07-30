@@ -42,8 +42,7 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
         params = parse_qs(parsed_url.query)
         
         # Initiate connection to the DB
-        connection = database.Connection(DATABASE)
-        conn = connection.create_connection()
+        conn = database.Connection().create_connection(DATABASE)
 
         # GET media conversion status
         if path == '/getConversionStatus':
@@ -63,9 +62,16 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
         # GET media by media id
         elif path == '/getMedia':
             #query file path
-            result = database.Sighting.get_by_id(conn, database.Entity.SIGHTING, params['sighting_id'][0])
+            s = database.Sighting()
+            result = database.Sighting().get_by_id(conn, database.Entity.SIGHTING, params['sighting_id'][0])
             filename = result[0][-1]
-            filepath = f"server/converted/{filename}"
+            c = database.Cell()
+            status = c.check_status(conn, params['sighting_id'][0])
+            filepath = None
+            if status == database.ConversionStatus.READY:
+                filepath = f"server/converted/{filename}"
+            else:
+                filepath = f"server/received/{filename}"
 
             mime = None
 
@@ -183,11 +189,10 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
 
         # PATCH AR position
         if path == '/initiateConversion':
-            ar_id = params['ar_id'][0]
-            user = params['user'][0]
+            s_id = params['sighting_id'][0]
 
-            conn = database.Connection.create_connection(DATABASE)
-            result = database.Cell.check_status(conn, ar_id)
+            conn = database.Connection().create_connection(DATABASE)
+            result = database.Cell().check_status(conn, s_id)
 
             if result == database.ConversionStatus.READY:
                 self.send_response(200, 'Ready')
@@ -196,11 +201,11 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
                 self.send_response(200, 'Converting now')
             
             elif result == database.ConversionStatus.RAW_IMAGE:
-                converter.img_to_AR(conn, ar_id)
+                converter.img_to_AR(conn, s_id)
                 self.send_response(200, "Processing")
 
             elif result == database.ConversionStatus.RAW_VIDEO:
-                converter.vid_to_AR(conn, ar_id)
+                converter.vid_to_AR(conn, s_id)
                 self.send_response(200, "Processing")
             
             else:

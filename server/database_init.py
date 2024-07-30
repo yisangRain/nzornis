@@ -130,7 +130,6 @@ def insert_test_grid(database_name, gps_bounds):
 
     query = query.rstrip(", ")
     query += ";"
-    print(query) 
 
     conn = sqlite3.connect(database_name)
     cursor = conn.cursor()

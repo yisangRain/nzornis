@@ -26,6 +26,7 @@ def grabCutter(frame, rect):
 
 
 def grabcut(source, output_name):
+
     start = time.time()
 
     # note: avc1 is h264
@@ -57,7 +58,8 @@ def grabcut(source, output_name):
             break
         if (i > 120): #temp limiter
             break
-        processed = grabCutter(frame.resize((500, 500)), box)
+    
+        processed = grabCutter(cv2.resize(frame, (500,500)), box)
 
         writer.write(processed)
         
@@ -80,7 +82,7 @@ def img_to_AR(conn, id):
     output_name = "server/converted/" + filename
 
     box = (10, 10, 480, 480) 
-    img = cv2.imread(input_name).resize((500,500))
+    img = cv2.resize(cv2.imread(input_name), (500,500))
 
     processed = grabCutter(img, box)
     cv2.imwrite(output_name, processed)
@@ -109,11 +111,6 @@ def vid_to_AR(conn, id):
     elif result == 1:
         raise ValueError('Error converting file')
 
-
-
-
-
- 
 
 
 
