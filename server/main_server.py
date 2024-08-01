@@ -198,15 +198,15 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
                 self.send_response(200, 'Ready')
             
             elif result == database.ConversionStatus.CONVERTING:
-                self.send_response(200, 'Converting now')
+                self.send_response(200, 'Converting')
             
             elif result == database.ConversionStatus.RAW_IMAGE:
                 converter.img_to_AR(conn, s_id)
-                self.send_response(200, "Processing")
+                self.send_response(200, "Initiating")
 
             elif result == database.ConversionStatus.RAW_VIDEO:
                 converter.vid_to_AR(conn, s_id)
-                self.send_response(200, "Processing")
+                self.send_response(200, "Initiating")
             
             else:
                 # return 503 error or similar

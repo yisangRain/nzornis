@@ -69,7 +69,6 @@
     <Compile Include="Assets\Scripts\PlayerLocationController.cs" />
     <Compile Include="Assets\Scripts\Subclasses\StatusJson.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Subclasses\GeoJson.cs" />
     <Compile Include="Assets\Scripts\FilmingManager.cs" />
     <Compile Include="Assets\Scripts\Subclasses\LoginInfo.cs" />
     <Compile Include="Assets\Scripts\Unused\opencvCamManager.cs" />

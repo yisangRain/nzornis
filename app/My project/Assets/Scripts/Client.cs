@@ -11,10 +11,11 @@ using Assets.Scripts.Subclasses;
 public interface IHttpClient
 {
     public void SetClient(HttpClient httpClient);
+    Task<string> GetStatus(int sightingId);
+    Task<string> GetMedia(int sightingId);
+    Task<string> GetGallery();
     Task<string> PostUpload(string filePath, UploadObject jsonData);
-    Task<string> GetStatus(int arId);
-    Task<string> GetUserVideo(int arId);
-    Task<string> PatchInitConversion(int arId);
+    Task<string> PatchInitConversion(int sightingId);
 
     public void CloseClient();
 }
@@ -34,6 +35,67 @@ public class Client : IHttpClient
     {
         myClient = httpClient;
     }
+
+    public async Task<string> GetStatus(int sightingId)
+    {
+        var parameters = HttpUtility.ParseQueryString(string.Empty);
+        parameters["sighting_id"] = sightingId.ToString();
+
+        string apiUrl = $"{devUrl}/getConversionStatus?{parameters}";
+
+        // Request
+        var request = new HttpRequestMessage(HttpMethod.Get, apiUrl);
+
+        HttpResponseMessage response = await myClient.SendAsync(request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            string responseContent = await response.Content.ReadAsStringAsync();
+
+            //Process response data
+            return JsonConvert.DeserializeObject<StatusJson>(responseContent).status;
+        }
+
+        return "Error: Status not received.";
+    }
+
+    public async Task<string> GetMedia(int sightingId)
+    {
+        var parameters = HttpUtility.ParseQueryString(string.Empty);
+        parameters["sighting_id"] = sightingId.ToString();
+
+        string apiUrl = $"{devUrl}/getMedia?{parameters}";
+
+        string savePath = $"{Application.persistentDataPath}/sighting_{sightingId}.mp4";
+
+        // Request
+        var request = new HttpRequestMessage(HttpMethod.Get, apiUrl);
+
+        try
+        {
+            HttpResponseMessage response = await myClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            using (Stream contentStream = await response.Content.ReadAsStreamAsync(),
+                fileStream = new FileStream(savePath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+            {
+                await contentStream.CopyToAsync(fileStream);
+            }
+            Debug.Log("Download and save successful.");
+            return savePath;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"An error occurred: {e.Message}");
+            return "Error";
+        }
+    }
+
+    public Task<string> GetGallery()
+    {
+        throw new NotImplementedException();
+    }
+
 
     public async Task<string> PostUpload(string filePath, UploadObject jsonData)
     {
@@ -61,71 +123,11 @@ public class Client : IHttpClient
         return "Error: Error posting video.";
     }
 
-    public async Task<string> GetStatus(int arId)
+    public async Task<string> PatchInitConversion(int sightingId)
     {
         var parameters = HttpUtility.ParseQueryString(string.Empty);
         parameters["user"] = player.GetId();
-        parameters["ar_id"] = arId.ToString();
-
-        string apiUrl = $"{devUrl}/getStatus?{parameters}";
-
-        // Request
-        var request = new HttpRequestMessage(HttpMethod.Get, apiUrl);
-
-        HttpResponseMessage response = await myClient.SendAsync(request);
-
-        if (response.IsSuccessStatusCode)
-        {
-            string responseContent = await response.Content.ReadAsStringAsync();
-
-            //Process response data
-            return JsonConvert.DeserializeObject<StatusJson>(responseContent).status;
-        }
-
-        return "Error: Status not received.";
-    }
-
-    public async Task<string> GetUserVideo(int arId)
-    {
-        var parameters = HttpUtility.ParseQueryString(string.Empty);
-        parameters["user"] = player.GetId();
-        parameters["ar_id"] = arId.ToString();
-
-        string apiUrl = $"{devUrl}/getUserVideo?{parameters}";
-
-        string savePath = $"{Application.persistentDataPath}/ar_{arId}.mp4";
-
-        // Request
-        var request = new HttpRequestMessage(HttpMethod.Get, apiUrl);
-
-        try
-        {
-            HttpResponseMessage response = await myClient.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-
-            using (Stream contentStream = await response.Content.ReadAsStreamAsync(),
-                fileStream = new FileStream(savePath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
-            {
-                await contentStream.CopyToAsync(fileStream);
-            }
-            Debug.Log("Download and save successful.");
-            return savePath;
-        } 
-        catch (Exception e)
-        {
-            Debug.LogError($"An error occurred: {e.Message}");
-            return "Error";
-        }
-
-    }
-
-    
-
-    public async Task<string> PatchInitConversion(int arId)
-    {
-        var parameters = HttpUtility.ParseQueryString(string.Empty);
-        parameters["user"] = player.GetId();
-        parameters["ar_id"] = arId.ToString();
+        parameters["ar_id"] = sightingId.ToString();
 
         string apiUrl = $"{devUrl}/initCon?{parameters}";
 
@@ -170,6 +172,8 @@ public class Client : IHttpClient
     {
         myClient.Dispose();
     }
+
+
 }
 
 
