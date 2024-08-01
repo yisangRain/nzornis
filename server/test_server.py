@@ -51,123 +51,123 @@ class TestServer(unittest.TestCase):
         time.sleep(1)
 
 
-    # def test_GET_CheckConversionStatus(self):
-    #     """
-    #     Testing initiating conversion and conversion.
-    #     Difficult to separate the two due to server and test running on
-    #     a single terminal
-    #     """
+    def test_GET_CheckConversionStatus(self):
+        """
+        Testing initiating conversion and conversion.
+        Difficult to separate the two due to server and test running on
+        a single terminal
+        """
 
-    #     # insert test data entry into the database
-    #     conn = database.Connection().create_connection(test_db)
-    #     s = database.Sighting(testSighting)
-    #     insert_test_grid(test_db, BOUNDARY)
-    #     s_id = s.new(conn)
-    #     conn.close()
+        # insert test data entry into the database
+        conn = database.Connection().create_connection(test_db)
+        s = database.Sighting(testSighting)
+        insert_test_grid(test_db, BOUNDARY)
+        s_id = s.new(conn)
+        conn.close()
 
-    #     # Define the URL of the server
-    #     url = f'http://{server_ip_address}:{server_port}/getConversionStatus'
+        # Define the URL of the server
+        url = f'http://{server_ip_address}:{server_port}/getConversionStatus'
 
-    #     # send patch request
-    #     params = {'sighting_id': s_id}
-    #     response = requests.get(url, params=params)
+        # send patch request
+        params = {'sighting_id': s_id}
+        response = requests.get(url, params=params)
 
-    #     # receive status back OK 200
-    #     self.assertEqual(response.status_code, 200)
+        # receive status back OK 200
+        self.assertEqual(response.status_code, 200)
 
-    #     # Check results
-    #     self.assertEqual(response.status_code, 200)
-    #     result = json.loads(response.json())
-    #     self.assertEqual(result['status'], database.ConversionStatus.RAW_VIDEO.name)
+        # Check results
+        self.assertEqual(response.status_code, 200)
+        result = json.loads(response.json())
+        self.assertEqual(result['status'], database.ConversionStatus.RAW_VIDEO.name)
 
-    #     # Delete db entry
-    #     conn = database.Connection().create_connection(test_db)
-    #     database.Cell().delete(conn, s_id)
-    #     conn.close()
+        # Delete db entry
+        conn = database.Connection().create_connection(test_db)
+        database.Cell().delete(conn, s_id)
+        conn.close()
 
 
-    # def test_GET_Video(self):
-    #     """
-    #     Test GET request for video
-    #     """
-    #     # Create entry into the db
-    #     conn = database.Connection().create_connection(test_db)
-    #     s = database.Sighting(testSighting)
-    #     insert_test_grid(test_db, BOUNDARY)
-    #     s_id = s.new(conn)
-    #     conn.close()
+    def test_GET_Video(self):
+        """
+        Test GET request for video
+        """
+        # Create entry into the db
+        conn = database.Connection().create_connection(test_db)
+        s = database.Sighting(testSighting)
+        insert_test_grid(test_db, BOUNDARY)
+        s_id = s.new(conn)
+        conn.close()
 
-    #     # receive video
-    #     url = f'http://{server_ip_address}:{server_port}/getMedia'
-    #     param = {'sighting_id': s_id}
-    #     response = requests.get(url, params=param)
+        # receive video
+        url = f'http://{server_ip_address}:{server_port}/getMedia'
+        param = {'sighting_id': s_id}
+        response = requests.get(url, params=param)
 
-    #     # check status code and video received
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertEqual(
-    #         response.headers['Content-Disposition'], 
-    #         f'attachment; filename="{os.path.basename(testReceivedVid)}"')
+        # check status code and video received
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.headers['Content-Disposition'], 
+            f'attachment; filename="{os.path.basename(testReceivedVid)}"')
         
-    #     # Delete db entry
-    #     conn = database.Connection().create_connection(test_db)
-    #     database.Sighting().delete(conn, s_id)
-    #     conn.close()
+        # Delete db entry
+        conn = database.Connection().create_connection(test_db)
+        database.Sighting().delete(conn, s_id)
+        conn.close()
 
 
-    # def test_POST_videoUpload(self):
-    #     """
-    #     Test POST /upload endpoint
-    #     - send video file & json data
-    #     - receive status code 200 (success) back
-    #     - check file is saved within the server machine
-    #     - remove the saved file (clean up)
-    #     """
+    def test_POST_videoUpload(self):
+        """
+        Test POST /upload endpoint
+        - send video file & json data
+        - receive status code 200 (success) back
+        - check file is saved within the server machine
+        - remove the saved file (clean up)
+        """
 
-    #     # Define the URL of the server
-    #     url = f'http://{server_ip_address}:{server_port}/upload'
+        # Define the URL of the server
+        url = f'http://{server_ip_address}:{server_port}/upload'
 
-    #     with open(testVideo, 'rb') as f:
-    #         files = {'file': f}
-    #         json_data = json.dumps({"title": "test title", "desc": "test desc", 
-    #                                 "time": time.time(), "lon": 172.58623, "lat": -43.52628 })
-    #         data = {'json': json_data}
-    #         params = {'user': testUser}
-    #         response = requests.post(url, files=files, data=data, params=params)
-    #         filename = response.json().get('filename', None)
+        with open(testVideo, 'rb') as f:
+            files = {'file': f}
+            json_data = json.dumps({"title": "test title", "desc": "test desc", 
+                                    "time": time.time(), "lon": 172.58623, "lat": -43.52628 })
+            data = {'json': json_data}
+            params = {'user': testUser}
+            response = requests.post(url, files=files, data=data, params=params)
+            filename = response.json().get('filename', None)
 
-    #         self.assertEqual(response.status_code, 201)
+            self.assertEqual(response.status_code, 201)
 
-    #         self.assertTrue(os.path.exists(f'server/received/{filename}'))
+            self.assertTrue(os.path.exists(f'server/received/{filename}'))
 
-    #         os.remove(f'server/received/{filename}')
+            os.remove(f'server/received/{filename}')
 
 
-    # def test_POST_imageUpload(self):
-    #     """
-    #     Test POST /upload endpoint
-    #     - send image file & json data
-    #     - receive status code 200 (success) back
-    #     - check file is saved within the server machine
-    #     - remove the saved file (clean up)
-    #     """
+    def test_POST_imageUpload(self):
+        """
+        Test POST /upload endpoint
+        - send image file & json data
+        - receive status code 200 (success) back
+        - check file is saved within the server machine
+        - remove the saved file (clean up)
+        """
 
-    #     # Define the URL of the server
-    #     url = f'http://{server_ip_address}:{server_port}/upload'
+        # Define the URL of the server
+        url = f'http://{server_ip_address}:{server_port}/upload'
 
-    #     with open(testImg, 'rb') as f:
-    #         files = {'file': f}
-    #         json_data = json.dumps({"title": "test title", "desc": "test desc", 
-    #                                 "time": time.time(), "lon": 172.58623, "lat": -43.52628 })
-    #         data = {'json': json_data}
-    #         params = {'user': testUser}
-    #         response = requests.post(url, files=files, data=data, params=params)
-    #         filename = response.json().get('filename', None)
+        with open(testImg, 'rb') as f:
+            files = {'file': f}
+            json_data = json.dumps({"title": "test title", "desc": "test desc", 
+                                    "time": time.time(), "lon": 172.58623, "lat": -43.52628 })
+            data = {'json': json_data}
+            params = {'user': testUser}
+            response = requests.post(url, files=files, data=data, params=params)
+            filename = response.json().get('filename', None)
 
-    #         self.assertEqual(response.status_code, 201)
+            self.assertEqual(response.status_code, 201)
 
-    #         self.assertTrue(os.path.exists(f'server/received/{filename}'))
+            self.assertTrue(os.path.exists(f'server/received/{filename}'))
 
-    #         os.remove(f'server/received/{filename}')
+            os.remove(f'server/received/{filename}')
 
 
     def test_PATCH_initiateConversion(self):
