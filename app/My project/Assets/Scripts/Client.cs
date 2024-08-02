@@ -14,7 +14,7 @@ public interface IHttpClient
     Task<string> GetStatus(int sightingId);
     Task<string> GetMedia(int sightingId);
     Task<string> GetGallery();
-    Task<string> PostUpload(string filePath, UploadObject jsonData);
+    Task<string> PostUpload(string filePath, string userId, UploadObject jsonData);
     Task<string> PatchInitConversion(int sightingId);
 
     public void CloseClient();
@@ -23,7 +23,6 @@ public interface IHttpClient
 public class Client : IHttpClient
 {
     private string devUrl = "http://localhost:8000";
-    private Player player = Player.instance;
     HttpClient myClient;
 
     public Client()
@@ -97,10 +96,10 @@ public class Client : IHttpClient
     }
 
 
-    public async Task<string> PostUpload(string filePath, UploadObject jsonData)
+    public async Task<string> PostUpload(string filePath, string userId, UploadObject jsonData)
     {
         var parameters = HttpUtility.ParseQueryString(string.Empty);
-        parameters["user"] = player.GetId();
+        parameters["user"] = userId;
 
         string apiUrl = $"{devUrl}/upload?{parameters}";
 
@@ -126,10 +125,9 @@ public class Client : IHttpClient
     public async Task<string> PatchInitConversion(int sightingId)
     {
         var parameters = HttpUtility.ParseQueryString(string.Empty);
-        parameters["user"] = player.GetId();
-        parameters["ar_id"] = sightingId.ToString();
+        parameters["sighting_id"] = sightingId.ToString();
 
-        string apiUrl = $"{devUrl}/initCon?{parameters}";
+        string apiUrl = $"{devUrl}/initiateConversion?{parameters}";
 
         // Request
         var request = new HttpRequestMessage(new HttpMethod("PATCH"), apiUrl);

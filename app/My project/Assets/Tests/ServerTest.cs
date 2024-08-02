@@ -12,7 +12,7 @@ using System.IO;
 public class ServerTest
 {
     Client myClient = new Client();
-    Player player = Player.instance;
+    Player player;
 
     // Test Vars
     private int testSightingId = 1;
@@ -21,7 +21,6 @@ public class ServerTest
     private int testTime = Convert.ToInt32(DateTimeOffset.Now.ToUnixTimeSeconds());
     private double testLat = -43.52628;
     private double testLon = 172.58623;
-    private string testFilename = "blob.mp4";
 
     // Test video
     byte[] testVideoBytes = File.ReadAllBytes("Assets/TestAssets/blob.mp4");
@@ -29,7 +28,10 @@ public class ServerTest
     [SetUp]
     public void SetUp()
     {
-        Assert.IsTrue(player.TestLogIn() == "Log in successful");
+        GameObject obj = new GameObject();
+        player = obj.AddComponent(typeof(Player)) as Player;
+        var x = player.TestLogIn();
+        Assert.IsTrue(x.Equals( "Test Account: Log in successful"));
     }
 
     [TearDown]
@@ -75,7 +77,7 @@ public class ServerTest
             Times.Once(),
             ItExpr.Is<HttpRequestMessage>(req =>
                 req.Method == HttpMethod.Get
-                && req.RequestUri == new Uri("http://localhost:8000/getStatus?sighting_id=1")),
+                && req.RequestUri == new Uri("http://localhost:8000/getConversionStatus?sighting_id=1")),
             ItExpr.IsAny<CancellationToken>()
             );
     }
@@ -105,7 +107,7 @@ public class ServerTest
         string testResponse = await myClient.GetMedia(testSightingId);
         Debug.Log(testResponse);
 
-        Assert.IsTrue($"{Application.persistentDataPath}/ar_{testSightingId}.mp4" == testResponse);
+        Assert.IsTrue($"{Application.persistentDataPath}/sighting_{testSightingId}.mp4" == testResponse);
 
         Assert.IsTrue(File.Exists(testResponse));
         File.Delete(testResponse);
@@ -115,7 +117,7 @@ public class ServerTest
             Times.Once(),
             ItExpr.Is<HttpRequestMessage>(req =>
                 req.Method == HttpMethod.Get
-                && req.RequestUri == new Uri("http://localhost:8000/getUserVideo?sighting_id=1")),
+                && req.RequestUri == new Uri("http://localhost:8000/getMedia?sighting_id=1")),
             ItExpr.IsAny<CancellationToken>()
             );
     }
@@ -149,9 +151,8 @@ public class ServerTest
         testJsonData.desc = testDesc;
         testJsonData.time = testTime;
         testJsonData.ToLatLn(testLat, testLon);
-        testJsonData.filename = testFilename;
 
-        var testResponse = await myClient.PostUpload(testFilePath, testJsonData);
+        var testResponse = await myClient.PostUpload(testFilePath, player.GetId(), testJsonData);
 
         Assert.AreEqual("Video successfully uploaded", testResponse);
 

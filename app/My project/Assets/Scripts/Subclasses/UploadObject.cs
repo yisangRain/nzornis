@@ -7,7 +7,6 @@ public class UploadObject
     public string desc { get; set; }
     public int time { get; set; }
     public LatLng latLon { get; set; }
-    public string filename { get; set; }
 
     public void ToLatLn(double lat, double lon)
     {

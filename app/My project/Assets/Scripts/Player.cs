@@ -8,8 +8,6 @@ public interface IPlayer
 
 public class Player : MonoBehaviour, IPlayer
 {
-    private Player() { }
-
 
     public static Player instance { get; private set; }
 
@@ -22,7 +20,14 @@ public class Player : MonoBehaviour, IPlayer
     //Dev variables
     private string testId = "100";
 
-    public void Awake()
+    public void Start()
+    {
+        Initiate();
+        DontDestroyOnLoad(gameObject);
+
+    }
+
+    private void Initiate()
     {
         if (instance != null && instance != this)
         {
@@ -32,7 +37,6 @@ public class Player : MonoBehaviour, IPlayer
         {
             instance = this;
         }
-
     }
 
  
@@ -40,8 +44,6 @@ public class Player : MonoBehaviour, IPlayer
     /// DRAFT: a simple (unsecure) log-in method as a placeholder
     /// Treat as blackbox method
     /// </summary>
-    /// <param name="id"></param>
-    /// <param name="password"></param>
     /// <returns>String message of outcome</returns>
     public string TestLogIn()
     {
@@ -78,6 +80,12 @@ public class Player : MonoBehaviour, IPlayer
         }
 
         return loggedIn;
+    }
+
+    public Player GetPlayer()
+    {
+        Initiate();
+        return instance;
     }
 
 }
