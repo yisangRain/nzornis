@@ -6,10 +6,19 @@ using UnityEngine.Android;
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
+using Niantic.Lightship.Maps.Core.Coordinates;
 
 public interface IFilming
 {
 
+}
+
+
+enum UploadType
+{
+    RAW,
+    AR,
+    NULL
 }
 
 
@@ -21,7 +30,14 @@ public class FilmingManager : MonoBehaviour
     public Player player;
 
     public TMP_Text testText;
+    public GameObject uploadPanel;
+    public GameObject formPanel;
+    public TMP_InputField title;
+    public TMP_InputField desc;
+
     private Client client = new Client();
+    private string targetPath;
+    private UploadType uploadType = UploadType.NULL;
 
     private static bool IsLocationServiceInitializing
             => Input.location.status == LocationServiceStatus.Initializing;
@@ -79,11 +95,11 @@ public class FilmingManager : MonoBehaviour
 
         try
         {
-            // open gallery
-            var targetPath = PickVideo();
+            // open and pick media from gallery
+            PickVideo();
 
-            // process conversion steps
-            ConversionHandler(targetPath);
+            // process selection steps
+            uploadPanel.SetActive(true);
 
         } catch (Exception e)
         {
@@ -95,10 +111,8 @@ public class FilmingManager : MonoBehaviour
     /// Opens device gallery and returns user's selected video path
     /// </summary>
     /// <returns>String path of the selected video. Throws exception if the path is null</returns>
-    public string PickVideo()
+    public void PickVideo()
     {
-        string targetPath = null;
-
         NativeGallery.Permission permission = NativeGallery.GetVideoFromGallery((path) =>
         {
             Debug.Log($"Video path: {path}");
@@ -109,52 +123,26 @@ public class FilmingManager : MonoBehaviour
 
         Debug.Log($"Permision result: {permission}"); 
 
-        if (targetPath != null)
+        if (targetPath == null)
         {
-            return targetPath;
+            throw new ApplicationException("Null video path");
         }
 
-        throw new ApplicationException("Null video path");
-        
     }
 
     
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="targetPath"></param>
-    public void ConversionHandler(string targetPath)
-    {
-        // Assign location
-        var locationString = GetCurrentLocation();
-        if (locationString == null)
-        {
-            Debug.Log("Issue with location string");
-            return;
-        }
-
-        // Assign xyz position within the AR space
-
-
-        // Ask for final confirmation
-
-        // Send HTTP request (Post and Patch)
-        client.SetClient(new HttpClient());
-
-        // Inform user that the conversion is in progress
-    }
 
     /// <summary>
     /// Queries the device's GPS for the current latitude and longitude
     /// </summary>
     /// <returns>string[] {latitude, longitude}</returns>
-    public string[] GetCurrentLocation()
+    public LatLng GetCurrentLocation()
     {
         // check for location service enabled or not
         if (!Input.location.isEnabledByUser)
         {
             Debug.Log("Location permission not enabled");
-            return null;
+            throw null;
         }
 
         Input.location.Start();
@@ -169,15 +157,54 @@ public class FilmingManager : MonoBehaviour
         if (maxWait < 1 || Input.location.status == LocationServiceStatus.Failed)
         {
             Debug.Log("Location service initialization issue: Timeout");
-            return null;
+            throw null;
         }
 
         var loc = Input.location.lastData;
-        string[] latlng = { loc.latitude.ToString(), loc.latitude.ToString() };
-
+        LatLng latlng = new LatLng(loc.latitude, loc.longitude);
         Input.location.Stop();
 
         return latlng;
+
+    }
+
+    public void HandleRawButton()
+    {
+        formPanel.SetActive(true);
+        uploadType = UploadType.RAW;
+        uploadPanel.SetActive(false);
+    }
+
+
+    public void HandleConversionButton()
+    {
+        formPanel.SetActive(true);
+        uploadType = UploadType.AR;
+        uploadPanel.SetActive(false);
+    }
+
+    public UploadObject UploadFormMaker()
+    {
+        UploadObject uploadObject = new UploadObject();
+        uploadObject.title = title.text;
+        uploadObject.desc = desc.text;
+        uploadObject.latLon = GetCurrentLocation();
+        uploadObject.time = Convert.ToInt32(DateTimeOffset.Now.ToUnixTimeSeconds());
+        return uploadObject;
+    }
+
+    public void HandleUpload()
+    {
+        UploadObject data = UploadFormMaker();
+        client.SetClient(new HttpClient());
+
+        if (uploadType == UploadType.RAW)
+        {
+
+        } else if (uploadType == UploadType.AR)
+        {
+
+        }
 
     }
 

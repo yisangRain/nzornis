@@ -23,6 +23,7 @@ public class Player : MonoBehaviour, IPlayer
     public void Start()
     {
         Initiate();
+        TestLogIn(); //Automatically loggin for dev purposes
         DontDestroyOnLoad(gameObject);
 
     }
