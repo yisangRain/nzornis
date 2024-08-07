@@ -75,11 +75,9 @@ def initialise_database(database_name):
 
     for item in query_tables:
         cursor.execute(item)
+        conn.commit()
     
     print("Database initialisation complete")
-
-    # Commit the changes
-    conn.commit()
 
     # Close the connection
     conn.close()

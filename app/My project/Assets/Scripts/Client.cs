@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.Web;
 using System.IO;
 using System.Text;
+using System.Net;
 using Assets.Scripts.Subclasses;
 
 public interface IHttpClient
@@ -15,14 +16,14 @@ public interface IHttpClient
     Task<string> GetMedia(int sightingId);
     Task<string> GetGallery();
     Task<string> PostUpload(string filePath, string userId, UploadObject jsonData);
-    Task<string> PatchInitConversion(int sightingId);
+    Task<string> PatchInitConversion(string sightingId);
 
     public void CloseClient();
 }
 
 public class Client : IHttpClient
 {
-    private string devUrl = "http://localhost:8000";
+    private string devUrl = "http://127.0.0.1:5000";
     HttpClient myClient;
 
     public Client()
@@ -96,18 +97,22 @@ public class Client : IHttpClient
     }
 
 
-    public async Task<string> PostUpload(string filePath, string userId, UploadObject jsonData)
+/*    public async Task<string> PostUpload(string filePath, string userId, UploadObject jsonData)
     {
         var parameters = HttpUtility.ParseQueryString(string.Empty);
         parameters["user"] = userId;
 
         string apiUrl = $"{devUrl}/upload?{parameters}";
 
-        var jsonContent = new StringContent(JsonConvert.SerializeObject(jsonData), Encoding.UTF8, "application/json");
-        var fileContent = new StreamContent(File.OpenRead(filePath));
-        var multiContent = new MultipartFormDataContent();
-        multiContent.Add(jsonContent, "json");
+        byte[] bytes = File.ReadAllBytes(filePath);
+
+        StringContent jsonContent = new StringContent(JsonConvert.SerializeObject(jsonData), Encoding.UTF8, "application/json");
+        ByteArrayContent fileContent = new ByteArrayContent(bytes);
+        Debug.LogError("[CLIENT] outgoing byte length: "+ bytes.Length);
+        MultipartFormDataContent multiContent = new MultipartFormDataContent();
+        // multiContent.Add(jsonContent, "json");
         multiContent.Add(fileContent, "file");
+        Debug.LogError("[CLIENT] outgoing total length: " + multiContent.ToString().Length);
 
         // Request
         HttpResponseMessage response = await myClient.PostAsync(apiUrl, multiContent);
@@ -116,16 +121,37 @@ public class Client : IHttpClient
 
         if (response.IsSuccessStatusCode)
         {
-            return response.ReasonPhrase;
+            var content = await response.Content.ReadAsStringAsync();
+            //Process response data
+            return JsonConvert.DeserializeObject<PostUploadRes>(content).id.ToString();
         }
 
         return "Error: Error posting video.";
+    }*/
+
+    public async Task<string> PostUpload(string filePath, string userId, UploadObject jsonData)
+    {
+        string apiUrl = $"{devUrl}/upload";
+        MultipartFormDataContent form = new MultipartFormDataContent();
+        FileStream file = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+        StreamContent content = new StreamContent(file);
+        content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("video/mp4");
+        form.Add(content, "video", Path.GetFileName(filePath));
+
+        Debug.LogError("[CLIENT] file bytes: " + file.Length);
+
+        HttpResponseMessage res = await myClient.PostAsync(apiUrl, form);
+        string resString = await res.Content.ReadAsStringAsync();
+
+        Debug.LogError("[CLIENT] post return msg: " + resString);
+
+        return "hi";
     }
 
-    public async Task<string> PatchInitConversion(int sightingId)
+    public async Task<string> PatchInitConversion(string sightingId)
     {
         var parameters = HttpUtility.ParseQueryString(string.Empty);
-        parameters["sighting_id"] = sightingId.ToString();
+        parameters["sighting_id"] = sightingId;
 
         string apiUrl = $"{devUrl}/initiateConversion?{parameters}";
 

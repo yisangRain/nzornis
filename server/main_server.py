@@ -11,14 +11,16 @@ import database
 import os
 import magic
 import database_init
+import flask
 
 #note: use flask?
 
 ############################################################################
 # Global variables 
 
-# DATABASE = "pythonsqlite.db"
-DATABASE = "test.db"
+DATABASE = "pythonsqlite.db"
+# DATABASE = "test.db"
+app = flask.Flask(__name__)
 
 
 ############################################################################
@@ -122,7 +124,7 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
 
         conn.close()
 
-
+    @app.route('/upload')
     def do_POST(self):
         # Break down the request URL
         parsed_url = urlparse(self.path)
@@ -140,34 +142,37 @@ class NZOrnisHTTPHandler(BaseHTTPRequestHandler):
             pdict['CONTENT-LENGTH'] = int(self.headers['Content-Length'])
 
             fields = cgi.parse_multipart(self.rfile, pdict)
+            print(len(fields))
 
-            json_data = json.loads(fields.get('json')[0])
+            # json_data = json.loads(fields.get('json')[0])
             media_data = fields['file'][0]
+            #print(bytes(media_data, 'utf-8')[:30])
             mime = magic.Magic(mime=True).from_buffer(media_data)
-
+            print(mime)
             filename = filename_generator(params['user'][0], mime)
+            
             
             try:
                 # Save the video into the server
-             
                 with open(f'server/received/{filename}', 'wb') as f:
-                    f.write(media_data)
-                    print(f"Saved media file {filename}")
+                    print(len(media_data))
+                    #f.write(bytes(media_data, 'utf-8'))
+                    #print(f"Saved media file {filename}")
 
                 # Insert other information into the DB
-                entry_info = database.New_Sighting(json_data.get('title'), json_data.get('desc'), params['user'][0],
-                                                   json_data.get('time'), json_data.get('lon'), json_data.get('lat'), filename)
+                # entry_info = database.New_Sighting(json_data.get('title'), json_data.get('desc'), params['user'][0],
+                                                #    json_data.get('time'), json_data.get('lon'), json_data.get('lat'), filename)
                 
                 conn = database.Connection().create_connection(dbname=DATABASE)
-                entry = database.Sighting(entry_info)
-                entry_id = entry.new(conn) # row id number of the uploaded data
+                # entry = database.Sighting(entry_info)
+                # entry_id = entry.new(conn) # row id number of the uploaded data
                 conn.close()
 
                 self.send_response(201, "Video successfully uploaded")
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()
                 # send the entry id and filename back
-                self.wfile.write(json.dumps({"id": entry_id, "filename": filename}).encode())
+                # self.wfile.write(json.dumps({"id": entry_id, "filename": filename}).encode())
 
                 conn.close()
           

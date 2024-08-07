@@ -131,7 +131,9 @@ public class ServerTest
         var response = new HttpResponseMessage
         {
             StatusCode = HttpStatusCode.Created,
-            ReasonPhrase = "Video successfully uploaded"
+            ReasonPhrase = "Video successfully uploaded",
+            Content = new StringContent(@"{""id"": " + testSightingId.ToString() + @", ""filename"": ""test.mp4"" }")
+
         };
 
         mockHttpHandler
@@ -154,7 +156,7 @@ public class ServerTest
 
         var testResponse = await myClient.PostUpload(testFilePath, player.GetId(), testJsonData);
 
-        Assert.AreEqual("Video successfully uploaded", testResponse);
+        Assert.AreEqual(testSightingId.ToString(), testResponse);
 
         mockHttpHandler.Protected().Verify(
           "SendAsync",
@@ -186,7 +188,7 @@ public class ServerTest
             .Verifiable();
 
         myClient.SetClient(new HttpClient(mockHttpHandler.Object));
-        var testResponse = await myClient.PatchInitConversion(testSightingId);
+        var testResponse = await myClient.PatchInitConversion(testSightingId.ToString());
 
         Assert.AreEqual("Initiating", testResponse);
 

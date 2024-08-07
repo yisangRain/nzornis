@@ -1,24 +1,15 @@
 using UnityEngine;
 using System.Net.Http;
 using System;
-using Newtonsoft.Json;
 using UnityEngine.Android;
-using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 using Niantic.Lightship.Maps.Core.Coordinates;
+using System.Linq;
 
 public interface IFilming
 {
 
-}
-
-
-enum UploadType
-{
-    RAW,
-    AR,
-    NULL
 }
 
 
@@ -30,14 +21,12 @@ public class FilmingManager : MonoBehaviour
     public Player player;
 
     public TMP_Text testText;
-    public GameObject uploadPanel;
-    public GameObject formPanel;
-    public TMP_InputField title;
-    public TMP_InputField desc;
+    public GameObject textInputPanel;
+    public TMP_InputField titleInput;
+    public TMP_InputField descInput;
 
     private Client client = new Client();
     private string targetPath;
-    private UploadType uploadType = UploadType.NULL;
 
     private static bool IsLocationServiceInitializing
             => Input.location.status == LocationServiceStatus.Initializing;
@@ -51,6 +40,11 @@ public class FilmingManager : MonoBehaviour
         {
             Permission.RequestUserPermission(Permission.FineLocation);
         }
+    }
+
+    public void Start()
+    {
+        textInputPanel.SetActive(false);
     }
 
     /// <summary>
@@ -98,13 +92,13 @@ public class FilmingManager : MonoBehaviour
             // open and pick media from gallery
             PickVideo();
 
-            // process selection steps
-            uploadPanel.SetActive(true);
-
         } catch (Exception e)
         {
             Debug.Log(e.ToString());
         }
+
+        textInputPanel.SetActive(true);
+
     }
 
     /// <summary>
@@ -126,7 +120,7 @@ public class FilmingManager : MonoBehaviour
         if (targetPath == null)
         {
             throw new ApplicationException("Null video path");
-        }
+        } 
 
     }
 
@@ -168,44 +162,44 @@ public class FilmingManager : MonoBehaviour
 
     }
 
-    public void HandleRawButton()
-    {
-        formPanel.SetActive(true);
-        uploadType = UploadType.RAW;
-        uploadPanel.SetActive(false);
-    }
-
-
-    public void HandleConversionButton()
-    {
-        formPanel.SetActive(true);
-        uploadType = UploadType.AR;
-        uploadPanel.SetActive(false);
-    }
-
     public UploadObject UploadFormMaker()
     {
         UploadObject uploadObject = new UploadObject();
-        uploadObject.title = title.text;
-        uploadObject.desc = desc.text;
-        uploadObject.latLon = GetCurrentLocation();
+        uploadObject.title = titleInput.text;
+        uploadObject.desc = descInput.text;
+        //uploadObject.latLon = GetCurrentLocation();
+        uploadObject.latLon = new LatLng(-43.52628, 172.58623);
         uploadObject.time = Convert.ToInt32(DateTimeOffset.Now.ToUnixTimeSeconds());
         return uploadObject;
     }
 
-    public void HandleUpload()
+    public async void HandleUpload()
     {
         UploadObject data = UploadFormMaker();
         client.SetClient(new HttpClient());
 
-        if (uploadType == UploadType.RAW)
-        {
+        Debug.Log("here");
 
-        } else if (uploadType == UploadType.AR)
-        {
+        string sightingId = await client.PostUpload(targetPath, player.GetId(), data);
+        Debug.Log("Uploaded object id: " + sightingId);
 
+        // Check if successful. 
+        if (sightingId.All(char.IsNumber))
+        {
+            // Alert user to try again 
+            testText.text = "Upload success.";
+            textInputPanel.SetActive(false);
+        } else
+        {
+            testText.text = "Upload failed. Please try again";
         }
+
+        textInputPanel.SetActive(false);
 
     }
 
+    public void CloseInputPanel()
+    {
+        textInputPanel.SetActive(false);
+    }
 }
