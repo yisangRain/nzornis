@@ -55,11 +55,11 @@
     <UnityVersion>2022.3.26f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="D:\Natalie\project\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\cs\xunit.analyzers.fixes.dll" />
-    <Analyzer Include="D:\Natalie\project\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn3.11\cs\xunit.analyzers.fixes.dll" />
-    <Analyzer Include="D:\Natalie\project\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
-    <Analyzer Include="D:\Natalie\project\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn3.11\cs\xunit.analyzers.dll" />
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\natal\Desktop\SENG402\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\cs\xunit.analyzers.fixes.dll" />
+    <Analyzer Include="C:\Users\natal\Desktop\SENG402\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn3.11\cs\xunit.analyzers.fixes.dll" />
+    <Analyzer Include="C:\Users\natal\Desktop\SENG402\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
+    <Analyzer Include="C:\Users\natal\Desktop\SENG402\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn3.11\cs\xunit.analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -100,67 +100,67 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
-    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\LICENSE.TXT" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\Packages\xunit.extensibility.execution.2.8.1\lib\netstandard1.1\xunit.execution.dotnet.xml" />
-    <None Include="Assets\Packages\Castle.Core.5.1.1\readme.txt" />
-    <None Include="Assets\Packages\xunit.abstractions.2.0.3\lib\netstandard2.0\xunit.abstractions.dll" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.4\cs\xunit.analyzers.fixes.dll" />
-    <None Include="Assets\Packages\Moq.4.20.70\lib\netstandard2.1\Moq.xml" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
-    <None Include="Assets\Packages\xunit.assert.2.8.1\lib\netstandard1.1\xunit.assert.dll" />
-    <None Include="Assets\Packages\xunit.extensibility.execution.2.8.1\lib\netstandard1.1\xunit.execution.dotnet.dll" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn3.11\cs\xunit.analyzers.fixes.dll" />
-    <None Include="Assets\Packages\Moq.4.20.70\lib\netstandard2.1\Moq.dll" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn3.11\cs\xunit.analyzers.dll" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.6\cs\xunit.analyzers.dll" />
-    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\version.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\lib\netstandard2.0\System.Diagnostics.EventLog.xml" />
-    <None Include="Assets\Packages\xunit.extensibility.core.2.8.1\lib\netstandard1.1\xunit.core.dll" />
-    <None Include="Assets\Packages\Castle.Core.5.1.1\ASL - Apache Software Foundation License.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\Packages\xunit.assert.2.8.1\lib\netstandard1.1\xunit.assert.dll" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\LICENSE.TXT" />
+    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.8\cs\xunit.analyzers.dll" />
+    <None Include="Assets\Packages\Moq.4.20.70\lib\netstandard2.1\Moq.dll" />
+    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.4\cs\xunit.analyzers.dll" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\lib\netstandard2.0\System.Security.Principal.Windows.xml" />
+    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.6\cs\xunit.analyzers.fixes.dll" />
+    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.8\cs\xunit.analyzers.fixes.dll" />
+    <None Include="Assets\Packages\xunit.assert.2.8.1\lib\netstandard1.1\xunit.assert.xml" />
+    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\Packages\xunit.extensibility.execution.2.8.1\lib\netstandard1.1\xunit.execution.dotnet.dll" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\Packages\xunit.extensibility.core.2.8.1\lib\netstandard1.1\xunit.core.dll" />
     <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
+    <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\useSharedDesignerContext.txt" />
+    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\useSharedDesignerContext.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\version.txt" />
+    <None Include="Assets\Packages\Castle.Core.5.1.1\ASL - Apache Software Foundation License.txt" />
+    <None Include="Assets\Packages\Moq.4.20.70\lib\netstandard2.1\Moq.xml" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn3.11\cs\xunit.analyzers.fixes.dll" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
-    <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\THIRD-PARTY-NOTICES.TXT" />
-    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\lib\netstandard2.0\System.Diagnostics.EventLog.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
-    <None Include="Assets\Packages\xunit.extensibility.core.2.8.1\lib\netstandard1.1\xunit.core.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\Packages\Castle.Core.5.1.1\lib\netstandard2.1\Castle.Core.dll" />
-    <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\lib\netstandard2.0\System.Security.Principal.Windows.dll" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\cs\xunit.analyzers.fixes.dll" />
-    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\THIRD-PARTY-NOTICES.TXT" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.8\cs\xunit.analyzers.dll" />
+    <None Include="Assets\Packages\xunit.abstractions.2.0.3\lib\netstandard2.0\xunit.abstractions.xml" />
+    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\lib\netstandard2.0\System.Diagnostics.EventLog.xml" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Shaders\ChromaKey.shader" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.8\cs\xunit.analyzers.fixes.dll" />
+    <None Include="Assets\Packages\Castle.Core.5.1.1\lib\netstandard2.1\Castle.Core.dll" />
+    <None Include="Assets\Packages\xunit.extensibility.core.2.8.1\lib\netstandard1.1\xunit.core.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-    <None Include="Assets\Packages\Castle.Core.5.1.1\lib\netstandard2.1\Castle.Core.xml" />
-    <None Include="Assets\Packages\xunit.assert.2.8.1\lib\netstandard1.1\xunit.assert.xml" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.6\cs\xunit.analyzers.fixes.dll" />
-    <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\LICENSE.TXT" />
-    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\useSharedDesignerContext.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
-    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-    <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\useSharedDesignerContext.txt" />
+    <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\lib\netstandard2.0\System.Security.Principal.Windows.dll" />
+    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\cs\xunit.analyzers.fixes.dll" />
     <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\version.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.4\cs\xunit.analyzers.fixes.dll" />
+    <None Include="Assets\Packages\xunit.extensibility.execution.2.8.1\lib\netstandard1.1\xunit.execution.dotnet.xml" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\Packages\Castle.Core.5.1.1\readme.txt" />
+    <None Include="Assets\Packages\Castle.Core.5.1.1\lib\netstandard2.1\Castle.Core.xml" />
+    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.6\cs\xunit.analyzers.dll" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\THIRD-PARTY-NOTICES.TXT" />
+    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\THIRD-PARTY-NOTICES.TXT" />
+    <None Include="Assets\Packages\System.Diagnostics.EventLog.4.7.0\lib\netstandard2.0\System.Diagnostics.EventLog.dll" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\Packages\xunit.abstractions.2.0.3\lib\netstandard2.0\xunit.abstractions.dll" />
+    <None Include="Assets\Packages\System.Security.Principal.Windows.4.7.0\LICENSE.TXT" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
-    <None Include="Assets\Packages\xunit.abstractions.2.0.3\lib\netstandard2.0\xunit.abstractions.xml" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
-    <None Include="Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn4.4\cs\xunit.analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -483,6 +483,10 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="xunit.assert">
+      <HintPath>Assets\Packages\xunit.assert.2.8.1\lib\netstandard1.1\xunit.assert.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Google.Protobuf">
       <HintPath>Library\PackageCache\com.niantic.lightship.maps@fb4247cae5\Runtime\Google.Protobuf\Google.Protobuf.dll</HintPath>
       <Private>False</Private>
@@ -491,12 +495,12 @@
       <HintPath>Library\PackageCache\com.niantic.lightship.maps@fb4247cae5\Runtime\Niantic.Platform.Debugging\Niantic.Platform.Debugging.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>Library\PackageCache\com.unity.collections@1.4.0\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    <Reference Include="Moq">
+      <HintPath>Assets\Packages\Moq.4.20.70\lib\netstandard2.1\Moq.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="xunit.abstractions">
-      <HintPath>Assets\Packages\xunit.abstractions.2.0.3\lib\netstandard2.0\xunit.abstractions.dll</HintPath>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>Library\PackageCache\com.unity.collections@1.4.0\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Niantic.Lightship.Maps.Linq">
@@ -511,24 +515,12 @@
       <HintPath>Library\PackageCache\com.niantic.lightship.maps@fb4247cae5\Runtime\Niantic.Lightship.Maps.Core\Niantic.Lightship.Maps.Async.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="xunit.assert">
-      <HintPath>Assets\Packages\xunit.assert.2.8.1\lib\netstandard1.1\xunit.assert.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="xunit.execution.dotnet">
       <HintPath>Assets\Packages\xunit.extensibility.execution.2.8.1\lib\netstandard1.1\xunit.execution.dotnet.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Moq">
-      <HintPath>Assets\Packages\Moq.4.20.70\lib\netstandard2.1\Moq.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="xunit.core">
       <HintPath>Assets\Packages\xunit.extensibility.core.2.8.1\lib\netstandard1.1\xunit.core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Diagnostics.EventLog">
-      <HintPath>Assets\Packages\System.Diagnostics.EventLog.4.7.0\lib\netstandard2.0\System.Diagnostics.EventLog.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
@@ -537,10 +529,6 @@
     </Reference>
     <Reference Include="Castle.Core">
       <HintPath>Assets\Packages\Castle.Core.5.1.1\lib\netstandard2.1\Castle.Core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Security.Principal.Windows">
-      <HintPath>Assets\Packages\System.Security.Principal.Windows.4.7.0\lib\netstandard2.0\System.Security.Principal.Windows.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
@@ -553,6 +541,18 @@
     </Reference>
     <Reference Include="Niantic.Lightship.Maps.Core">
       <HintPath>Library\PackageCache\com.niantic.lightship.maps@fb4247cae5\Runtime\Niantic.Lightship.Maps.Core\Niantic.Lightship.Maps.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows">
+      <HintPath>Assets\Packages\System.Security.Principal.Windows.4.7.0\lib\netstandard2.0\System.Security.Principal.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.EventLog">
+      <HintPath>Assets\Packages\System.Diagnostics.EventLog.4.7.0\lib\netstandard2.0\System.Diagnostics.EventLog.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="xunit.abstractions">
+      <HintPath>Assets\Packages\xunit.abstractions.2.0.3\lib\netstandard2.0\xunit.abstractions.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">

@@ -1,17 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Niantic.Lightship.Maps.Samples.CustomMapLayers", "Niantic.Lightship.Maps.Samples.CustomMapLayers.csproj", "{304F91E0-6346-088D-54F0-BA5A17B48E76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scriptAssembly", "scriptAssembly.csproj", "{6044E579-5092-F213-4A1D-E16C58AD8F38}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeCamera.Runtime", "NativeCamera.Runtime.csproj", "{011CC316-78BC-90D3-427B-4F2795DD5AB8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{32C3BDE6-E125-3128-82C1-25D0441455A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeGallery.Editor", "NativeGallery.Editor.csproj", "{2863E3EB-D31C-0662-894D-7EB739FA32F4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scriptAssembly", "scriptAssembly.csproj", "{6044E579-5092-F213-4A1D-E16C58AD8F38}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Niantic.Lightship.Maps.Samples.OrbitCamera", "Niantic.Lightship.Maps.Samples.OrbitCamera.csproj", "{E3F09720-699B-675A-72C8-99758D16F8CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NativeGallery.Runtime", "NativeGallery.Runtime.csproj", "{B134C892-054E-00FF-5A5A-94734622F6E5}"
 EndProject
@@ -25,10 +21,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{304F91E0-6346-088D-54F0-BA5A17B48E76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{304F91E0-6346-088D-54F0-BA5A17B48E76}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{304F91E0-6346-088D-54F0-BA5A17B48E76}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{304F91E0-6346-088D-54F0-BA5A17B48E76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6044E579-5092-F213-4A1D-E16C58AD8F38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6044E579-5092-F213-4A1D-E16C58AD8F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6044E579-5092-F213-4A1D-E16C58AD8F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6044E579-5092-F213-4A1D-E16C58AD8F38}.Release|Any CPU.Build.0 = Release|Any CPU
 		{011CC316-78BC-90D3-427B-4F2795DD5AB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{011CC316-78BC-90D3-427B-4F2795DD5AB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{011CC316-78BC-90D3-427B-4F2795DD5AB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,14 +37,6 @@ Global
 		{2863E3EB-D31C-0662-894D-7EB739FA32F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2863E3EB-D31C-0662-894D-7EB739FA32F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2863E3EB-D31C-0662-894D-7EB739FA32F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6044E579-5092-F213-4A1D-E16C58AD8F38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6044E579-5092-F213-4A1D-E16C58AD8F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6044E579-5092-F213-4A1D-E16C58AD8F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6044E579-5092-F213-4A1D-E16C58AD8F38}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E3F09720-699B-675A-72C8-99758D16F8CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E3F09720-699B-675A-72C8-99758D16F8CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E3F09720-699B-675A-72C8-99758D16F8CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E3F09720-699B-675A-72C8-99758D16F8CF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B134C892-054E-00FF-5A5A-94734622F6E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B134C892-054E-00FF-5A5A-94734622F6E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B134C892-054E-00FF-5A5A-94734622F6E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
