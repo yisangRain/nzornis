@@ -19,7 +19,6 @@ public class DemoExpManager : MonoBehaviour
     void Start()
     {
         poiPanel.SetActive(false);
-        DontDestroyOnLoad(this);
     }
     
     public void ClosePoiPanel()

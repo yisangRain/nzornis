@@ -1,19 +1,13 @@
 {
     "m_SelectedDeviceId": "RF8R30634KR",
     "m_SelectedProcess": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "RF8R30634KR",
+        "name": "com.DefaultCompany.nzornis",
+        "processId": 29770,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownProcessesForSerialization": [
-        {
-            "deviceId": "RF8R30634KR",
-            "name": "com.sec.android.app.sbrowser",
-            "processId": 14079,
-            "exited": false
-        },
         {
             "deviceId": "RF8R30634KR",
             "name": "com.sec.android.app.launcher",
@@ -22,27 +16,45 @@
         },
         {
             "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.Myproject",
-            "processId": 31650,
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 26111,
             "exited": true
         },
         {
             "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.Myproject",
-            "processId": 4206,
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 26808,
             "exited": true
         },
         {
             "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.Myproject",
-            "processId": 6442,
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 25554,
             "exited": true
         },
         {
             "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.Myproject",
-            "processId": 8694,
+            "name": "com.sec.android.app.sbrowser",
+            "processId": 10463,
+            "exited": false
+        },
+        {
+            "deviceId": "RF8R30634KR",
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 26715,
             "exited": true
+        },
+        {
+            "deviceId": "RF8R30634KR",
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 28885,
+            "exited": false
+        },
+        {
+            "deviceId": "RF8R30634KR",
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 29770,
+            "exited": false
         }
     ],
     "m_Tags": {

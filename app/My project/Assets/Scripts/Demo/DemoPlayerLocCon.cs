@@ -6,6 +6,7 @@ using Niantic.Lightship.Maps;
 using UnityEngine;
 using UnityEngine.Android;
 using TMPro;
+using UnityEngine.UI;
 
 /// <summary>
 /// Adapted from 'PlayerLocationController.cs' script from Niantic 
@@ -31,6 +32,12 @@ public class DemoPlayerLocCon : MonoBehaviour
     [SerializeField]
     private LayerGameObjectPlacement _CubeGOP;
 
+    [SerializeField]
+    private GameObject mapLayer;
+
+    [SerializeField]
+    private GameObject map;
+
     private double lastGpsUpdateTime;
     private Vector3 targetPosition;
     private Vector3 currentPosition;
@@ -50,17 +57,27 @@ public class DemoPlayerLocCon : MonoBehaviour
     private static bool IsLocationServiceInitializing
         => Input.location.status == LocationServiceStatus.Initializing;
 
-    
+    private Poi[] demos;
+ 
+    private bool spawned = false;
+
+    public Button testButton;
+
     // Start is called before the first frame update
     void Start()
     {
+        testButton.onClick.AddListener(OnClickPlaceObject);
         mapView.MapOriginChanged += OnMapViewOriginChanged;
         currentPosition = targetPosition = transform.position;
 
-        // spawn demo POI objects
-        SpawnDemo();
+        if (Application.isEditor)
+        {
+            SpawnDemo();
+            spawned = true;
+        }
 
         StartCoroutine(UpdateGpsLocation());
+
     }
 
     private void OnMapViewOriginChanged(LatLng center)
@@ -129,6 +146,7 @@ public class DemoPlayerLocCon : MonoBehaviour
             {
                 lastGpsUpdateTime = gpsInfo.timestamp;
                 currentCoordinate = new LatLng(gpsInfo.latitude, gpsInfo.longitude);
+                testText.text = currentCoordinate.ToString();
                 UpdatePlayerLocation(currentCoordinate);
             }
 
@@ -145,13 +163,23 @@ public class DemoPlayerLocCon : MonoBehaviour
     /// <param name="location"></param>
     private void UpdatePlayerLocation(in LatLng location)
     {
+
         targetPosition = mapView.LatLngToScene(location);
+
     }
 
     
     // Update is called once per frame
     void Update()
     {
+        if (spawned == false && currentCoordinate != (new LatLng()) )
+        {
+            spawned = true;
+            SpawnDemo();
+            Debug.Log("Spawned demo with active GPS");
+
+        }
+
         UpdateMapViewPosition();
 
         var movementVector = targetPosition - currentPosition;
@@ -180,7 +208,16 @@ public class DemoPlayerLocCon : MonoBehaviour
         transform.position = currentPosition;
         playerModel.UpdatePlayerState(moveDistance);
     }
-    
+
+    public void DestroyPoi()
+    {
+        int i = 0;
+        foreach (Poi p in demos)
+        {
+            Destroy(GameObject.Find("demos" + i));
+            i++;
+        }
+    }
 
     private void UpdateMapViewPosition()
     {
@@ -201,16 +238,46 @@ public class DemoPlayerLocCon : MonoBehaviour
     /// </summary>
     private void SpawnDemo()
     {
+        demos = new Poi[] { };
+
+        // novotel demos
         Poi n1 = new Poi("Test title 1", "Lorem ipsum", "Assets/TestAssets/blob.mp4", new LatLng(-43.530406, 172.637542));
         Poi n2 = new Poi("Test title 2", "Lorem ipsum", "Assets/TestAssets/blob.mp4", new LatLng(-43.530411, 172.637813));
         Poi n3 = new Poi("Test title 3", "Lorem ipsum", "Assets/TestAssets/blob.mp4", new LatLng(-43.530440, 172.637654));
 
-        Poi[] demos = { n1, n2, n3 };
+        // uni demos
+        Poi u1 = new Poi("Lab 1", "Slightly off from the front door", "Assets/TestAssets/blob.mp4", new LatLng(-43.523523, 172.585451));
+        Poi u2 = new Poi("Lab 2", "I think this is around my desk", "Assets/TestAssets/blob.mp4", new LatLng(-43.523579, 172.585286));
+        Poi u3 = new Poi("Lab 3", "Around Stephan's office", "Assets/TestAssets/testPukeko.mp4", new LatLng(-43.523612, 172.585128));
+
+        try
+        {
+            string payload = GameObject.Find("Carrier").GetComponent<Carrier>().payload;
+
+            if (payload == "novotel")
+            {
+                Poi[] tempDemo = { n1, n2, n3};
+                demos = tempDemo;
+
+            } else if (payload == "uni")
+            {
+                Poi[] tempDemo = { u1, u2, u3 };
+                demos = tempDemo;
+            }
+
+        } catch (Exception e)
+        {
+            Debug.LogError("[SpawnDemo] payload issue: " + e.ToString());
+            Poi[] editorVar = { u1, u2, u3 };
+            demos = editorVar;
+        }
+
+
         int i = 0;
 
         foreach (Poi loc in demos)
         {
-            _CubeGOP.PlaceInstance(loc.latlng, "demo" + i.ToString());
+            PlaceObject(loc.latlng, "demo" + i.ToString());
 
             PoiController temp = GameObject.Find("demo" + i.ToString()).GetComponent<PoiController>();
             temp.testText = testText;
@@ -219,7 +286,29 @@ public class DemoPlayerLocCon : MonoBehaviour
 
             i++;
         }
+        testText.text = "Spawned";
+        Debug.Log("[SpawnDemo] Finished.");
+    }
 
-        testText.text = "spawned";
+    private void PlaceObject(LatLng pos, string objName)
+    {
+        _CubeGOP.PlaceInstance(pos, objName);
+    }
+
+    public void OnClickPlaceObject()
+    {
+        if (currentCoordinate.Equals(new LatLng()))
+        {
+            testText.text = "Location service not ready. Please try again later";
+            Debug.Log("Location not ready");
+        }
+        else
+        {
+            //PlaceObject(currentCoordinate, "test location");
+            SpawnDemo();
+            Debug.Log("Should have spawned");
+        }
+
+
     }
 }

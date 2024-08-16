@@ -15,25 +15,26 @@ public class DemoArManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CleanUp();
+        CleanUpExp();
     
         if ( GameObject.Find("Explorer Controller") != null)
         {
             exp = GameObject.Find("Explorer Controller").GetComponent<DemoExpManager>();
-            titleText = exp.titleText;
-            LoadAr();
+            titleText.text = exp.title;
+            placeholder.GetComponent<VideoPlayer>().url = exp.filepath;
 
         } else
         {
             titleText.text = "AR not loaded";
             Debug.LogError("[DemoArManager] AR data not passed on from Explorer scene");
+            placeholder.GetComponent<VideoPlayer>().url = "Assets/TestAssets/blob.mp4";
         }
 
 
     }
 
 
-    private void CleanUp()
+    private void CleanUpExp()
     {
         GameObject[] x = FindObjectsByType<GameObject>(FindObjectsSortMode.InstanceID);
         foreach (GameObject o in x)
@@ -46,8 +47,4 @@ public class DemoArManager : MonoBehaviour
 
     }
 
-    public void LoadAr()
-    {
-        placeholder.GetComponent<VideoPlayer>().url = exp.filepath;
-    }
 }

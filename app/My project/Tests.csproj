@@ -55,11 +55,11 @@
     <UnityVersion>2022.3.26f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="C:\Users\natal\Desktop\SENG402\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\cs\xunit.analyzers.fixes.dll" />
-    <Analyzer Include="C:\Users\natal\Desktop\SENG402\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn3.11\cs\xunit.analyzers.fixes.dll" />
-    <Analyzer Include="C:\Users\natal\Desktop\SENG402\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
-    <Analyzer Include="C:\Users\natal\Desktop\SENG402\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn3.11\cs\xunit.analyzers.dll" />
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="D:\Natalie\project\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\cs\xunit.analyzers.fixes.dll" />
+    <Analyzer Include="D:\Natalie\project\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn3.11\cs\xunit.analyzers.fixes.dll" />
+    <Analyzer Include="D:\Natalie\project\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
+    <Analyzer Include="D:\Natalie\project\nzornis\app\My project\Assets\Packages\xunit.analyzers.1.14.0\analyzers\dotnet\roslyn3.11\cs\xunit.analyzers.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
@@ -408,10 +408,6 @@
     </Reference>
     <Reference Include="UnityEditor.Graphs">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEditor.WebGL.Extensions">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\PlaybackEngines\WebGLSupport\UnityEditor.WebGL.Extensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEditor.Android.Extensions">
