@@ -2123,11 +2123,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Pois
   _prefab: {fileID: 5360827899402198903, guid: 8ba10e1fa90097a418371cc7def175ef, type: 3}
-  _heightOffset: 5
-  _scaleWithMapRadius: 0
+  _heightOffset: 0
+  _scaleWithMapRadius: 1
   _relativeScale: 1
-  _minimumScale: 0
-  _maximumScale: Infinity
+  _minimumScale: 1
+  _maximumScale: 1.5
 --- !u!1 &1502947123
 GameObject:
   m_ObjectHideFlags: 0

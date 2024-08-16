@@ -74,10 +74,9 @@ public class DemoPlayerLocCon : MonoBehaviour
         {
             SpawnDemo();
             spawned = true;
+            Debug.Log("Editor");
         }
-
         StartCoroutine(UpdateGpsLocation());
-
     }
 
     private void OnMapViewOriginChanged(LatLng center)
@@ -86,6 +85,7 @@ public class DemoPlayerLocCon : MonoBehaviour
         currentPosition = mapView.LatLngToScene(center);
         targetPosition = currentPosition + offset;
     }
+
 
     /// <summary>
     /// For Android playback of the app
@@ -163,21 +163,18 @@ public class DemoPlayerLocCon : MonoBehaviour
     /// <param name="location"></param>
     private void UpdatePlayerLocation(in LatLng location)
     {
-
         targetPosition = mapView.LatLngToScene(location);
-
     }
 
     
     // Update is called once per frame
     void Update()
     {
-        if (spawned == false && currentCoordinate != (new LatLng()) )
+        if (spawned == false && !currentCoordinate.Equals(new LatLng()) )
         {
             spawned = true;
             SpawnDemo();
             Debug.Log("Spawned demo with active GPS");
-
         }
 
         UpdateMapViewPosition();
@@ -241,14 +238,14 @@ public class DemoPlayerLocCon : MonoBehaviour
         demos = new Poi[] { };
 
         // novotel demos
-        Poi n1 = new Poi("Test title 1", "Lorem ipsum", "Assets/TestAssets/blob.mp4", new LatLng(-43.530406, 172.637542));
-        Poi n2 = new Poi("Test title 2", "Lorem ipsum", "Assets/TestAssets/blob.mp4", new LatLng(-43.530411, 172.637813));
-        Poi n3 = new Poi("Test title 3", "Lorem ipsum", "Assets/TestAssets/blob.mp4", new LatLng(-43.530440, 172.637654));
+        Poi n1 = new Poi("Test title 1", "Lorem ipsum", "Assets/TestAssets/blob.mp4", new LatLng(-43.5304060000001, 172.6375420000001));
+        Poi n2 = new Poi("Test title 2", "Lorem ipsum", "Assets/TestAssets/blob.mp4", new LatLng(-43.5304110000001, 172.6378130000001));
+        Poi n3 = new Poi("Test title 3", "Lorem ipsum", "Assets/TestAssets/blob.mp4", new LatLng(-43.5304400000001, 172.6376540000001));
 
         // uni demos
-        Poi u1 = new Poi("Lab 1", "Slightly off from the front door", "Assets/TestAssets/blob.mp4", new LatLng(-43.523523, 172.585451));
-        Poi u2 = new Poi("Lab 2", "I think this is around my desk", "Assets/TestAssets/blob.mp4", new LatLng(-43.523579, 172.585286));
-        Poi u3 = new Poi("Lab 3", "Around Stephan's office", "Assets/TestAssets/testPukeko.mp4", new LatLng(-43.523612, 172.585128));
+        Poi u1 = new Poi("Lab 1", "Slightly off from the front door", "Assets/TestAssets/blob.mp4", new LatLng(-43.5235230000001, 172.5854510000001));
+        Poi u2 = new Poi("Lab 2", "I think this is around my desk", "Assets/TestAssets/blob.mp4", new LatLng(-43.5235790000001, 172.5852860000001));
+        Poi u3 = new Poi("Lab 3", "Around Stephan's office", "Assets/TestAssets/testPukeko.mp4", new LatLng(-43.5236120000001, 172.5851280000001));
 
         try
         {
@@ -302,13 +299,24 @@ public class DemoPlayerLocCon : MonoBehaviour
             testText.text = "Location service not ready. Please try again later";
             Debug.Log("Location not ready");
         }
+        //else
+        //{
+        //    Debug.Log($"Lat: {currentCoordinate.Latitude}, Lon: {currentCoordinate.Longitude}");
+        //    PlaceObject(currentCoordinate, "test location");
+        //    Debug.Log("Should have spawned");
+        //}
+
+        //GameObject demo = GameObject.Find("demo0");
+        //demo.transform.position = transform.position;
+        //Debug.Log("Moved demo1 to where the cube is");
+
         else
         {
-            //PlaceObject(currentCoordinate, "test location");
-            SpawnDemo();
+            LatLng temp = new LatLng(-43.5236120000001, 172.5851280000001);
+            Debug.Log($"Lat: {temp.Latitude}, Lon: {temp.Longitude}");
+            PlaceObject(temp, "test location");
             Debug.Log("Should have spawned");
         }
-
 
     }
 }

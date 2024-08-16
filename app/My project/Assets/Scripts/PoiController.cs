@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using Niantic.Lightship.Maps.Core.Coordinates;
 
 /// <summary>
 /// Script attached to the POI prefab
@@ -11,6 +12,21 @@ public class PoiController : MonoBehaviour
     public GameObject panel;
 
     private DemoExpManager expController;
+    private string prev;
+
+    private void Update()
+    {
+        string current = transform.position.ToString();
+        if (current != prev)
+        {
+            prev = current;
+            Debug.Log($"Position of the {name}: {current}");
+            testText.text = current;
+            Debug.Log($"GPS position: {poi.latlng}");
+
+
+        }
+    }
 
     public void OnMouseUpAsButton()
     {
