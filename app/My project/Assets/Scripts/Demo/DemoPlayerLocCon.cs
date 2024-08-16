@@ -177,6 +177,14 @@ public class DemoPlayerLocCon : MonoBehaviour
             Debug.Log("Spawned demo with active GPS");
         }
 
+        //wayspot layer
+        if (mapLayer.activeSelf == false)
+        {
+            mapLayer.SetActive(true);
+            Debug.Log("Wayspot activated");
+            Debug.Log(mapLayer.transform.position.ToString());
+        }
+
         UpdateMapViewPosition();
 
         var movementVector = targetPosition - currentPosition;
@@ -310,13 +318,15 @@ public class DemoPlayerLocCon : MonoBehaviour
         //demo.transform.position = transform.position;
         //Debug.Log("Moved demo1 to where the cube is");
 
-        else
-        {
-            LatLng temp = new LatLng(-43.5236120000001, 172.5851280000001);
-            Debug.Log($"Lat: {temp.Latitude}, Lon: {temp.Longitude}");
-            PlaceObject(temp, "test location");
-            Debug.Log("Should have spawned");
-        }
+        //else
+        //{
+        //    LatLng temp = new LatLng(-43.5236120000001, 172.5851280000001);
+        //    Debug.Log($"Lat: {temp.Latitude}, Lon: {temp.Longitude}");
+        //    PlaceObject(temp, "test location");
+        //    Debug.Log("Should have spawned");
+        //}
+
+        GameObject.Find("MapLayers").transform.position = transform.position;
 
     }
 }

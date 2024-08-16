@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\PoiController.cs" />
     <Compile Include="Assets\Scripts\Subclasses\PostUploadRes.cs" />
+    <Compile Include="Assets\Scripts\Demo\Indicator.cs" />
     <Compile Include="Assets\Scripts\Client.cs" />
     <Compile Include="Assets\Scripts\Unused\CameraManager.cs" />
     <Compile Include="Assets\Scripts\PlayerLocationController.cs" />
