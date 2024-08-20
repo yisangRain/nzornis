@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Landing.unity
+    path: Assets/Scenes/Demo/Landing.unity
     guid: 3b89f928993fafa4ca4ab4a1dcc0fdf1
   - enabled: 0
     path: Assets/Scenes/Main.unity
@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Demo/DemoMain.unity
     guid: 60f34e12c2085824793ebb683392fb9c
   - enabled: 1
-    path: Assets/Scenes/Demo/DemoExploration.unity
+    path: Assets/Scenes/Demo/DemoExplore.unity
     guid: d2a4ed38ac519414bad560a1aca615ed
   - enabled: 1
     path: Assets/Scenes/Demo/DemoAr.unity

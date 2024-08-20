@@ -76,11 +76,12 @@
     <Compile Include="Assets\Scripts\FilmingManager.cs" />
     <Compile Include="Assets\Scripts\Subclasses\LoginInfo.cs" />
     <Compile Include="Assets\Scripts\Unused\opencvCamManager.cs" />
-    <Compile Include="Assets\Scripts\Carrier.cs" />
     <Compile Include="Assets\Scripts\Demo\DemoExpManager.cs" />
+    <Compile Include="Assets\Scripts\Demo\DemoGameManager.cs" />
     <Compile Include="Assets\Scripts\Subclasses\UploadObject.cs" />
     <Compile Include="Assets\Scripts\ARSceneController.cs" />
     <Compile Include="Assets\Scripts\Subclasses\Cred.cs" />
+    <Compile Include="Assets\Scripts\Demo\DemoSceneNavigator.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Subclasses\Poi.cs" />
     <Compile Include="Assets\Scripts\Demo\DemoPlayerLocCon.cs" />
