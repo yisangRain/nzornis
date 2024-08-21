@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 /// Game Manager class to manage global operations within the Demo
 /// Includes:
 /// - Persisting variable storage
-/// - Scene loading
+/// - Loading Main scene from Landing
 /// </summary>
 public class DemoGameManager : MonoBehaviour
 {
@@ -19,6 +19,9 @@ public class DemoGameManager : MonoBehaviour
 
     private demo demoLocation = demo.None; // To store the target set of demo
     private Exception demoNotSetException = new Exception("Demo location not set.");
+
+    public Poi poi { get; set; }
+    public Vector3 arPosition { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -60,5 +63,4 @@ public class DemoGameManager : MonoBehaviour
         }
         LoadScene("DemoMain");
     }
-
 }

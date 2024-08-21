@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Demo/DemoExplore.unity
     guid: d2a4ed38ac519414bad560a1aca615ed
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Demo/DemoAr.unity
     guid: c5ecf3c1ff8783c45840648b6325b436
   - enabled: 0
