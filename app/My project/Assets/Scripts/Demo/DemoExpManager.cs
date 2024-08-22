@@ -100,20 +100,21 @@ public class DemoExpManager : MonoBehaviour
         demos = new Poi[] { };
 
         // novotel demos
-        Poi n1 = new Poi("Test title 1", "Lorem ipsum", "Assets/TestAssets/blob.mp4", new LatLng(float.Parse("-43.530406"), float.Parse("172.637542")), "Alice Baker", new DateTime(2024, 1, 1));
-        Poi n2 = new Poi("Test title 2", "Lorem ipsum", "Assets/TestAssets/blob.mp4", new LatLng(float.Parse("-43.530411"), float.Parse("172.637813")), "Alice Baker", new DateTime(2024, 2, 21));
-        Poi n3 = new Poi("Test title 3", "Lorem ipsum", "Assets/TestAssets/blob.mp4", new LatLng(float.Parse("-43.530440"), float.Parse("172.637654")), "Chris Donovan", new DateTime(2023, 12, 1));
+        Poi n1 = new Poi("Test title 1", "Lorem ipsum", 1, new LatLng(float.Parse("-43.530406"), float.Parse("172.637542")), "Alice Baker", new DateTime(2024, 1, 1));
+        Poi n2 = new Poi("Test title 2", "Lorem ipsum", 1, new LatLng(float.Parse("-43.530411"), float.Parse("172.637813")), "Alice Baker", new DateTime(2024, 2, 21));
+        Poi n3 = new Poi("Test title 3", "Lorem ipsum", 1, new LatLng(float.Parse("-43.530440"), float.Parse("172.637654")), "Chris Donovan", new DateTime(2023, 12, 1));
 
         // uni demos
-        Poi u1 = new Poi("Lab 1", "Slightly off from the front door", "Assets/TestAssets/blob.mp4", new LatLng(float.Parse("-43.520448"), float.Parse("172.583186")), "Ethan Fong", new DateTime(2024, 1, 1));
-        Poi u2 = new Poi("Lab 2", "I think this is around my desk", "Assets/TestAssets/blob.mp4", new LatLng(float.Parse("-43.520579"), float.Parse("172.583286")), "Gareth Han", new DateTime(2024, 3, 10));
-        Poi u3 = new Poi("Lab 3", "Around Stephan's office", "Assets/TestAssets/testPukeko.mp4", new LatLng(float.Parse("-43.520612"), float.Parse("172.583128")), "Ines Capri", new DateTime(2024, 5, 5));
+        Poi u1 = new Poi("Lab 1", "Slightly off from the front door", 0, new LatLng(float.Parse("-43.520448"), float.Parse("172.583186")), "Ethan Fong", new DateTime(2024, 1, 1));
+        Poi u2 = new Poi("Lab 2", "I think this is around my desk", 1, new LatLng(float.Parse("-43.520579"), float.Parse("172.583286")), "Gareth Han", new DateTime(2024, 3, 10));
+        Poi u3 = new Poi("Lab 3", "Around Stephan's office", 2, new LatLng(float.Parse("-43.520612"), float.Parse("172.583128")), "Ines Capri", new DateTime(2024, 5, 5));
+        Poi u4 = new Poi("Somewhere by the fire station", "This is where firetrucks live.", 3, new LatLng(float.Parse("-43.520216"), float.Parse("172.582620")), "Ines Capri", new DateTime(2024, 8,1));
 
         try
         {
             if (Application.isEditor)
             {
-                Poi[] tempDemoEditor = { u1, u2, u3 };
+                Poi[] tempDemoEditor = { u1, u2, u3, u4 };
                 demos = tempDemoEditor;
             }
             else
@@ -126,7 +127,7 @@ public class DemoExpManager : MonoBehaviour
                         break;
 
                     default:
-                        Poi[] tempDemo2 = { u1, u2, u3 };
+                        Poi[] tempDemo2 = { u1, u2, u3, u4 };
                         demos = tempDemo2;
                         break;
                 }
@@ -144,9 +145,9 @@ public class DemoExpManager : MonoBehaviour
         foreach (Poi loc in demos)
         {
             poiGOP.PlaceInstance(loc.latlng, "demo" + i.ToString());
-
             PoiController temp = GameObject.Find("demo" + i.ToString()).GetComponent<PoiController>();
             temp.poi = loc;
+            
 
             Debug.Log($"[SpawnDemo] demo {i} created");
 

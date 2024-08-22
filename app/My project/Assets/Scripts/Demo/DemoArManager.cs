@@ -1,50 +1,62 @@
-//using UnityEngine;
-//using TMPro;
-//using UnityEngine.Video;
+using UnityEngine;
+using TMPro;
+using UnityEngine.Video;
+using Niantic.Lightship.AR.LocationAR;
 
-///// <summary>
-///// AR scene manager for Demo
-///// 
-///// </summary>
-//public class DemoArManager : MonoBehaviour
-//{
-//    public TMP_Text titleText;
-//    private DemoExpManager exp;
-//    public GameObject placeholder;
+/// <summary>
+/// AR scene manager for Demo
+/// 
+/// </summary>
+public class DemoArManager : MonoBehaviour
+{
+    [SerializeField]
+    private TMP_Text titleText;
 
-//    // Start is called before the first frame update
-//    void Start()
-//    {
-//        CleanUpExp();
-    
-//        if ( GameObject.Find("Explorer Controller") != null)
-//        {
-//            exp = GameObject.Find("Explorer Controller").GetComponent<DemoExpManager>();
-//            titleText.text = exp.title;
-//            placeholder.GetComponent<VideoPlayer>().url = exp.filepath;
+    [SerializeField]
+    private GameObject placeholderObject;
 
-//        } else
-//        {
-//            titleText.text = "AR not loaded";
-//            Debug.LogError("[DemoArManager] AR data not passed on from Explorer scene");
-//            placeholder.GetComponent<VideoPlayer>().url = "Assets/TestAssets/blob.mp4";
-//        }
+    DemoGameManager gameManager;
 
+    [SerializeField]
+    private VideoClip demo0;
+    [SerializeField]
+    private VideoClip demo1;
+    [SerializeField]
+    private VideoClip demo2;
+    [SerializeField]
+    private VideoClip demo3;
 
-//    }
+    public TMP_Text debugText;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        if (Application.isEditor)
+        {
+            titleText.text = "Editor: This scene only.";
+            placeholderObject.GetComponent<VideoPlayer>().clip = demo1;
+        } else
+        {
+            gameManager = GameObject.Find("GameManager").GetComponent<DemoGameManager>();
 
-//    private void CleanUpExp()
-//    {
-//        GameObject[] x = FindObjectsByType<GameObject>(FindObjectsSortMode.InstanceID);
-//        foreach (GameObject o in x)
-//        {
-//            if (o.name == "Explorer Controller" && o.transform.childCount == 0)
-//            {
-//                Destroy(o);
-//            }
-//        }
+            titleText.text = gameManager.poi.title;
+            switch (gameManager.poi.clipId)
+            {
+                case 1:
+                    placeholderObject.GetComponent<VideoPlayer>().clip = demo1;
+                    break;
+                case 2:
+                    placeholderObject.GetComponent<VideoPlayer>().clip = demo2;
+                    break;
+                case 3:
+                    placeholderObject.GetComponent<VideoPlayer>().clip = demo3;
+                    break;
 
-//    }
+                default:
+                    placeholderObject.GetComponent<VideoPlayer>().clip = demo0;
+                    break;
+            }
 
-//}
+        }
+    }
+}

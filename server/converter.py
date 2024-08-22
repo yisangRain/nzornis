@@ -25,7 +25,7 @@ def grabCutter(frame, rect):
 
 
 
-def grabcut(source, output_name):
+def grabcut(source, output_name, box=(10, 10, 480, 480)):
 
     start = time.time()
 
@@ -47,8 +47,6 @@ def grabcut(source, output_name):
         print("Could not extract the first frame. Exiting...")
         return 1
 
-    box = (10, 10, 480, 480) 
-
     i = 0
 
     while (True):
@@ -56,8 +54,8 @@ def grabcut(source, output_name):
         if (success == False):
             print("all frames gone")
             break
-        if (i > 120): #temp limiter
-            break
+        # if (i > 120): #temp limiter
+        #     break
     
         processed = grabCutter(cv2.resize(frame, (500,500)), box)
 
@@ -112,5 +110,5 @@ def vid_to_AR(conn, id):
         raise ValueError('Error converting file')
 
 
-
+grabcut("server/testAssets/pukeko.mp4","server/testAssets/pukekoConverted.mp4")
 

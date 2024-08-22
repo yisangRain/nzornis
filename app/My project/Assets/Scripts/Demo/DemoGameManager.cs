@@ -23,6 +23,8 @@ public class DemoGameManager : MonoBehaviour
     public Poi poi { get; set; }
     public Vector3 arPosition { get; set; }
 
+    private string prevSceneName = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +48,23 @@ public class DemoGameManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        prevSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(sceneName);
+    }
+
+    /// <summary>
+    /// Go back to the previous scene.
+    /// If no previous scene, load Main.
+    /// </summary>
+    public void BackScene()
+    {
+        if (prevSceneName != null & SceneManager.GetActiveScene().name != prevSceneName)
+        {
+            LoadScene(prevSceneName);
+        } else
+        {
+            LoadScene("DemoMain");
+        }
     }
 
     public void SetDemoAndLoadMainScene(string demoString)
