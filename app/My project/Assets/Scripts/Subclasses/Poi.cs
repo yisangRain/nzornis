@@ -1,4 +1,5 @@
 ﻿using Niantic.Lightship.Maps.Core.Coordinates;
+using UnityEngine;
 using System;
 
 /// <summary>
@@ -12,6 +13,25 @@ public class Poi
     public int clipId { get; set; }
     public LatLng latlng { get; set; }
     public DateTime date { get; set; }
+    public Vector3 position { get; set; }
+
+    enum clipOrder {
+        KERERU,
+        KOKAKO,
+        PUKEKO,
+        HUMMINGBIRD,
+        BLOB
+        }
+
+    public Poi()
+    {
+
+    }
+
+    public Poi(LatLng latlng)
+    {
+        this.latlng = latlng;
+    }
 
     public Poi(string title, string description, int clipId, LatLng latlng, string user)
     {
@@ -23,7 +43,7 @@ public class Poi
         this.user = user;
     }
 
-    public Poi(string title, string description, int clipId, LatLng latlng, string user, DateTime date)
+    public Poi(string title, string description, int clipId, LatLng latlng, string user, DateTime date, Vector3 position)
     {
         this.title = title;
         this.description = description;
@@ -31,5 +51,6 @@ public class Poi
         this.latlng = latlng;
         this.date = date;
         this.user = user;
+        this.position = position;
     }
 }

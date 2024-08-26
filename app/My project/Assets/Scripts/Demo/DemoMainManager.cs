@@ -31,8 +31,8 @@ public class DemoMainManager : MonoBehaviour
                 default:
                     break;
             }
-        } catch (Exception e) {
-            demoInfo.text = e.ToString();
+        } catch {
+            demoInfo.text = "Game Manager is null";
         }
     }
 

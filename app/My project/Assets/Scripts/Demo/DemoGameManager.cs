@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +25,10 @@ public class DemoGameManager : MonoBehaviour
     public Vector3 arPosition { get; set; }
 
     private string prevSceneName = null;
+
+    public Poi newPoi;
+
+    public List<Poi> newPois = new List<Poi>();  
 
     // Start is called before the first frame update
     void Start()
