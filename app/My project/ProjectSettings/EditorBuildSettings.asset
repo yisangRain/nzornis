@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Demo/Landing.unity
+    guid: 3b89f928993fafa4ca4ab4a1dcc0fdf1
+  - enabled: 1
+    path: Assets/Scenes/Demo/DemoMain.unity
+    guid: 60f34e12c2085824793ebb683392fb9c
+  - enabled: 1
+    path: Assets/Scenes/Demo/DemoExplore.unity
+    guid: d2a4ed38ac519414bad560a1aca615ed
+  - enabled: 1
+    path: Assets/Scenes/Demo/DemoAr.unity
+    guid: c5ecf3c1ff8783c45840648b6325b436
+  - enabled: 1
+    path: Assets/Scenes/Demo/DemoPosition.unity
+    guid: ece1611bb85b878469d233d07d03c4a8
+  - enabled: 1
+    path: Assets/Scenes/Demo/DemoGallery.unity
+    guid: c0d008c5146cfff49aa8a9b6a2b9492d
+  - enabled: 1
+    path: Assets/Scenes/Demo/DemoCreate.unity
+    guid: ea3dbeecf01f809439b546bdbc158d97
+  m_configObjects:
+    Niantic.Lightship.AR.LightshipSettings: {fileID: 11400000, guid: b6cbb277db91b3047aef3b8b944cb51b, type: 2}
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 23134a15653f16941b58ca7db6fe8c92, type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 7e50980c2bb761949bde441a5f4e78a1, type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 761cb3fc88b2d97489bd55e7ede34021, type: 2}
+    com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: 1b98a13d084c7bd478747d8f2334fe93, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: c356793755b16f14692cf0424191c499, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: d3c232c13fbab0a44afdffb3243f19b5, type: 2}
