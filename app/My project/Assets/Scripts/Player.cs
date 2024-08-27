@@ -8,8 +8,6 @@ public interface IPlayer
 
 public class Player : MonoBehaviour, IPlayer
 {
-    private Player() { }
-
 
     public static Player instance { get; private set; }
 
@@ -21,9 +19,16 @@ public class Player : MonoBehaviour, IPlayer
 
     //Dev variables
     private string testId = "100";
-    private string testPassword = "test_password";
 
-    public void Awake()
+    public void Start()
+    {
+        Initiate();
+        TestLogIn(); //Automatically loggin for dev purposes
+        DontDestroyOnLoad(gameObject);
+
+    }
+
+    private void Initiate()
     {
         if (instance != null && instance != this)
         {
@@ -33,7 +38,6 @@ public class Player : MonoBehaviour, IPlayer
         {
             instance = this;
         }
-
     }
 
  
@@ -41,21 +45,14 @@ public class Player : MonoBehaviour, IPlayer
     /// DRAFT: a simple (unsecure) log-in method as a placeholder
     /// Treat as blackbox method
     /// </summary>
-    /// <param name="id"></param>
-    /// <param name="password"></param>
     /// <returns>String message of outcome</returns>
-    public string LogIn(string id, string password)
+    public string TestLogIn()
     {
-        if (id == testId && password == testPassword)
-        {
-            loggedIn = true;
-            playerId = testId;
-            return "Log in successful";
-        }
-        else
-        {
-            return "Log in failed";
-        }
+    
+        loggedIn = true;
+        playerId = testId;
+        return "Test Account: Log in successful";
+
     }
 
     public string LogOut()
@@ -73,6 +70,23 @@ public class Player : MonoBehaviour, IPlayer
     public string GetId()
     {
         return playerId;
+    }
+
+    public bool PlayerLoginUpdate(string newUserId)
+    {
+        if (newUserId != "Fail")
+        {
+            playerId = newUserId;
+            loggedIn = true;
+        }
+
+        return loggedIn;
+    }
+
+    public Player GetPlayer()
+    {
+        Initiate();
+        return instance;
     }
 
 }

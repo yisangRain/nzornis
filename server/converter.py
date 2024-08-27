@@ -3,6 +3,7 @@ import numpy as np
 from vidgear.gears import WriteGear
 from vidgear.gears.stabilizer import Stabilizer
 import time
+import database
 
 def grabCutter(frame, rect):
     """
@@ -23,7 +24,9 @@ def grabCutter(frame, rect):
     return img_seg
 
 
+
 def grabcut(source, output_name):
+
     start = time.time()
 
     # note: avc1 is h264
@@ -44,17 +47,19 @@ def grabcut(source, output_name):
         print("Could not extract the first frame. Exiting...")
         return 1
 
-    box = (10, 10, 480, 480) 
-
     i = 0
+
+    box=(20, 20, 470, 470)
 
     while (True):
         success, frame = capture.read()
+        print(i)
         if (success == False):
             print("all frames gone")
             break
-        if (i > 120): #temp limiter
-            break
+        # if (i > 30): #temp limiter
+        #     break
+    
         processed = grabCutter(frame, box)
 
         writer.write(processed)
@@ -68,35 +73,44 @@ def grabcut(source, output_name):
     return 0
 
 
-
-def to_AR(filename, conn, id):
+def img_to_AR(conn, id):
     """
-    Wrapper function for conversion
+    Wrapper function for cutting an image file for AR 
     """
+    s = database.Sighting()
+    filename = s.get_by_id(conn, database.Entity.SIGHTING, id)[0][-1]
     input_name = "server/received/" + filename
     output_name = "server/converted/" + filename
 
-    c = conn.cursor()
-    query = None
+    box = (10, 10, 480, 480) 
+    img = cv2.resize(cv2.imread(input_name), (500,500))
+
+    processed = grabCutter(img, box)
+    cv2.imwrite(output_name, processed)
+
+    c = database.Cell()
+    c.update_status(conn, id, database.ConversionStatus.READY)
+
+
+
+def vid_to_AR(conn, id):
+    """
+    Wrapper function for conversion
+    """
+    s = database.Sighting()
+    filename = s.get_by_id(conn, database.Entity.SIGHTING, id)[0][-1]
+    input_name = "server/received/" + filename
+    output_name = "server/converted/" + filename
+
+    c = database.Cell()
 
     result = grabcut(input_name, output_name)
 
     if result == 0:
-        query = f"UPDATE AR SET filename = '{output_name}', status='converted' WHERE ar_id = {id};"
+        c.update_status(conn, id, database.ConversionStatus.READY)
 
     elif result == 1:
-        query = f"UPDATE AR SET filename = 'None', status='File Error' WHERE ar_id = {id};"
+        raise ValueError('Error converting file')
 
-    c.execute(query)
-    conn.commit()
-
-
-grabcut("server/testAssets/blob.mp4", "testBlob.mp4")
-
-
-
-
- 
-
-
+grabcut("server/testAssets/hummingbird.mp4","server/testAssets/hummingbirdConverted2.mp4")
 

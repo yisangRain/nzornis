@@ -2,8 +2,8 @@
     "m_SelectedDeviceId": "RF8R30634KR",
     "m_SelectedProcess": {
         "deviceId": "RF8R30634KR",
-        "name": "com.DefaultCompany.Myproject",
-        "processId": 10395,
+        "name": "com.DefaultCompany.nzornis",
+        "processId": 1895,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,43 +11,43 @@
         {
             "deviceId": "RF8R30634KR",
             "name": "com.sec.android.app.launcher",
-            "processId": 4369,
+            "processId": 3045,
             "exited": false
         },
         {
             "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.Myproject",
-            "processId": 27111,
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 21664,
             "exited": true
         },
         {
             "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.Myproject",
-            "processId": 29781,
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 25060,
             "exited": true
         },
         {
             "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.Myproject",
-            "processId": 31906,
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 10456,
             "exited": true
         },
         {
             "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.Myproject",
-            "processId": 1516,
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 29861,
             "exited": true
         },
         {
             "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.Myproject",
-            "processId": 8435,
+            "name": "com.sec.android.app.sbrowser",
+            "processId": 23062,
             "exited": false
         },
         {
             "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.Myproject",
-            "processId": 10395,
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 1895,
             "exited": false
         }
     ],

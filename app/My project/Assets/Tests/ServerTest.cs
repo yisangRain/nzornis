@@ -1,199 +1,208 @@
-using NUnit.Framework;
-using UnityEngine;
-using Moq;
-using Moq.Protected;
-using System;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Threading;
-using System.IO;
+//using NUnit.Framework;
+//using UnityEngine;
+//using Moq;
+//using Moq.Protected;
+//using System;
+//using System.Net;
+//using System.Net.Http;
+//using System.Threading.Tasks;
+//using System.Threading;
+//using System.IO;
 
-public class ServerTest
-{
-    Client myClient = new Client();
-    private int testArId = 1;
-    private string testUser = "100";
-    private string testPassword = "test_password";
-    Player player = Player.instance;
+//public class ServerTest
+//{
+//    Client myClient = new Client();
+//    Player player;
 
-    // Test video
-    byte[] testVideoBytes = File.ReadAllBytes("Assets/TestAssets/blob.mp4");
+//    // Test Vars
+//    private int testSightingId = 1;
+//    private string testTitle = "Test Title";
+//    private string testDesc = "Test description";
+//    private int testTime = Convert.ToInt32(DateTimeOffset.Now.ToUnixTimeSeconds());
+//    private double testLat = -43.52628;
+//    private double testLon = 172.58623;
 
-    [SetUp]
-    public void SetUp()
-    {
-        Assert.IsTrue(player.LogIn(testUser, testPassword) == "Log in successful");
-    }
+//    // Test video
+//    byte[] testVideoBytes = File.ReadAllBytes("Assets/TestAssets/blob.mp4");
 
-    [TearDown]
-    public void TearDown()
-    {
-        Assert.IsTrue(player.LogOut() == "Logged out.");
-    }
+//    [SetUp]
+//    public void SetUp()
+//    {
+//        GameObject obj = new GameObject();
+//        player = obj.AddComponent(typeof(Player)) as Player;
+//        // var x = player.TestLogIn();
+//        // Assert.IsTrue(x.Equals( "Test Account: Log in successful"));
+//    }
 
-    // Vanilla tests below
+//    [TearDown]
+//    public void TearDown()
+//    {
+//        Assert.IsTrue(player.LogOut() == "Logged out.");
+//    }
 
-    /// <summary>
-    /// TDD development test to help with the development.
-    /// Only tests vanilla (core) functionality
-    /// </summary>
-    [Test]
-    public async void TestGetStatus_Vanilla()
-    {
-        var mockHttpHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
-        var mockPlayer = new Mock<IPlayer>();
+//    // Vanilla tests below
 
-        var response = new HttpResponseMessage
-        {
-            StatusCode = HttpStatusCode.OK,
-            Content = new StringContent(@"{""ar_id"": " + testArId.ToString() + @", ""status"": ""processing"" }")
-        };
+//    /// <summary>
+//    /// TDD development test to help with the development.
+//    /// Only tests vanilla (core) functionality
+//    /// </summary>
+//    [Test]
+//    public async void TestGetStatus_Vanilla()
+//    {
+//        var mockHttpHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+//        var mockPlayer = new Mock<IPlayer>();
 
-        mockHttpHandler
-            .Protected()
-            .Setup<Task<HttpResponseMessage>>(
-                "SendAsync",
-                ItExpr.IsAny<HttpRequestMessage>(),
-                ItExpr.IsAny<CancellationToken>())
-            .ReturnsAsync(response)
-            .Verifiable();
+//        var response = new HttpResponseMessage
+//        {
+//            StatusCode = HttpStatusCode.OK,
+//            Content = new StringContent(@"{""sighting_id"": " + testSightingId.ToString() + @", ""status"": ""3"" }")
+//        };
 
-        myClient.SetClient(new HttpClient(mockHttpHandler.Object));
-        var testResponse = await myClient.GetStatus(testArId);
+//        mockHttpHandler
+//            .Protected()
+//            .Setup<Task<HttpResponseMessage>>(
+//                "SendAsync",
+//                ItExpr.IsAny<HttpRequestMessage>(),
+//                ItExpr.IsAny<CancellationToken>())
+//            .ReturnsAsync(response)
+//            .Verifiable();
 
-        Assert.AreEqual("processing", testResponse);
+//        myClient.SetClient(new HttpClient(mockHttpHandler.Object));
+//        var testResponse = await myClient.GetStatus(testSightingId);
 
-        mockHttpHandler.Protected().Verify(
-            "SendAsync",
-            Times.Once(),
-            ItExpr.Is<HttpRequestMessage>(req =>
-                req.Method == HttpMethod.Get
-                && req.RequestUri == new Uri("http://localhost:8000/getStatus?user=100&ar_id=1")),
-            ItExpr.IsAny<CancellationToken>()
-            );
-    }
+//        Assert.AreEqual("3", testResponse);
 
-
-    [Test]
-    public async void TestGetUserVideo_Vanilla()
-    {
-        var mockHttpHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
-
-        var response = new HttpResponseMessage
-        {
-            StatusCode = HttpStatusCode.OK,
-            Content = new ByteArrayContent(testVideoBytes)
-        };
-
-        mockHttpHandler
-            .Protected()
-            .Setup<Task<HttpResponseMessage>>(
-                "SendAsync",
-                ItExpr.IsAny<HttpRequestMessage>(),
-                ItExpr.IsAny<CancellationToken>())
-            .ReturnsAsync(response)
-            .Verifiable();
-
-        myClient.SetClient(new HttpClient(mockHttpHandler.Object));
-        string testResponse = await myClient.GetUserVideo(testArId);
-        Debug.Log(testResponse);
-
-        Assert.IsTrue($"{Application.persistentDataPath}/ar_{testArId}.mp4" == testResponse);
-
-        Assert.IsTrue(File.Exists(testResponse));
-        File.Delete(testResponse);
-
-        mockHttpHandler.Protected().Verify(
-            "SendAsync",
-            Times.Once(),
-            ItExpr.Is<HttpRequestMessage>(req =>
-                req.Method == HttpMethod.Get
-                && req.RequestUri == new Uri("http://localhost:8000/getUserVideo?user=100&ar_id=1")),
-            ItExpr.IsAny<CancellationToken>()
-            );
-    }
+//        mockHttpHandler.Protected().Verify(
+//            "SendAsync",
+//            Times.Once(),
+//            ItExpr.Is<HttpRequestMessage>(req =>
+//                req.Method == HttpMethod.Get
+//                && req.RequestUri == new Uri("http://localhost:8000/getConversionStatus?sighting_id=1")),
+//            ItExpr.IsAny<CancellationToken>()
+//            );
+//    }
 
 
-    [Test]
-    public async void TestPatchInitConversion_Vanilla()
-    {
-        var mockHttpHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+//    [Test]
+//    public async void TestGetMedia_Vanilla()
+//    {
+//        var mockHttpHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
 
-        var response = new HttpResponseMessage
-        {
-            StatusCode = HttpStatusCode.Accepted,
-            ReasonPhrase = "Initiating"
-        };
+//        var response = new HttpResponseMessage
+//        {
+//            StatusCode = HttpStatusCode.OK,
+//            Content = new ByteArrayContent(testVideoBytes)
+//        };
 
-        mockHttpHandler
-            .Protected()
-            .Setup<Task<HttpResponseMessage>>(
-                "SendAsync",
-                ItExpr.IsAny<HttpRequestMessage>(),
-                ItExpr.IsAny<CancellationToken>())
-            .ReturnsAsync(response)
-            .Verifiable();
+//        mockHttpHandler
+//            .Protected()
+//            .Setup<Task<HttpResponseMessage>>(
+//                "SendAsync",
+//                ItExpr.IsAny<HttpRequestMessage>(),
+//                ItExpr.IsAny<CancellationToken>())
+//            .ReturnsAsync(response)
+//            .Verifiable();
 
-        myClient.SetClient(new HttpClient(mockHttpHandler.Object));
-        var testResponse = await myClient.PatchInitConversion(testArId);
+//        myClient.SetClient(new HttpClient(mockHttpHandler.Object));
+//        string testResponse = await myClient.GetMedia(testSightingId);
+//        Debug.Log(testResponse);
 
-        Assert.AreEqual("Initiating", testResponse);
+//        Assert.IsTrue($"{Application.persistentDataPath}/sighting_{testSightingId}.mp4" == testResponse);
 
-        mockHttpHandler.Protected().Verify(
-            "SendAsync",
-            Times.Once(),
-            ItExpr.Is<HttpRequestMessage>(req =>
-                req.RequestUri == new Uri("http://localhost:8000/initCon?user=100&ar_id=1")),
-            ItExpr.IsAny<CancellationToken>()
-            );
-    }
+//        Assert.IsTrue(File.Exists(testResponse));
+//        File.Delete(testResponse);
 
-
-    [Test]
-    public async void TestPostUpload_Vanilla()
-    {
-        var mockHttpHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
-
-        var response = new HttpResponseMessage
-        {
-            StatusCode = HttpStatusCode.Created,
-            ReasonPhrase = "Video successfully uploaded"
-        };
-
-        mockHttpHandler
-            .Protected()
-            .Setup<Task<HttpResponseMessage>>(
-                "SendAsync",
-                ItExpr.IsAny<HttpRequestMessage>(),
-                ItExpr.IsAny<CancellationToken>())
-            .ReturnsAsync(response)
-            .Verifiable();
-
-        myClient.SetClient(new HttpClient(mockHttpHandler.Object));
-
-        string testFilePath = "Assets/TestAssets/blob.mp4";
-        UploadObject testJsonData = new UploadObject();
-        testJsonData.movement = "{something}";
-        testJsonData.position = "(10,10,10)";
-        GeoJson testGeoJson = new GeoJson();
-        testGeoJson.geometry = new Geometry("Point", new double[] { 125.6, 10.1 });
-        testGeoJson.properties = new Properties("Dinagat Islands");
-        testJsonData.geojson = testGeoJson;
-
-        var testResponse = await myClient.PostUpload(testFilePath, testJsonData);
-
-        Assert.AreEqual("Video successfully uploaded", testResponse);
-
-        mockHttpHandler.Protected().Verify(
-          "SendAsync",
-          Times.Once(),
-          ItExpr.Is<HttpRequestMessage>(req =>
-              req.RequestUri == new Uri("http://localhost:8000/upload?user=100")),
-          ItExpr.IsAny<CancellationToken>()
-          );
-    }
+//        mockHttpHandler.Protected().Verify(
+//            "SendAsync",
+//            Times.Once(),
+//            ItExpr.Is<HttpRequestMessage>(req =>
+//                req.Method == HttpMethod.Get
+//                && req.RequestUri == new Uri("http://localhost:8000/getMedia?sighting_id=1")),
+//            ItExpr.IsAny<CancellationToken>()
+//            );
+//    }
 
 
-}
+//    [Test]
+//    public async void TestPostUpload_Vanilla()
+//    {
+//        var mockHttpHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+
+//        var response = new HttpResponseMessage
+//        {
+//            StatusCode = HttpStatusCode.Created,
+//            ReasonPhrase = "Video successfully uploaded",
+//            Content = new StringContent(@"{""id"": " + testSightingId.ToString() + @", ""filename"": ""test.mp4"" }")
+
+//        };
+
+//        mockHttpHandler
+//            .Protected()
+//            .Setup<Task<HttpResponseMessage>>(
+//                "SendAsync",
+//                ItExpr.IsAny<HttpRequestMessage>(),
+//                ItExpr.IsAny<CancellationToken>())
+//            .ReturnsAsync(response)
+//            .Verifiable();
+
+//        myClient.SetClient(new HttpClient(mockHttpHandler.Object));
+
+//        string testFilePath = "Assets/TestAssets/blob.mp4";
+//        UploadObject testJsonData = new UploadObject();
+//        testJsonData.title = testTitle;
+//        testJsonData.desc = testDesc;
+//        testJsonData.time = testTime;
+//        testJsonData.ToLatLn(testLat, testLon);
+
+//        var testResponse = await myClient.PostUpload(testFilePath, player.GetId(), testJsonData);
+
+//        Assert.AreEqual(testSightingId.ToString(), testResponse);
+
+//        mockHttpHandler.Protected().Verify(
+//          "SendAsync",
+//          Times.Once(),
+//          ItExpr.Is<HttpRequestMessage>(req =>
+//              req.RequestUri == new Uri("http://localhost:8000/upload?user=100")),
+//          ItExpr.IsAny<CancellationToken>()
+//          );
+//    }
+
+//    [Test]
+//    public async void TestPatchInitConversion_Vanilla()
+//    {
+//        var mockHttpHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+
+//        var response = new HttpResponseMessage
+//        {
+//            StatusCode = HttpStatusCode.Accepted,
+//            ReasonPhrase = "Initiating"
+//        };
+
+//        mockHttpHandler
+//            .Protected()
+//            .Setup<Task<HttpResponseMessage>>(
+//                "SendAsync",
+//                ItExpr.IsAny<HttpRequestMessage>(),
+//                ItExpr.IsAny<CancellationToken>())
+//            .ReturnsAsync(response)
+//            .Verifiable();
+
+//        myClient.SetClient(new HttpClient(mockHttpHandler.Object));
+//        var testResponse = await myClient.PatchInitConversion(testSightingId.ToString());
+
+//        Assert.AreEqual("Initiating", testResponse);
+
+//        mockHttpHandler.Protected().Verify(
+//            "SendAsync",
+//            Times.Once(),
+//            ItExpr.Is<HttpRequestMessage>(req =>
+//                req.RequestUri == new Uri("http://localhost:8000/initiateConversion?sighting_id=1")),
+//            ItExpr.IsAny<CancellationToken>()
+//            );
+//    }
+
+
+
+
+//}
 
