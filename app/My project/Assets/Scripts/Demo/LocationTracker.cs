@@ -12,6 +12,7 @@ public class LocationTracker : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("[Location Tracker] Initiating");
         StartCoroutine(CurrentLocation());
     }
 

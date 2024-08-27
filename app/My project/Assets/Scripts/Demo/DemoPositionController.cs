@@ -56,21 +56,14 @@ public class DemoPositionController : MonoBehaviour
         {
             gameManager.newPoi.position = exampleModel.transform.position;
             gameManager.BackScene();
-        } else
-        {
-            SceneManager.LoadScene("DemoCreate");
-        }
+        } 
+        
+        SceneManager.LoadScene("DemoCreate");
+
     }
 
     public void ExitScene()
     {
-        if (gameManager != null)
-        {
-            gameManager.BackScene();
-        }
-        else
-        {
-            SceneManager.LoadScene("DemoCreate");
-        }
+        SceneManager.LoadScene("DemoCreate");
     }
 }

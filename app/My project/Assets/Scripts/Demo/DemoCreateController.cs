@@ -45,7 +45,7 @@ public class DemoCreateController : MonoBehaviour
         try
         {
             gameManager = GameObject.Find("GameManager").GetComponent<DemoGameManager>();
-            if (gameManager.poi != null)
+            if (gameManager.newPoi != null)
             {
                 selectButton.interactable = false;
                 positionButton.interactable = false;
@@ -161,8 +161,9 @@ public class DemoCreateController : MonoBehaviour
             Poi newPoi = gameManager.newPoi;
             newPoi.date = currentTime;
             newPoi.latlng = currentLocation;
-            gameManager.newPois.Add(newPoi);
+            gameManager.addedPois.Add(newPoi);
             gameManager.newPoi = null;
+            gameManager.LoadScene("DemoMain");
 
         } else
         {

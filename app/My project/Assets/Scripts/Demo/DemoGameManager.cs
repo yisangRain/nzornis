@@ -25,15 +25,17 @@ public class DemoGameManager : MonoBehaviour
     public Vector3 arPosition { get; set; }
 
     private string prevSceneName = null;
+    private string currentSceneName = null;
 
     public Poi newPoi;
 
-    public List<Poi> newPois = new List<Poi>();  
+    public List<Poi> addedPois = new List<Poi>();  
 
     // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+        currentSceneName = SceneManager.GetActiveScene().name;
     }
 
     public void SetDemoLocation(demo newDemoLocation)
@@ -53,7 +55,7 @@ public class DemoGameManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        prevSceneName = SceneManager.GetActiveScene().name;
+        prevSceneName = currentSceneName;
         SceneManager.LoadScene(sceneName);
     }
 
@@ -63,9 +65,16 @@ public class DemoGameManager : MonoBehaviour
     /// </summary>
     public void BackScene()
     {
-        if (prevSceneName != null & SceneManager.GetActiveScene().name != prevSceneName)
+        if (prevSceneName != null & currentSceneName != prevSceneName)
         {
-            LoadScene(prevSceneName);
+            if (prevSceneName == "Landing")
+            {
+                LoadScene("DemoMain");
+            } else
+            {
+                LoadScene(prevSceneName);
+            }
+            
         } else
         {
             LoadScene("DemoMain");

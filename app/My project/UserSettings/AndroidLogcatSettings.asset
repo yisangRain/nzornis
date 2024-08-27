@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "RF8R30634KR",
     "m_SelectedProcess": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "RF8R30634KR",
+        "name": "com.DefaultCompany.nzornis",
+        "processId": 1895,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -13,30 +13,6 @@
             "name": "com.sec.android.app.launcher",
             "processId": 3045,
             "exited": false
-        },
-        {
-            "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.nzornis",
-            "processId": 14663,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8R30634KR",
-            "name": "com.google.android.apps.youtube.music",
-            "processId": 8678,
-            "exited": false
-        },
-        {
-            "deviceId": "RF8R30634KR",
-            "name": "com.sec.android.app.sbrowser",
-            "processId": 11010,
-            "exited": false
-        },
-        {
-            "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.nzornis",
-            "processId": 15397,
-            "exited": true
         },
         {
             "deviceId": "RF8R30634KR",
@@ -54,6 +30,24 @@
             "deviceId": "RF8R30634KR",
             "name": "com.DefaultCompany.nzornis",
             "processId": 10456,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8R30634KR",
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 29861,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8R30634KR",
+            "name": "com.sec.android.app.sbrowser",
+            "processId": 23062,
+            "exited": false
+        },
+        {
+            "deviceId": "RF8R30634KR",
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 1895,
             "exited": false
         }
     ],

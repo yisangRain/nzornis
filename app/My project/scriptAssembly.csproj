@@ -87,6 +87,7 @@
     <Compile Include="Assets\Scripts\Demo\DemoSceneNavigator.cs" />
     <Compile Include="Assets\Scripts\Demo\DemoMainManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\GalleryItem.cs" />
     <Compile Include="Assets\Scripts\Demo\LocationTracker.cs" />
     <Compile Include="Assets\Scripts\Subclasses\Poi.cs" />
     <Compile Include="Assets\Scripts\Demo\DemoPlayerLocCon.cs" />

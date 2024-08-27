@@ -1,6 +1,8 @@
 using Niantic.Lightship.Maps.Core.Coordinates;
 using Niantic.Lightship.Maps.MapLayers.Components;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -164,16 +166,20 @@ public class DemoExpManager : MonoBehaviour
     {
         int i = 0;
 
-        foreach (Poi loc in gameManager.newPois)
+        using (IEnumerator<Poi> penum = gameManager.addedPois.GetEnumerator())
         {
-            poiGOP.PlaceInstance(loc.latlng, "new" + i.ToString());
-            PoiController temp = GameObject.Find("new" + i.ToString()).GetComponent<PoiController>();
-            temp.poi = loc;
+            while (penum.MoveNext())
+            {
+                Poi p = penum.Current;
+                poiGOP.PlaceInstance(p.latlng, "new" + i.ToString());
+                PoiController temp = GameObject.Find("new" + i.ToString()).GetComponent<PoiController>();
+                temp.poi = p;
 
-            Debug.Log($"[SpawnNew] new poi {i} created");
+                Debug.Log($"[SpawnNew] new poi {i} created");
 
-            i++;
+                i++;
+            }
+            Debug.Log("[SpawnNew] Finished.");
         }
-        Debug.Log("[SpawnNew] Finished.");
     }
 }
