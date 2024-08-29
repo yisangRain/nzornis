@@ -9,9 +9,14 @@ public class PoiController : MonoBehaviour
 
     private DemoExpManager expController;
 
+    public bool active = true; 
+
     public void OnMouseUpAsButton()
     {
-        expController = GameObject.Find("Explorer Controller").GetComponent<DemoExpManager>();
-        expController.SetPoi(poi);
+        if (active)
+        {
+            expController = GameObject.Find("Explorer Controller").GetComponent<DemoExpManager>();
+            expController.SetPoi(poi);
+        }
     }
 }

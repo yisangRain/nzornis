@@ -3,7 +3,7 @@
     "m_SelectedProcess": {
         "deviceId": "RF8R30634KR",
         "name": "com.DefaultCompany.nzornis",
-        "processId": 1895,
+        "processId": 14381,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -17,24 +17,6 @@
         {
             "deviceId": "RF8R30634KR",
             "name": "com.DefaultCompany.nzornis",
-            "processId": 21664,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.nzornis",
-            "processId": 25060,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.nzornis",
-            "processId": 10456,
-            "exited": true
-        },
-        {
-            "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.nzornis",
             "processId": 29861,
             "exited": true
         },
@@ -42,12 +24,24 @@
             "deviceId": "RF8R30634KR",
             "name": "com.sec.android.app.sbrowser",
             "processId": 23062,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "RF8R30634KR",
             "name": "com.DefaultCompany.nzornis",
             "processId": 1895,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8R30634KR",
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 12509,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8R30634KR",
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 14381,
             "exited": false
         }
     ],

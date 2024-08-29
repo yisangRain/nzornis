@@ -741,6 +741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   demoInfo: {fileID: 224144974}
+  locCon: {fileID: 447976388}
   poiPanel: {fileID: 1547961125}
   closePoiButton: {fileID: 1017094060}
   titleText: {fileID: 751429354}
@@ -748,6 +749,7 @@ MonoBehaviour:
   dateText: {fileID: 689505992}
   descriptionText: {fileID: 2001472700}
   poiGOP: {fileID: 1173097604304208798, guid: c4be251e4566c0d44843cd92809b7056, type: 3}
+  interactionLimit: 0.0001
 --- !u!114 &392704115
 MonoBehaviour:
   m_ObjectHideFlags: 0
