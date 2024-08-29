@@ -1,7 +1,6 @@
 using Niantic.Lightship.Maps.Core.Coordinates;
 using Niantic.Lightship.Maps.MapLayers.Components;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -16,6 +15,9 @@ public class DemoExpManager : MonoBehaviour
     private DemoGameManager gameManager;
     private DemoGameManager.demo demoLocation;
 
+    // Current location
+    [SerializeField]
+    private DemoPlayerLocCon locCon;
     // POI subscene
     [SerializeField]
     private GameObject poiPanel;
@@ -37,6 +39,16 @@ public class DemoExpManager : MonoBehaviour
     [SerializeField]
     private LayerGameObjectPlacement poiGOP;
     private Poi[] demos;
+
+    //Spawned pois
+    private List<Poi> spawnedPois = new List<Poi>();
+    private List<string> spawnedNames = new List<string>();
+
+    // Distance threshold
+    public double interactionLimit = 0.0001; //0.0001 is 11.1m
+
+    // Distant check timing
+    public DateTime timing = DateTime.Now;
 
 
     // Start is called before the first frame update
@@ -75,7 +87,8 @@ public class DemoExpManager : MonoBehaviour
         // Deactivate POI panel to hide it.
         poiPanel.SetActive(false);
 
-        SpawnDemo();     
+        SpawnDemo();
+        DistanceChecker();
     }
     
     public void ClosePoiPanel()
@@ -154,6 +167,10 @@ public class DemoExpManager : MonoBehaviour
 
             Debug.Log($"[SpawnDemo] demo {i} created");
 
+            // add into the tracker lists
+            spawnedPois.Add(loc);
+            spawnedNames.Add("demo" + i.ToString());
+
             i++;
         }
         Debug.Log("[SpawnDemo] Finished.");
@@ -181,5 +198,59 @@ public class DemoExpManager : MonoBehaviour
             }
             Debug.Log("[SpawnNew] Finished.");
         }
+    }
+
+
+    public void Update()
+    {
+      
+        if (DateTime.Now.Subtract(timing).Seconds > 5)
+        {
+            timing = DateTime.Now;
+            DistanceChecker();
+        }
+
+        
+    }
+
+    /// <summary>
+    /// Check euclidean distance between the user's current location and each pois
+    /// </summary>
+    public void DistanceChecker()
+    {
+        LatLng current = locCon.currentCoordinate;
+
+        int i = 0;
+
+        Debug.Log("[DistanceChecker] iterating");
+        // iterate through each Pois currently on the scene. 
+        using (IEnumerator<Poi> poiEnum = spawnedPois.GetEnumerator())
+        {
+            while (poiEnum.MoveNext())
+            {
+                Poi p = poiEnum.Current;
+                double d = Math.Sqrt(Math.Pow(p.latlng.Latitude - current.Latitude, 2) + Math.Pow(p.latlng.Longitude - current.Longitude, 2));
+
+                if (d > interactionLimit)
+                {
+                    GameObject sp = GameObject.Find(spawnedNames[i]);
+                    sp.GetComponent<MeshRenderer>()
+                        .material
+                        .color = Color.gray;
+                    sp.GetComponent<PoiController>()
+                        .active = false;
+                }
+                if (d <= interactionLimit)
+                {
+                    GameObject sp = GameObject.Find(spawnedNames[i]);
+                    sp.GetComponent<MeshRenderer>()
+                        .material
+                        .color = Color.blue;
+                    sp.GetComponent<PoiController>()
+                        .active = true;
+                }
+                i++;
+            }
+        }   
     }
 }
