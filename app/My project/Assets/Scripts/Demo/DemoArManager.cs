@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.Video;
-using Niantic.Lightship.AR.LocationAR;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// AR scene manager for Demo
@@ -64,4 +64,17 @@ public class DemoArManager : MonoBehaviour
 
         }
     }
+
+
+    public void BackButtonClicked()
+    {
+        if (gameManager != null)
+        {
+            gameManager.BackScene();
+        } else
+        {
+            SceneManager.LoadScene("DemoMain");
+        }
+    }
+
 }

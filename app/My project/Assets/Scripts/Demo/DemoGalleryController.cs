@@ -27,7 +27,7 @@ public class DemoGalleryController : MonoBehaviour
     Button galleryItem; //button prefab
 
     private DemoGameManager gameManager;
-    private Vector3 position = new Vector3(0, -100, 0);
+    private Vector3 position = new Vector3(0, -200, 0);
 
     private Poi currentPoi;
 
@@ -54,17 +54,18 @@ public class DemoGalleryController : MonoBehaviour
                     Poi p = penum.Current;
                     Instantiate(galleryItem);
                     Button g = GameObject.Find("GalleryItem(Clone)").GetComponent<Button>();
-                    GalleryItem item = GameObject.Find("GalleryItem(Clone)").GetComponent<GalleryItem>();
                     g.name = $"galleryItem_{i}";
                     g.transform.SetParent(gallery.content);
                     g.GetComponent<RectTransform>().position = position;
                     g.GetComponentInChildren<TMP_Text>().text = p.title;
+
+                    // attach listener
+                    g.onClick.AddListener(delegate { SetCurrentPoi(p); });
                     
-                    item.poi = p;
-                    item.galleryController = this;
                     contentRect.sizeDelta += new Vector2(0, 150);
                     position += new Vector3(0, -200, 0);
                     Debug.Log($"[GalleryController] Spawned {p.title} as galleryItem_{i}");
+                    i++;
                 }
             } 
 
@@ -74,7 +75,6 @@ public class DemoGalleryController : MonoBehaviour
         }
 
         itemPanel.SetActive(false);
-
     }
 
     public void PanelExitButtonClicked()

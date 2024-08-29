@@ -408,6 +408,10 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.26f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Diagnostics.EventLog">
+      <HintPath>Assets\Packages\System.Diagnostics.EventLog.4.7.0\lib\netstandard2.0\System.Diagnostics.EventLog.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Google.Protobuf">
       <HintPath>Library\PackageCache\com.niantic.lightship.maps@fb4247cae5\Runtime\Google.Protobuf\Google.Protobuf.dll</HintPath>
       <Private>False</Private>
@@ -416,8 +420,16 @@
       <HintPath>Library\PackageCache\com.nianticlabs.lightship@e17d59a6a2\Runtime\Telemetry\dep\Niantic.Protobuf.3.25.3.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>Assets\Packages\Castle.Core.5.1.1\lib\netstandard2.1\Castle.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Niantic.Platform.Debugging">
       <HintPath>Library\PackageCache\com.niantic.lightship.maps@fb4247cae5\Runtime\Niantic.Platform.Debugging\Niantic.Platform.Debugging.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="xunit.core">
+      <HintPath>Assets\Packages\xunit.extensibility.core.2.8.1\lib\netstandard1.1\xunit.core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
@@ -426,10 +438,6 @@
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@1.4.0\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="xunit.abstractions">
-      <HintPath>Assets\Packages\xunit.abstractions.2.0.3\lib\netstandard2.0\xunit.abstractions.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Niantic.Lightship.Maps.Linq">
@@ -448,20 +456,16 @@
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.3.1\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="xunit.assert">
-      <HintPath>Assets\Packages\xunit.assert.2.8.1\lib\netstandard1.1\xunit.assert.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="xunit.execution.dotnet">
-      <HintPath>Assets\Packages\xunit.extensibility.execution.2.8.1\lib\netstandard1.1\xunit.execution.dotnet.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Moq">
-      <HintPath>Assets\Packages\Moq.4.20.70\lib\netstandard2.1\Moq.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@2.3.1\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows">
+      <HintPath>Assets\Packages\System.Security.Principal.Windows.4.7.0\lib\netstandard2.0\System.Security.Principal.Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="xunit.assert">
+      <HintPath>Assets\Packages\xunit.assert.2.8.1\lib\netstandard1.1\xunit.assert.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
@@ -476,14 +480,6 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="xunit.core">
-      <HintPath>Assets\Packages\xunit.extensibility.core.2.8.1\lib\netstandard1.1\xunit.core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Diagnostics.EventLog">
-      <HintPath>Assets\Packages\System.Diagnostics.EventLog.4.7.0\lib\netstandard2.0\System.Diagnostics.EventLog.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Niantic.Protobuf">
       <HintPath>Library\PackageCache\com.nianticlabs.lightship@e17d59a6a2\Runtime\Telemetry\dep\Niantic.Protobuf.3.25.3.0\Niantic.Protobuf.dll</HintPath>
       <Private>False</Private>
@@ -492,12 +488,8 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Castle.Core">
-      <HintPath>Assets\Packages\Castle.Core.5.1.1\lib\netstandard2.1\Castle.Core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Security.Principal.Windows">
-      <HintPath>Assets\Packages\System.Security.Principal.Windows.4.7.0\lib\netstandard2.0\System.Security.Principal.Windows.dll</HintPath>
+    <Reference Include="Moq">
+      <HintPath>Assets\Packages\Moq.4.20.70\lib\netstandard2.1\Moq.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="NuGetForUnity.PluginAPI">
@@ -516,8 +508,16 @@
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="xunit.execution.dotnet">
+      <HintPath>Assets\Packages\xunit.extensibility.execution.2.8.1\lib\netstandard1.1\xunit.execution.dotnet.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Niantic.Lightship.Maps.Core">
       <HintPath>Library\PackageCache\com.niantic.lightship.maps@fb4247cae5\Runtime\Niantic.Lightship.Maps.Core\Niantic.Lightship.Maps.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="xunit.abstractions">
+      <HintPath>Assets\Packages\xunit.abstractions.2.0.3\lib\netstandard2.0\xunit.abstractions.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
