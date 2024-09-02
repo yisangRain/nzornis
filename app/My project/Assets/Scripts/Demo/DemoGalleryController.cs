@@ -35,6 +35,7 @@ public class DemoGalleryController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // test Pois. Comment out if not required.
         Poi u3 = new Poi("Lab 3", "Around Stephan's office", 2, new LatLng(float.Parse("-43.520612"), float.Parse("172.583128")), "Ines Capri", new DateTime(2024, 5, 5), new Vector3(10, 5, 0));
         Poi u4 = new Poi("Somewhere by the fire station", "This is where firetrucks live.", 3, new LatLng(float.Parse("-43.520216"), float.Parse("172.582620")), "Ines Capri", new DateTime(2024, 8, 1), new Vector3(0, 0, 0));
 
