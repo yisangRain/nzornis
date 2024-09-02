@@ -18,17 +18,20 @@ public class DemoGameManager : MonoBehaviour
         University
     }
 
-    private demo demoLocation = demo.None; // To store the target set of demo
+    private demo demoLocation = demo.None; // To store the target setup
     private Exception demoNotSetException = new Exception("Demo location not set.");
 
     public Poi poi { get; set; }
     public Vector3 arPosition { get; set; }
 
+    // For breadcrumbs
     private string prevSceneName = null;
     private string currentSceneName = null;
 
+    // For carrying target Poi between different scens
     public Poi newPoi;
 
+    // To store user-created PoIs for the immediate application instance. Erases upon application reset or closure.
     public List<Poi> addedPois = new List<Poi>();  
 
     // Start is called before the first frame update

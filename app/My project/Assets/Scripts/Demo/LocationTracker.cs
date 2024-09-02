@@ -3,6 +3,10 @@ using Niantic.Lightship.Maps.Core.Coordinates;
 using UnityEngine;
 using UnityEngine.Android;
 
+/// <summary>
+/// Class to access the device's GPS and return the current coordinate
+/// 
+/// </summary>
 public class LocationTracker : MonoBehaviour
 {
     private LatLng currentCoord = new LatLng();
@@ -16,7 +20,6 @@ public class LocationTracker : MonoBehaviour
         StartCoroutine(CurrentLocation());
     }
 
-    // Update is called once per frame
     private IEnumerator CurrentLocation()
     {
         if (!Permission.HasUserAuthorizedPermission(Permission.FineLocation))
