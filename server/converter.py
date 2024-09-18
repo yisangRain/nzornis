@@ -88,8 +88,8 @@ def grabcutProcessor(source, output_name):
         return 1
 
     i = 0
-
-    box=(10, 10, 490, 490)
+    h, w , _= frame.shape
+    box=(10, 10, h - 10, w - 10)
 
     while (True):
         success, frame = capture.read()
@@ -112,5 +112,5 @@ def grabcutProcessor(source, output_name):
     print(f"finished. Elapsed time: {end - start}")
     return 0
 
-grabcutProcessor("server/testAssets/kokako.mp4","server/testAssets/kokakoConvertedIt4.mp4")
+grabcutProcessor("ConversionTrials/garnet.mp4","garnet_grabcut.mp4")
 

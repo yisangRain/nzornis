@@ -79,12 +79,12 @@ def selfie(img):
 
     return output_image
 
-def selfie_vid(filename):
+def selfie_vid(filename, outname):
     start = time.time()
     output_params = {"-fps": 30, '-fourcc': 'H264'}
    
     capture = cv2.VideoCapture(filename)
-    writer = WriteGear(output = "alba.mp4", compression_mode=False, logging=True, **output_params)
+    writer = WriteGear(output = outname + ".mp4", compression_mode=False, logging=True, **output_params)
 
     i = 0
     while (True):
@@ -154,5 +154,5 @@ def sam_trial(filename):
     print(f"Time: {time.time() - start}")
 
 # dl_vid("kokako.mp4")
-selfie_vid("albatross.mp4")
-# sam_trial("kokako.mp4")
+selfie_vid("ConversionTrials/crane.mp4", "crane_selfie")
+# sam_trial("kokako.mp4") 

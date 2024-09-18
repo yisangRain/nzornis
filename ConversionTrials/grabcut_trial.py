@@ -6,7 +6,7 @@ imgs = ["blackswan1.jpg", "kea1.jpg", "kea2.jpg", "kea3.jpg", "kereru1.jpg", "ke
         "seagull1.jpg", "seagull2.jpg", "seagull3.jpg"]
 
 for f in imgs:
-    img_path = "images/" + f
+    img_path = "ConversionTrials/images/" + f
 
     start = time.time()
 
