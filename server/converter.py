@@ -15,7 +15,7 @@ def grabCutImage(frame, rect):
     bgdModel = np.zeros((1, 65), np.float64)
     fgdModel = np.zeros((1, 65), np.float64)
 
-    cv2.grabCut(frame, mask, rect, bgdModel, fgdModel, 5, cv2.GC_INIT_WITH_RECT)
+    cv2.grabCut(frame, mask, rect, bgdModel, fgdModel, 4, cv2.GC_INIT_WITH_RECT)
     mask2 = np.where((mask == 2) | (mask == 0), 0, 1).astype('uint8')
 
     img_seg = np.copy(frame)
@@ -88,8 +88,8 @@ def grabcutProcessor(source, output_name):
         return 1
 
     i = 0
-
-    box=(20, 20, 470, 470)
+    h, w , _= frame.shape
+    box=(50, 50, w - 50, h - 50)
 
     while (True):
         success, frame = capture.read()
@@ -97,7 +97,7 @@ def grabcutProcessor(source, output_name):
         if (success == False):
             print("all frames gone")
             break
-        # if (i > 30): #temp limiter
+        # if (i > 10): #temp limiter
         #     break
     
         processed = grabCutImage(frame, box)
@@ -112,5 +112,6 @@ def grabcutProcessor(source, output_name):
     print(f"finished. Elapsed time: {end - start}")
     return 0
 
-grabcutProcessor("server/testAssets/hummingbird.mp4","server/testAssets/hummingbirdConverted2.mp4")
-
+start = time.time()
+grabcutProcessor("ConversionTrials/crane.mp4","crane_grabcut.mp4")
+print(time.time() - start)

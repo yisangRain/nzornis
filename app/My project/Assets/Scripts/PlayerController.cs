@@ -17,12 +17,19 @@ public class PlayerController : MonoBehaviour
     private const float RunThreshold = 10f;
     private const float SprintThreshold = 20f;
 
+    private Animator anim;
+
     private PlayerState currentPlayerState = PlayerState.Stationary;
     private bool IsPlayerMoving => currentPlayerState is
         PlayerState.Walk or PlayerState.Run or PlayerState.Sprint;
 
     //private bool IsPlayerResting => currentPlayerState is
     //    PlayerState.Stationary;
+
+    public void Start()
+    {
+        anim = gameObject.GetComponentInChildren<Animator>();
+    }
 
     public void UpdatePlayerState(float moveDistance)
     {
@@ -33,6 +40,7 @@ public class PlayerController : MonoBehaviour
                     if (currentPlayerState != PlayerState.Sprint)
                     {
                         currentPlayerState = PlayerState.Sprint;
+                        anim.SetInteger("AnimationPar", 1);
                     }
                     break;
                 }
@@ -42,6 +50,7 @@ public class PlayerController : MonoBehaviour
                     if (currentPlayerState != PlayerState.Run)
                     {
                         currentPlayerState = PlayerState.Run;
+                        anim.SetInteger("AnimationPar", 1);
                     }
                     break;   
                 }
@@ -51,6 +60,7 @@ public class PlayerController : MonoBehaviour
                     if (currentPlayerState != PlayerState.Walk)
                     {
                         currentPlayerState = PlayerState.Walk;
+                        anim.SetInteger("AnimationPar", 0);
                     }
                     break;
                 }
@@ -65,6 +75,7 @@ public class PlayerController : MonoBehaviour
         if (IsPlayerMoving)
         {
             currentPlayerState = PlayerState.Stationary;
+            anim.SetInteger("AnimationPar", 0);
         }
     }
 }

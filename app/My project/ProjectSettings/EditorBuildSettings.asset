@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Demo/DemoCreate.unity
     guid: ea3dbeecf01f809439b546bdbc158d97
+  - enabled: 1
+    path: Assets/Scenes/Demo/DemoSegment.unity
+    guid: 1412a80782c4d994099100ea911383d1
   m_configObjects:
     Niantic.Lightship.AR.LightshipSettings: {fileID: 11400000, guid: b6cbb277db91b3047aef3b8b944cb51b, type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 23134a15653f16941b58ca7db6fe8c92, type: 2}

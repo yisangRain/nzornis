@@ -50,7 +50,7 @@ public class DemoCreateController : MonoBehaviour
                 selectButton.interactable = false;
                 positionButton.interactable = false;
                 descButton.interactable = true;
-                instText.text = "Please add title and description.";
+                instText.text = "Please select 'Description'";
             }
 
         } catch
@@ -66,6 +66,7 @@ public class DemoCreateController : MonoBehaviour
     {
         if (gameManager != null)
         {
+            gameManager.newPoi = null;
             gameManager.BackScene();
         } else
         {
@@ -88,7 +89,7 @@ public class DemoCreateController : MonoBehaviour
                 poiCreated.clipId = 0;
                 break;
 
-            case "Kokako":
+            case "Gannet":
                 poiCreated.clipId = 1;
                 break;
 
@@ -107,7 +108,7 @@ public class DemoCreateController : MonoBehaviour
         selectPanel.SetActive(false);
         selectButton.interactable = false;
         positionButton.interactable = true;
-        instText.text = $"{birdName} selected. Please position the bird.";
+        instText.text = $"{birdName} selected. Please select 'Position'.";
     }
 
     public void PositionButtonClicked()
@@ -149,7 +150,7 @@ public class DemoCreateController : MonoBehaviour
         descPanel.SetActive(false);
         descButton.interactable = false;
         uploadButton.interactable = true;
-        instText.text = "Press 'Upload' to confirm upload.";
+        instText.text = "Select 'Upload' at the bottom to confirm upload.";
     }
 
     public void UploadButtonClicked()
@@ -163,6 +164,7 @@ public class DemoCreateController : MonoBehaviour
             newPoi.latlng = currentLocation;
             gameManager.addedPois.Add(newPoi);
             gameManager.newPoi = null;
+            gameManager.newEntry = true;
             gameManager.LoadScene("DemoMain");
 
         } else

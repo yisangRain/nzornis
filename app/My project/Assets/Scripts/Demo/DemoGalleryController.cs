@@ -48,6 +48,8 @@ public class DemoGalleryController : MonoBehaviour
                 gameManager.addedPois.Add(u4);
             }
 
+            gameManager.newEntry = false;
+
             Debug.Log("[GalleryController] Spawning gallery items.");
 
             int i = 0;

@@ -1,7 +1,7 @@
 # Server
 
 ## This directory contains
-* Server script for handling HTTP requests for NZ Ornis application
+* Skeleton server script for handling HTTP requests for NZ Ornis application
 * Converter source code to process the received video into segmented videos 
 * Test script for server
 
