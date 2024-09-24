@@ -14,6 +14,7 @@ public class DemoGameManager : MonoBehaviour
     public enum demo
     {
         None,
+        Segmentation,
         Novotel,
         University
     }
@@ -32,18 +33,36 @@ public class DemoGameManager : MonoBehaviour
     public Poi newPoi;
 
     // To store user-created PoIs for the immediate application instance. Erases upon application reset or closure.
-    public List<Poi> addedPois = new List<Poi>();  
+    public List<Poi> addedPois = new List<Poi>();
+
+    public bool newEntry = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        currentSceneName = SceneManager.GetActiveScene().name;
+        DontDestroyOnLoad(gameObject);        
     }
 
     public void SetDemoLocation(demo newDemoLocation)
     {
         demoLocation = newDemoLocation;
+    }
+
+    public void Update()
+    {
+        if (SceneManager.GetActiveScene().name != currentSceneName)
+        {
+            prevSceneName = currentSceneName;
+            currentSceneName = SceneManager.GetActiveScene().name;
+            Debug.Log($"[Scene] Prev {prevSceneName}, Curr {currentSceneName}");
+        }
+
+        // Simple breadcrumbing. Needs better method if the scene navigation depth increases further than 3
+        if (prevSceneName == "DemoCreate" || prevSceneName == "DemoPosition" || prevSceneName == "DemoAr")
+        {
+            prevSceneName = "DemoMain";
+            Debug.Log("[Scene] Previous scene name switched to DemoMain");
+        }
     }
 
     public demo GetDemoLocation()
@@ -58,7 +77,6 @@ public class DemoGameManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        prevSceneName = currentSceneName;
         SceneManager.LoadScene(sceneName);
     }
 

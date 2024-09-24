@@ -1,25 +1,13 @@
 {
-    "m_SelectedDeviceId": "R52X20B4Z6K",
+    "m_SelectedDeviceId": "RF8R30634KR",
     "m_SelectedProcess": {
         "deviceId": "RF8R30634KR",
         "name": "com.DefaultCompany.nzornis",
-        "processId": 14381,
+        "processId": 12849,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownProcessesForSerialization": [
-        {
-            "deviceId": "RF8R30634KR",
-            "name": "com.sec.android.app.launcher",
-            "processId": 3045,
-            "exited": false
-        },
-        {
-            "deviceId": "RF8R30634KR",
-            "name": "com.DefaultCompany.nzornis",
-            "processId": 29861,
-            "exited": true
-        },
         {
             "deviceId": "RF8R30634KR",
             "name": "com.sec.android.app.sbrowser",
@@ -42,6 +30,12 @@
             "deviceId": "RF8R30634KR",
             "name": "com.DefaultCompany.nzornis",
             "processId": 14381,
+            "exited": true
+        },
+        {
+            "deviceId": "RF8R30634KR",
+            "name": "com.DefaultCompany.nzornis",
+            "processId": 12849,
             "exited": false
         }
     ],

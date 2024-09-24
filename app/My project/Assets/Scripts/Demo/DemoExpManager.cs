@@ -50,6 +50,9 @@ public class DemoExpManager : MonoBehaviour
     // Distant check timing
     public DateTime timing = DateTime.Now;
 
+    private Color craneActive = new Color(137, 214, 209);
+    private Color craneInactive = new Color(165, 168, 166);
+
 
     // Start is called before the first frame update
     void Start()
@@ -124,7 +127,7 @@ public class DemoExpManager : MonoBehaviour
         // uni demos
         Poi u1 = new Poi("Lab 1", "Slightly off from the front door", 0, new LatLng(float.Parse("-43.520448"), float.Parse("172.583186")), "Ethan Fong", new DateTime(2024, 1, 1), new Vector3(0,0,0));
         Poi u2 = new Poi("Lab 2", "I think this is around my desk", 1, new LatLng(float.Parse("-43.520579"), float.Parse("172.583286")), "Gareth Han", new DateTime(2024, 3, 10), new Vector3(3,3,3));
-        Poi u3 = new Poi("Lab 3", "Around Stephan's office", 2, new LatLng(float.Parse("-43.520612"), float.Parse("172.583128")), "Ines Capri", new DateTime(2024, 5, 5), new Vector3(10,5, 0));
+        Poi u3 = new Poi("Lab 3", "Around Stephan's office", 2, new LatLng(float.Parse("-43.520612"), float.Parse("172.583128")), "Ines Capri", new DateTime(2024, 5, 5), new Vector3(3,3, 3));
         Poi u4 = new Poi("Somewhere by the fire station", "This is where firetrucks live.", 3, new LatLng(float.Parse("-43.520216"), float.Parse("172.582620")), "Ines Capri", new DateTime(2024, 8,1), new Vector3(0,0,0));
 
         try
@@ -204,7 +207,7 @@ public class DemoExpManager : MonoBehaviour
     public void Update()
     {
       
-        if (DateTime.Now.Subtract(timing).Seconds > 5)
+        if (DateTime.Now.Subtract(timing).Seconds > 3)
         {
             timing = DateTime.Now;
             DistanceChecker();
@@ -236,7 +239,7 @@ public class DemoExpManager : MonoBehaviour
                     GameObject sp = GameObject.Find(spawnedNames[i]);
                     sp.GetComponent<MeshRenderer>()
                         .material
-                        .color = Color.gray;
+                        .color = Color.grey;
                     sp.GetComponent<PoiController>()
                         .active = false;
                 }
@@ -251,6 +254,52 @@ public class DemoExpManager : MonoBehaviour
                 }
                 i++;
             }
-        }   
+        }
+        using (IEnumerator<Poi> newEnum = gameManager.addedPois.GetEnumerator())
+        {
+            while (newEnum.MoveNext())
+            {
+                Poi p = newEnum.Current;
+                double d = Math.Sqrt(Math.Pow(p.latlng.Latitude - current.Latitude, 2) + Math.Pow(p.latlng.Longitude - current.Longitude, 2));
+
+                if (d > interactionLimit)
+                {
+                    GameObject sp = GameObject.Find(spawnedNames[i]);
+                    sp.GetComponent<MeshRenderer>()
+                        .material
+                        .color = Color.grey;
+                    sp.GetComponent<PoiController>()
+                        .active = false;
+                }
+                if (d <= interactionLimit)
+                {
+                    GameObject sp = GameObject.Find(spawnedNames[i]);
+                    sp.GetComponent<MeshRenderer>()
+                        .material
+                        .color = Color.blue;
+                    sp.GetComponent<PoiController>()
+                        .active = true;
+                }
+                i++;
+            }
+        }
     }
+
+
+    public void LoadPreviousScene()
+    {
+        if (gameManager != null)
+        {
+            gameManager.BackScene();
+        } else
+        {
+            SceneManager.LoadScene("DemoMain");
+        }
+    }
+
+    public void LoadUpload()
+    {
+        SceneManager.LoadScene("DemoCreate");
+    }
+
 }

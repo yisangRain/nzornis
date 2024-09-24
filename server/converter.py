@@ -89,7 +89,7 @@ def grabcutProcessor(source, output_name):
 
     i = 0
     h, w , _= frame.shape
-    box=(10, 10, h - 10, w - 10)
+    box=(50, 50, w - 50, h - 50)
 
     while (True):
         success, frame = capture.read()
@@ -97,7 +97,7 @@ def grabcutProcessor(source, output_name):
         if (success == False):
             print("all frames gone")
             break
-        # if (i > 30): #temp limiter
+        # if (i > 10): #temp limiter
         #     break
     
         processed = grabCutImage(frame, box)
@@ -112,5 +112,6 @@ def grabcutProcessor(source, output_name):
     print(f"finished. Elapsed time: {end - start}")
     return 0
 
-grabcutProcessor("ConversionTrials/garnet.mp4","garnet_grabcut.mp4")
-
+start = time.time()
+grabcutProcessor("ConversionTrials/crane.mp4","crane_grabcut.mp4")
+print(time.time() - start)

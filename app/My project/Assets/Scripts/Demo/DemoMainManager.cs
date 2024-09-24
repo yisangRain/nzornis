@@ -1,10 +1,14 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DemoMainManager : MonoBehaviour
 {
     [SerializeField]
     TMP_Text demoInfo;
+
+    [SerializeField]
+    TMP_Text newText;
 
     DemoGameManager gameManager;
     DemoGameManager.demo demoLocation;
@@ -30,8 +34,25 @@ public class DemoMainManager : MonoBehaviour
                 default:
                     break;
             }
+
+            if (gameManager.newEntry)
+            {
+                newText.text = "New!";
+            } else
+            {
+                newText.text = "";
+            }
+
         } catch {
             demoInfo.text = "Game Manager is null";
+        }
+    }
+
+    private void Update()
+    {
+        if (gameManager != null)
+        {
+
         }
     }
 
