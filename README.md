@@ -12,5 +12,5 @@ Unity Android application to:
 ## How to use
 * Clone this repository. Please feel free to delete the server directory if you do not need server functions or conversion.
 * Build the Unity application through the cloned repo
-* Run the server on the same network as the application (note: USB tethering from the phone is recommended)
-* If only need the app, please download the apk package instead and install on your device
+
+
