@@ -14,33 +14,55 @@ public class DemoGameManager : MonoBehaviour
     public enum demo
     {
         None,
+        Segmentation,
         Novotel,
         University
     }
 
-    private demo demoLocation = demo.None; // To store the target set of demo
+    private demo demoLocation = demo.None; // To store the target setup
     private Exception demoNotSetException = new Exception("Demo location not set.");
 
     public Poi poi { get; set; }
     public Vector3 arPosition { get; set; }
 
+    // For breadcrumbs
     private string prevSceneName = null;
     private string currentSceneName = null;
 
+    // For carrying target Poi between different scens
     public Poi newPoi;
 
-    public List<Poi> addedPois = new List<Poi>();  
+    // To store user-created PoIs for the immediate application instance. Erases upon application reset or closure.
+    public List<Poi> addedPois = new List<Poi>();
+
+    public bool newEntry = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        currentSceneName = SceneManager.GetActiveScene().name;
+        DontDestroyOnLoad(gameObject);        
     }
 
     public void SetDemoLocation(demo newDemoLocation)
     {
         demoLocation = newDemoLocation;
+    }
+
+    public void Update()
+    {
+        if (SceneManager.GetActiveScene().name != currentSceneName)
+        {
+            prevSceneName = currentSceneName;
+            currentSceneName = SceneManager.GetActiveScene().name;
+            Debug.Log($"[Scene] Prev {prevSceneName}, Curr {currentSceneName}");
+        }
+
+        // Simple breadcrumbing. Needs better method if the scene navigation depth increases further than 3
+        if (prevSceneName == "DemoCreate" || prevSceneName == "DemoPosition" || prevSceneName == "DemoAr")
+        {
+            prevSceneName = "DemoMain";
+            Debug.Log("[Scene] Previous scene name switched to DemoMain");
+        }
     }
 
     public demo GetDemoLocation()
@@ -55,7 +77,6 @@ public class DemoGameManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        prevSceneName = currentSceneName;
         SceneManager.LoadScene(sceneName);
     }
 

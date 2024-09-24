@@ -5,7 +5,7 @@ from vidgear.gears.stabilizer import Stabilizer
 import time
 import database
 
-def grabCutter(frame, rect):
+def grabCutImage(frame, rect):
     """
     Segments given image based on the given bounding box
     """
@@ -15,7 +15,7 @@ def grabCutter(frame, rect):
     bgdModel = np.zeros((1, 65), np.float64)
     fgdModel = np.zeros((1, 65), np.float64)
 
-    cv2.grabCut(frame, mask, rect, bgdModel, fgdModel, 5, cv2.GC_INIT_WITH_RECT)
+    cv2.grabCut(frame, mask, rect, bgdModel, fgdModel, 4, cv2.GC_INIT_WITH_RECT)
     mask2 = np.where((mask == 2) | (mask == 0), 0, 1).astype('uint8')
 
     img_seg = np.copy(frame)
@@ -24,8 +24,48 @@ def grabCutter(frame, rect):
     return img_seg
 
 
+def img_to_AR(conn, id):
+    """
+    Wrapper function for cutting an image file for AR 
+    """
+    s = database.Sighting()
+    filename = s.get_by_id(conn, database.Entity.SIGHTING, id)[0][-1]
+    input_name = "server/received/" + filename
+    output_name = "server/converted/" + filename
 
-def grabcut(source, output_name):
+    box = (10, 10, 480, 480) 
+    img = cv2.imread(input_name)
+
+    processed = grabCutImage(img, box)
+    cv2.imwrite(output_name, processed)
+
+    c = database.Cell()
+    c.update_status(conn, id, database.ConversionStatus.READY)
+
+
+
+def vid_to_AR(conn, id):
+    """
+    Wrapper function for conversion
+    """
+    s = database.Sighting()
+    filename = s.get_by_id(conn, database.Entity.SIGHTING, id)[0][-1]
+    input_name = "server/received/" + filename
+    output_name = "server/converted/" + filename
+
+    c = database.Cell()
+
+    result = grabcutProcessor(input_name, output_name)
+
+    if result == 0:
+        c.update_status(conn, id, database.ConversionStatus.READY)
+
+    elif result == 1:
+        raise ValueError('Error converting file')
+    
+
+
+def grabcutProcessor(source, output_name):
 
     start = time.time()
 
@@ -48,8 +88,8 @@ def grabcut(source, output_name):
         return 1
 
     i = 0
-
-    box=(20, 20, 470, 470)
+    h, w , _= frame.shape
+    box=(50, 50, w - 50, h - 50)
 
     while (True):
         success, frame = capture.read()
@@ -57,10 +97,10 @@ def grabcut(source, output_name):
         if (success == False):
             print("all frames gone")
             break
-        # if (i > 30): #temp limiter
+        # if (i > 10): #temp limiter
         #     break
     
-        processed = grabCutter(frame, box)
+        processed = grabCutImage(frame, box)
 
         writer.write(processed)
         
@@ -72,45 +112,6 @@ def grabcut(source, output_name):
     print(f"finished. Elapsed time: {end - start}")
     return 0
 
-
-def img_to_AR(conn, id):
-    """
-    Wrapper function for cutting an image file for AR 
-    """
-    s = database.Sighting()
-    filename = s.get_by_id(conn, database.Entity.SIGHTING, id)[0][-1]
-    input_name = "server/received/" + filename
-    output_name = "server/converted/" + filename
-
-    box = (10, 10, 480, 480) 
-    img = cv2.resize(cv2.imread(input_name), (500,500))
-
-    processed = grabCutter(img, box)
-    cv2.imwrite(output_name, processed)
-
-    c = database.Cell()
-    c.update_status(conn, id, database.ConversionStatus.READY)
-
-
-
-def vid_to_AR(conn, id):
-    """
-    Wrapper function for conversion
-    """
-    s = database.Sighting()
-    filename = s.get_by_id(conn, database.Entity.SIGHTING, id)[0][-1]
-    input_name = "server/received/" + filename
-    output_name = "server/converted/" + filename
-
-    c = database.Cell()
-
-    result = grabcut(input_name, output_name)
-
-    if result == 0:
-        c.update_status(conn, id, database.ConversionStatus.READY)
-
-    elif result == 1:
-        raise ValueError('Error converting file')
-
-grabcut("server/testAssets/hummingbird.mp4","server/testAssets/hummingbirdConverted2.mp4")
-
+start = time.time()
+grabcutProcessor("ConversionTrials/crane.mp4","crane_grabcut.mp4")
+print(time.time() - start)
