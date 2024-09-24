@@ -1,3 +1,5 @@
 pythonsqlite.db
 server/__pycache__
 app/My project/Assets/Samples/Lightship Maps SDK
+*.tflite
+*.pth
